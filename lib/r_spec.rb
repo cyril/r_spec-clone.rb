@@ -27,6 +27,5 @@ module RSpec
   end
 end
 
-require_relative File.join 'fix', 'before'
-require_relative File.join 'fix', 'describe'
 require_relative File.join 'fix', 'it'
+require_relative File.join 'fix', 'on'
