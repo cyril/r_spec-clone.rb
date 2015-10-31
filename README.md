@@ -1,4 +1,4 @@
-# RSpec
+# R Spec
 
 [![Build Status](https://travis-ci.org/cyril/r_spec.svg?branch=master)][travis]
 [![Gem Version](https://badge.fury.io/rb/r_spec.svg)][gem]
@@ -7,11 +7,22 @@
 
 > A small [Rspec](https://github.com/rspec/rspec) clone based on [Fix specing framework](https://github.com/fixrb/fix).
 
+***
+
+:warning: Important:
+
+To avoid confusion in the community, please note that the gem of this project is **not [rspec](https://rubygems.org/gems/rspec)**, it is **[r_spec](https://rubygems.org/gems/rspec)** (meaning _Ruby Spec_).
+
+This project is totally independent of [rspec.info](http://rspec.info/).
+
+Also, while the `RSpec` module is the same (I follow [the gem naming convention](http://guides.rubygems.org/name-your-gem/#use-underscores-for-multiple-words), the **r_spec** internal is quite different than **rspec** due to its [Ruby Fix](http://fixrb.org/) dependency.
+
+***
+
 ## Contact
 
 * Home page: https://github.com/cyril/r_spec
 * Bugs/issues: https://github.com/cyril/r_spec/issues
-* Support: https://stackoverflow.com/questions/tagged/r_spec
 
 ## Rubies
 
@@ -21,14 +32,14 @@
 
 ## Installation
 
-__RSpec__ is cryptographically signed.
+__R Spec__ is cryptographically signed.
 
 To be sure the gem you install hasn't been tampered with, add my public key (if you haven't already) as a trusted certificate:
 
     $ gem cert --add <(curl -Ls https://raw.github.com/cyril/r_spec/master/certs/gem-cyril-public_cert.pem)
     $ gem install r_spec -P HighSecurity
 
-The `HighSecurity` trust profile will verify all gems.  All of __RSpec__'s dependencies are signed.
+The `HighSecurity` trust profile will verify all gems.  All of __R Spec__'s dependencies are signed.
 
 Or add this line to your application's Gemfile:
 
@@ -72,7 +83,7 @@ It can be tested in the console with the command:
 
 ## Security
 
-As a basic form of security __RSpec__ provides a set of SHA512 checksums for
+As a basic form of security __R Spec__ provides a set of SHA512 checksums for
 every Gem release.  These checksums can be found in the `checksum/` directory.
 Although these checksums do not prevent malicious users from tampering with a
 built Gem they can be used for basic integrity verification purposes.
@@ -85,7 +96,7 @@ example:
 
 ## Versioning
 
-__RSpec__ follows [Semantic Versioning 2.0](http://semver.org/).
+__R Spec__ follows [Semantic Versioning 2.0](http://semver.org/).
 
 ## Contributing
 

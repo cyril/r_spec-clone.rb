@@ -2,7 +2,7 @@
 module Fix
   # Override Fix's On class.
   class On
-    # @param another_front_object [BasicObject] The front object.
+    # @param another_front_object [#object_id]  Override the front object.
     # @param specs                [Proc]        A set of specs.
     #
     # @return [Array] List of results.

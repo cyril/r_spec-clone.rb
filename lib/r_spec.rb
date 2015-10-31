@@ -1,13 +1,17 @@
-# Namespace for the RSpec framework.
+require 'matchi/rspec'
+require 'fix/expect'
+require 'fix/its'
+
+# Namespace for the R Spec framework.
 #
 # @api public
 #
 module RSpec
   # Specs are built with this method.
   #
-  # @example 42 must be equal to 42
-  #   describe(42) do
-  #     it { MUST Equal: 42 }
+  # @example The answer must be equal to 42.
+  #   describe('the answer') do
+  #     it { expect(42).to be 42 }
   #   end
   #
   # @param front_object [#object_id]  The front object.
@@ -23,10 +27,6 @@ module RSpec
   end
 end
 
-require 'fix/expect'
-require 'fix/its'
-require 'matchi/rspec'
-
 require_relative File.join 'fix', 'before'
-require_relative File.join 'fix', 'it'
 require_relative File.join 'fix', 'describe'
+require_relative File.join 'fix', 'it'
