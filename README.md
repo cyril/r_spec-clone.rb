@@ -11,7 +11,7 @@
 
 :warning: Important:
 
-To avoid confusion in the community, please note that the gem of this project is **not [rspec](https://rubygems.org/gems/rspec)**, it is **[r_spec](https://rubygems.org/gems/rspec)** (meaning _Ruby Spec_).
+To avoid confusion in the community, please note that the gem of this project is **not [rspec](https://rubygems.org/gems/rspec)**, it is **[r_spec](https://rubygems.org/gems/r_spec)** (meaning _Ruby Spec_).
 
 This project is totally independent of [rspec.info](http://rspec.info/).
 
