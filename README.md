@@ -30,6 +30,15 @@ Also, while the `RSpec` module is the same (I follow [the gem naming convention]
 * [Rubinius](http://rubini.us/)
 * [JRuby](http://jruby.org/)
 
+## What did you RSpec?
+
+A comparison between the behavior of a fix-based script (named r_spec) and rspec.
+
+[![asciicast](https://asciinema.org/a/29070.png)](https://asciinema.org/a/29070)
+
+As a result, with r_spec the build in passing, while with rspec it is failing.
+Despite a test set with 2 contexts, rspec was not able to evaluate some code in isolation to prevent side effects.
+
 ## Installation
 
 __R Spec__ is cryptographically signed.
