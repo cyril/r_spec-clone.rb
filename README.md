@@ -30,14 +30,21 @@ Also, while the `RSpec` module is the same (I follow [the gem naming convention]
 * [Rubinius](http://rubini.us/)
 * [JRuby](http://jruby.org/)
 
-## What did you RSpec?
+## Terminal sessions
 
-A comparison between the behavior of a fix-based script (named r_spec) and rspec.
+A comparison between the behavior of a small fix-based script (which became the `r_spec` gem) and `rspec`.
 
-[![asciicast](https://asciinema.org/a/29070.png)](https://asciinema.org/a/29070)
+As a result, with `r_spec` the build is passing, while with rspec it is failing. Despite two separate contexts, `rspec` was not able to evaluate some code in isolation to prevent side effects.
 
-As a result, with r_spec the build in passing, while with rspec it is failing.
-Despite a test set with 2 contexts, rspec was not able to evaluate some code in isolation to prevent side effects.
+[![What did you RSpec?](https://asciinema.org/a/29070.png)](https://asciinema.org/a/29070)
+
+***
+
+Unbelievable but true, sometimes "💩" is equal to 42.
+
+Although fun, this _feature_ can be fixed pretty easily...
+
+[![Fix RSpec!](https://asciinema.org/a/29172.png)](https://asciinema.org/a/29172)
 
 ## Installation
 
