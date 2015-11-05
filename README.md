@@ -15,7 +15,7 @@ To avoid confusion in the community, please note that the gem of this project is
 
 This project is totally independent of [rspec.info](http://rspec.info/).
 
-Also, while the `RSpec` module is the same (I follow [the gem naming convention](http://guides.rubygems.org/name-your-gem/#use-underscores-for-multiple-words), the **r_spec** internal is quite different than **rspec** due to its [Ruby Fix](http://fixrb.org/) dependency.
+Also, while both gems define an `RSpec` module, **r_spec** (which follows [the gem naming convention](http://guides.rubygems.org/name-your-gem/#use-underscores-for-multiple-words)) is still quite different than **rspec** due to its [Ruby Fix](http://fixrb.org/) dependency.
 
 ***
 
