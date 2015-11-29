@@ -13,3 +13,15 @@ rvm:
   - jruby
   - jruby-head
   - rbx-2
+matrix:
+  allow_failures:
+    - rvm: rbx-2
+    - rvm: jruby-head
+    - rvm: ruby-head
+notifications:
+  webhooks:
+    urls:
+      - https://webhooks.gitter.im/e/a44b19cc5cf6db25fa87
+    on_success: change
+    on_failure: always
+    on_start: never
