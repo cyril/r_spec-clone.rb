@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/cyril/r_spec.svg?branch=master)][travis]
 [![Code Climate](https://codeclimate.com/github/cyril/r_spec/badges/gpa.svg)][codeclimate]
+[![Dependency Status](https://gemnasium.com/cyril/r_spec.svg)][gemnasium]
 [![Gem Version](https://badge.fury.io/rb/r_spec.svg)][gem]
 [![Inline docs](http://inch-ci.org/github/cyril/r_spec.svg?branch=master)][inchpages]
 [![Documentation](http://img.shields.io/:yard-docs-38c800.svg)][rubydoc]
@@ -130,5 +131,6 @@ See `LICENSE.md` file.
 [gem]: https://rubygems.org/gems/r_spec
 [travis]: https://travis-ci.org/cyril/r_spec
 [codeclimate]: https://codeclimate.com/github/cyril/r_spec
+[gemnasium]: https://gemnasium.com/cyril/r_spec
 [inchpages]: http://inch-ci.org/github/cyril/r_spec
 [rubydoc]: http://rubydoc.info/gems/r_spec/frames
