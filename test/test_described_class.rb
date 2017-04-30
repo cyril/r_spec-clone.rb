@@ -5,9 +5,9 @@ require 'spectus'
 include Spectus
 
 begin
-  RSpec.describe Fixnum do
+  RSpec.describe Integer do
     it 'is available as described_class' do
-      expect(described_class).to eq(Fixnum)
+      expect(described_class).to eq(Integer)
     end
   end
 rescue SystemExit => e
@@ -15,7 +15,7 @@ rescue SystemExit => e
 end
 
 begin
-  RSpec.describe Fixnum do
+  RSpec.describe Integer do
     describe String do
       it 'is available as described_class' do
         expect(described_class).to eq(String)
@@ -27,7 +27,7 @@ rescue SystemExit => e
 end
 
 begin
-  RSpec.describe Fixnum do
+  RSpec.describe Integer do
     describe 'foo' do
       it 'is available as described_class' do
         expect(described_class).to eq(String)

@@ -1,7 +1,7 @@
 Gem::Specification.new do |spec|
   spec.name          = 'r_spec'
   spec.version       = File.read('VERSION.semver').chomp
-  spec.authors       = ['Cyril Wack']
+  spec.authors       = ['Cyril Kato']
   spec.email         = ['contact@cyril.email']
 
   spec.summary       = 'Rspec clone with Fix.'
@@ -14,16 +14,16 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
-  spec.add_dependency 'fix-expect',             '~> 0.3.1'
-  spec.add_dependency 'fix-its',                '~> 0.5.0'
-  spec.add_dependency 'fix-let',                '~> 0.1.0'
-  spec.add_dependency 'matchi-rspec',           '~> 0.1.0'
+  spec.add_dependency 'fix-expect',             '~> 0.3.2'
+  spec.add_dependency 'fix-its',                '~> 0.5.1'
+  spec.add_dependency 'fix-let',                '~> 0.1.1'
+  spec.add_dependency 'matchi-rspec',           '~> 0.1.1'
 
-  spec.add_development_dependency 'bundler',    '~> 1.10'
-  spec.add_development_dependency 'rake',       '~> 10.4'
-  spec.add_development_dependency 'yard',       '~> 0.8'
-  spec.add_development_dependency 'simplecov',  '~> 0.10'
-  spec.add_development_dependency 'rubocop',    '~> 0.35'
+  spec.add_development_dependency 'bundler',    '~> 1.14'
+  spec.add_development_dependency 'rake',       '~> 12.0'
+  spec.add_development_dependency 'yard',       '~> 0.9'
+  spec.add_development_dependency 'simplecov',  '~> 0.14'
+  spec.add_development_dependency 'rubocop',    '~> 0.48'
   spec.add_development_dependency 'spectus',    '~> 3.0'
 
   spec.cert_chain   = ['certs/gem-cyril-public_cert.pem']

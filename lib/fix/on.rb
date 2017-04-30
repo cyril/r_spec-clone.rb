@@ -9,8 +9,8 @@ module Fix
     # @param block [Proc] The block to call.
     #
     # @return [#object_id] The given block.
-    def before(*, &block)
-      block.call
+    def before(*)
+      yield
     end
 
     # @param another_front_object [#object_id]  Override the front object.
@@ -34,7 +34,7 @@ module Fix
     # @return [#object_id] The subject.
     def subject(&block)
       if block_given?
-        @described = block.call
+        @described = yield
       else
         super
       end
