@@ -50,16 +50,7 @@ Although fun, this _feature_ can be fixed pretty easily...
 
 ## Installation
 
-__R Spec__ is cryptographically signed.
-
-To be sure the gem you install hasn't been tampered with, add my public key (if you haven't already) as a trusted certificate:
-
-    $ gem cert --add <(curl -Ls https://raw.github.com/cyril/r_spec/master/certs/gem-cyril-public_cert.pem)
-    $ gem install r_spec -P HighSecurity
-
-The `HighSecurity` trust profile will verify all gems.  All of __R Spec__'s dependencies are signed.
-
-Or add this line to your application's Gemfile:
+Add this line to your application's Gemfile:
 
 ```ruby
 gem 'r_spec'
@@ -68,6 +59,10 @@ gem 'r_spec'
 And then execute:
 
     $ bundle
+
+Or install it yourself as:
+
+    $ gem install r_spec
 
 ## Usage
 

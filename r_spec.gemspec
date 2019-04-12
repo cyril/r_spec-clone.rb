@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Gem::Specification.new do |spec|
   spec.name          = 'r_spec'
   spec.version       = File.read('VERSION.semver').chomp
@@ -14,19 +16,14 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
-  spec.add_dependency 'fix-expect',             '~> 0.3.2'
-  spec.add_dependency 'fix-its',                '~> 0.5.1'
-  spec.add_dependency 'fix-let',                '~> 0.1.1'
-  spec.add_dependency 'matchi-rspec',           '~> 0.1.1'
+  spec.add_dependency 'fix-expect',             '~> 0.3.5'
+  spec.add_dependency 'fix-its',                '~> 0.5.4'
+  spec.add_dependency 'matchi-rspec',           '~> 0.1.3'
 
-  spec.add_development_dependency 'bundler',    '~> 1.14'
-  spec.add_development_dependency 'rake',       '~> 12.0'
-  spec.add_development_dependency 'yard',       '~> 0.9'
-  spec.add_development_dependency 'simplecov',  '~> 0.14'
-  spec.add_development_dependency 'rubocop',    '~> 0.48'
+  spec.add_development_dependency 'bundler',    '~> 2.0'
+  spec.add_development_dependency 'rake',       '~> 12.3'
+  spec.add_development_dependency 'rubocop',    '~> 0.67'
+  spec.add_development_dependency 'simplecov',  '~> 0.16'
   spec.add_development_dependency 'spectus',    '~> 3.0'
-
-  spec.cert_chain   = ['certs/gem-cyril-public_cert.pem']
-  private_key       = File.expand_path('~/.ssh/gem-cyril-private_key.pem')
-  spec.signing_key  = private_key if File.exist?(private_key)
+  spec.add_development_dependency 'yard',       '~> 0.9'
 end

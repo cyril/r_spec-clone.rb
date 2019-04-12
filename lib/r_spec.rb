@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 require 'matchi/rspec'
 require 'fix/expect'
 require 'fix/its'
-require 'fix/let'
 
 # Namespace for the R Spec framework.
 #

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Namespace for the Fix framework.
 module Fix
   # Override Fix's On class.
