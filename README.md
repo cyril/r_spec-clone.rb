@@ -3,8 +3,8 @@
 [![Build Status](https://travis-ci.org/cyril/r_spec.svg?branch=master)][travis]
 [![Code Climate](https://codeclimate.com/github/cyril/r_spec/badges/gpa.svg)][codeclimate]
 [![Gem Version](https://badge.fury.io/rb/r_spec.svg)][gem]
-[![Inline docs](http://inch-ci.org/github/cyril/r_spec.svg?branch=master)][inchpages]
-[![Documentation](http://img.shields.io/:yard-docs-38c800.svg)][rubydoc]
+[![Inline docs](https://inch-ci.org/github/cyril/r_spec.svg?branch=master)][inchpages]
+[![Documentation](https://img.shields.io/:yard-docs-38c800.svg)][rubydoc]
 
 > A small [Rspec](https://github.com/rspec/rspec) clone based on [Fix specing framework](https://github.com/fixrb/fix).
 
@@ -16,7 +16,7 @@ To avoid confusion in the community, please note that the gem of this project is
 
 This project is totally independent of [rspec.info](http://rspec.info/).
 
-Also, while both gems define an `RSpec` module, **r_spec** (which follows [the gem naming convention](http://guides.rubygems.org/name-your-gem/#use-underscores-for-multiple-words)) is still quite different than **rspec** due to its [Ruby Fix](http://fixrb.org/) dependency.
+Also, while both gems define an `RSpec` module, **r_spec** (which follows [the gem naming convention](https://guides.rubygems.org/name-your-gem/#use-underscores-for-multiple-words)) is still quite different than **rspec** due to its [Ruby Fix](https://fixrb.dev/) dependency.
 
 ***
 
@@ -28,8 +28,8 @@ Also, while both gems define an `RSpec` module, **r_spec** (which follows [the g
 ## Rubies
 
 * [MRI](https://www.ruby-lang.org/)
-* [Rubinius](http://rubini.us/)
-* [JRuby](http://jruby.org/)
+* [Rubinius](https://rubinius.com/)
+* [JRuby](https://www.jruby.org/)
 
 ## Terminal sessions
 
@@ -108,7 +108,7 @@ example:
 
 ## Versioning
 
-__R Spec__ follows [Semantic Versioning 2.0](http://semver.org/).
+__R Spec__ follows [Semantic Versioning 2.0](https://semver.org/).
 
 ## Contributing
 
@@ -125,5 +125,5 @@ See `LICENSE.md` file.
 [gem]: https://rubygems.org/gems/r_spec
 [travis]: https://travis-ci.org/cyril/r_spec
 [codeclimate]: https://codeclimate.com/github/cyril/r_spec
-[inchpages]: http://inch-ci.org/github/cyril/r_spec
-[rubydoc]: http://rubydoc.info/gems/r_spec/frames
+[inchpages]: https://inch-ci.org/github/cyril/r_spec
+[rubydoc]: https://www.rubydoc.info/gems/r_spec/frames
