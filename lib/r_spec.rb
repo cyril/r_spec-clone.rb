@@ -2,7 +2,6 @@
 
 require 'matchi/rspec'
 require 'fix/expect'
-require 'fix/its'
 
 # Namespace for the R Spec framework.
 #
