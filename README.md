@@ -12,7 +12,8 @@
 
 ## Important ⚠️
 
-To avoid confusion in the community, please note that the gem of this project is **not [rspec](https://rubygems.org/gems/rspec)**, it is **[r_spec](https://rubygems.org/gems/r_spec)** (meaning _Ruby Spec_).
+To avoid confusion in the community, please note that the gem of this project is **not [rspec](https://rubygems.org/gems/rspec)**,
+it is **[r_spec](https://rubygems.org/gems/r_spec)** (meaning _Ruby Spec_).
 
 This project is totally independent of [rspec.info](https://rspec.info/).
 
@@ -86,7 +87,7 @@ It can be tested in the console with the command:
 
 ## Versioning
 
-__R Spec__ follows [Semantic Versioning 2.0](https://semver.org/).
+__RSpec__ follows [Semantic Versioning 2.0](https://semver.org/).
 
 ## License
 

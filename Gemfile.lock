@@ -2,6 +2,7 @@ PATH
   remote: .
   specs:
     r_spec (0.3.4)
+      fix (~> 1.0.0.beta4)
       fix-expect (~> 0.4.0)
       matchi-rspec (~> 1.0.0)
 
@@ -13,7 +14,7 @@ GEM
     defi (2.0.4)
       aw (~> 0.1.10)
     docile (1.3.2)
-    fix (1.0.0.beta3)
+    fix (1.0.0.beta4)
       defi (~> 2.0.4)
       spectus (~> 3.1.2)
     fix-expect (0.4.0)
