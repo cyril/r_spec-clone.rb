@@ -1,23 +1,25 @@
-require_relative File.join 'support', 'coverage'
-require_relative File.join '..', 'lib', 'r_spec'
-require 'spectus'
+# frozen_string_literal: true
+
+require_relative File.join "support", "coverage"
+require_relative File.join "..", "lib", "r_spec"
+require "spectus"
 
 include Spectus
 
 begin
-  RSpec.describe 'test' do
+  RSpec.describe "test" do
     before do
       let(:foo) { :foo }
     end
 
-    it 'does something' do
+    it "does something" do
       expect(foo).to be(:foo)
     end
 
-    describe 'UPCASE' do
+    describe "UPCASE" do
       before { described.upcase! }
 
-      it { is_expected.to eq('UPCASE') }
+      it { is_expected.to eq("UPCASE") }
     end
   end
 rescue SystemExit => e

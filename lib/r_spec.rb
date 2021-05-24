@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require 'matchi/rspec'
-require 'fix/expect'
+require "matchi/rspec"
+require "fix/expect"
 
 # Namespace for the RSpec framework.
 #
@@ -28,5 +28,5 @@ module RSpec
   end
 end
 
-require_relative File.join 'fix', 'it'
-require_relative File.join 'fix', 'on'
+require_relative File.join "fix", "it"
+require_relative File.join "fix", "on"

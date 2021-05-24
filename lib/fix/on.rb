@@ -35,7 +35,7 @@ module Fix
     #
     # @return [#object_id] The subject.
     def subject(&block)
-      if block_given?
+      if block
         @described = yield
       else
         super

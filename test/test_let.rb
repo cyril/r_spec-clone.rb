@@ -1,16 +1,16 @@
 # frozen_string_literal: true
 
-require_relative File.join 'support', 'coverage'
-require_relative File.join '..', 'lib', 'r_spec'
-require 'spectus'
+require_relative File.join "support", "coverage"
+require_relative File.join "..", "lib", "r_spec"
+require "spectus"
 
 include Spectus
 
 begin
-  RSpec.describe 'test' do
+  RSpec.describe "test" do
     let(:value) { described.length }
 
-    it 'does something' do
+    it "does something" do
       expect(value).to eq(4)
     end
   end
