@@ -4,8 +4,6 @@
 /coverage/
 /InstalledFiles
 /pkg/
-/spec/reports/
-/spec/examples.txt
 /test/tmp/
 /test/version_tmp/
 /tmp/
@@ -57,6 +55,3 @@ build-iPhoneSimulator/
 
 # Used by RuboCop. Remote config files pulled in from inherit_from directive.
 # .rubocop-https?--*
-
-# rspec failure tracking
-.rspec_status
