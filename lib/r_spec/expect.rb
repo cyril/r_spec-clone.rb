@@ -7,11 +7,13 @@ module RSpec
     end
 
     def to(matcher)
-      Requirement.new(actual: @actual, negate: false, matcher: matcher).call
+      Requirement.new(actual: @actual, matcher: matcher, negate: false).call
     end
 
     def not_to(matcher)
-      Requirement.new(actual: @actual, negate: true, matcher: matcher).call
+      Requirement.new(actual: @actual, matcher: matcher, negate: true).call
     end
   end
 end
+
+require_relative "requirement"

@@ -1,39 +1,104 @@
 # frozen_string_literal: true
 
 require_relative File.join("test", "app")
-require_relative File.join("test", "spec")
 
-raise unless defined?(RSpec::Test::Foo::Fooo)
-raise unless defined?(RSpec::Test::Foo)
+require "simplecov"
+SimpleCov.command_name "RSpec clone"
+SimpleCov.start
 
-foo = RSpec::Test::Foo.new(88)
+require_relative File.join("lib", "r_spec")
 
-puts "foo.protected_methods(false).sort: #{foo.protected_methods(false).sort.inspect}"
-raise unless foo.protected_methods(false).sort == %i[var0 var1 var2 var4 described_class subject].sort
-raise unless foo.send(:var0) == 84
-raise unless foo.send(:var1) == 42
-raise unless foo.send(:var2) == "A"
-raise unless foo.class.const_get(:VAR3) == 4242
-# raise unless foo.class::VAR3 == 4242
-raise unless foo.send(:var4) == 4242
+RSpec.describe Foo do
+  let(:var1) { "var 1" }
 
-puts foo.works.inspect
-# raise unless foo.works(5).success? == true
+  describe "#foo" do
+    it { expect(described_class).to eq Foo }
+    it { expect(described_class.new.foo).to eq 42 }
+  end
 
-raise unless defined?(RSpec::Test::Bar)
-raise unless RSpec::Test::Bar.superclass == RSpec::Test::Foo
+  context "when foo bar baz" do
+    it { expect(described_class).to eq Foo }
+    it { expect(described_class.new.foo).to eq 42 }
+  end
 
-bar = RSpec::Test::Bar.new
+  subject do
+    var1
+  end
 
-raise unless bar.send(:get_parent_const) == 4242
-# raise unless bar.send(:subject) == "AB42"
-raise unless bar.send(:other, 1) == 43
+  it { is_expected.to eq "var 1" }
 
-# raise unless foo.public_methods(false).empty?
-# raise unless bar.public_methods(false).empty?
+  it "works" do
+    # puts "it works well!!!!"
+    # puts "public methods: #{public_methods.inspect}"
+    # puts "private methods: #{private_methods.inspect}"
+    # puts "protected methods: #{protected_methods.inspect}"
+    # puts "BTW here is inside #{self.inspect} (#{self.class})"
+    # puts "described_class is: #{described_class.inspect}"
+    # puts "INFO: var1 is equal to: #{var1.inspect}"
 
-puts
-puts
-baz = RSpec::Test::Baz.new(:d)
+    expect(42).to be 42
+    # puts expect(42).to be 4
+  end
 
-raise unless baz.send(:get_parent_parent_const) == 4242
+  # it { expect(44).to be 4 }
+
+  it "wont_work" do
+    # it "work_not" do
+    #  puts 4
+    # end
+
+    pending("99999")
+  end
+
+  before do
+    # puts "before... var1: #{var1.inspect}"
+  end
+
+  describe Foo::Fooo do
+    before do
+      puts "before 3..."
+      puts "described_class is: #{described_class.inspect}"
+      puts "var1 is now: #{var1.inspect}"
+    end
+
+    let(:var1) { 44_442 }
+
+    describe String do
+      subject { ")" }
+
+      it { expect(subject).to eq ")" }
+
+      describe String do
+        it { expect(subject).to eq ")" }
+        it { expect(subject).not_to eq "boom" }
+
+        describe Foo do
+          subject { "#{super()}foooooooooop" }
+
+          it { expect(subject).to eq ")foooooooooop" }
+        end
+      end
+
+      let(:var1) { super() + 1 }
+
+      # it "is pendinggggg"
+
+      # it
+
+      it "changed!!!!!!!!!!!!!!!!!!!!!!!!!!!" do
+        puts "var1 ->>>> #{var1.inspect}"
+      end
+    end
+  end
+
+  describe Bar do
+    before do
+      # puts "before 2..."
+    end
+
+    it "will be initialized" do
+      # puts "huhu"
+      expect(3).to be 3
+    end
+  end
+end

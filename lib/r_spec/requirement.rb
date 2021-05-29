@@ -4,6 +4,19 @@ require "expresenter"
 
 module RSpec
   class Requirement
+    def self.pending(description)
+      ::Expresenter.call(true).new(
+        actual:   nil,
+        error:    Pending.new(description),
+        expected: nil,
+        got:      nil,
+        matcher:  :eql,
+        negate:   false,
+        level:    :MAY,
+        valid:    false
+      )
+    end
+
     # Initialize the requirement class.
     #
     # @param actual   [#object_id]  The actual object to test.
@@ -13,6 +26,7 @@ module RSpec
       @exam     = Exam.new(actual: actual, negate: negate, matcher: matcher)
       @matcher  = matcher
       @negate   = negate
+      @result   = expectation_result
     end
 
     # @return [Exam] The exam.
@@ -22,6 +36,9 @@ module RSpec
     #   between the actual value and the expected value.
     attr_reader :matcher
 
+    # @return [Expresenter::Fail, Expresenter::Pass] The test result.
+    attr_reader :result
+
     # Evaluate the expectation.
     #
     # @return [Boolean] Report if the expectation pass or fail?
@@ -29,20 +46,16 @@ module RSpec
       exam.valid?
     end
 
-    # The result of the expectation.
+    # The consequence of the expectation.
     #
-    # @return [Expresenter::Fail, Expresenter::Pass] The test result.
+    # @return [nil] The test passed.
+    # @raise [SystemExit] The test failed.
     def call
-      ::Expresenter.call(pass?).new(
-        actual:   exam.actual,
-        error:    nil,
-        expected: matcher.expected,
-        got:      exam.got,
-        negate:   negate?,
-        valid:    exam.valid?,
-        matcher:  matcher.class.to_sym,
-        level:    :MUST
-      )
+      if result.passed?
+        puts result.colored_string
+      else
+        abort result.colored_string
+      end
     end
 
     protected
@@ -54,5 +67,24 @@ module RSpec
     def negate?
       @negate
     end
+
+    # The result of the expectation.
+    #
+    # @return [Expresenter::Fail, Expresenter::Pass] The test result.
+    def expectation_result
+      ::Expresenter.call(pass?).new(
+        actual:   exam.actual,
+        error:    nil,
+        expected: matcher.expected,
+        got:      exam.got,
+        negate:   negate?,
+        valid:    exam.valid?,
+        matcher:  matcher.class.to_sym,
+        level:    :MUST
+      )
+    end
   end
 end
+
+require_relative "exam"
+require_relative "pending"

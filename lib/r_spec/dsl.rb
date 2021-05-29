@@ -1,12 +1,11 @@
 # frozen_string_literal: true
 
+require "expresenter"
 require "matchi/rspec"
 require "securerandom"
 
 module RSpec
   class DSL
-    include ::Matchi::Helper
-
     def self.before(&block)
       define_method(:initialize) do |*args, **kwargs|
         super()
@@ -14,74 +13,66 @@ module RSpec
       end
     end
 
-    def self.describe(const = nil, &block)
-      class_name = "Test#{::SecureRandom.alphanumeric(10)}"
-      klass = Test.const_set(class_name, ::Class.new(self))
-
-      if const.is_a?(::Module)
-        klass.define_method(:described_class) do
-          klass.const_get(const.to_s)
-        end
-
-        klass.send(:protected, :described_class)
-      end
-
-      klass.instance_eval(&block)
-      klass
-    end
-
-    def self.it(description = "test_#{::SecureRandom.hex(8)}", &block)
-      define_method(description.to_sym) do |*args, **kwargs|
-        it_class = ::Class.new(self) # { include ::Matchi::Helper }
-
-        # it_class.define_method(:expect) do |actual|
-        #   Expect.new(actual)
-        # end
-
-        if block
-          result = it_class.instance_exec(*args, **kwargs, &block)
-          print block.source_location.join(":"), " " if result.failed?
-          result
-        else
-          ::Expresenter.call(true).new(
-            actual:   ::NotImplementedError.new(description),
-            error:    nil,
-            expected: ::NotImplementedError,
-            got:      false,
-            matcher:  :raise_exception,
-            negate:   true,
-            level:    :SHOULD,
-            valid:    false
-          )
-        end
-      end
-    end
-
-    def self.let(identifier, &block)
-      protected define_method(identifier, &block)
+    def self.let(name, &block)
+      protected define_method(name.to_sym, &block)
     end
 
     def self.subject(&block)
       let(__method__, &block)
     end
 
-    protected
+    def self.describe(const, &block)
+      desc = Test.const_set("Test#{random_str}", ::Class.new(self))
 
-    def subject
-      described_class
+      if const.is_a?(::Module)
+        desc.define_method(:described_class) { const }
+        desc.send(:protected, :described_class)
+      end
+
+      desc.instance_eval(&block)
+      desc
     end
 
-    private
+    singleton_class.send(:alias_method, :context, :describe)
 
-    def expect(actual)
-      Expect.new(actual)
+    def self.it(name = "test_#{random_str.downcase}", &block)
+      raise ::ArgumentError, "Missing block for #{name.inspect} test" unless block
+
+      path_info = block.source_location.join(":")
+      print "\e[3m#{path_info}\e[23m "
+
+      i = example.new
+      i.instance_eval(&block)
     end
 
-    # rubocop:disable Naming/PredicateName
-    def is_expected
-      expect(@subject)
+    private_class_method def self.example
+      ::Class.new(self) do
+        include ::Matchi::Helper
+
+        private
+
+        def expect(actual)
+          undef expect
+          undef is_expected
+
+          Expect.new(actual)
+        end
+
+        # rubocop:disable Naming/PredicateName
+        def is_expected
+          expect(subject)
+        end
+        # rubocop:enable Naming/PredicateName
+
+        def pending(description)
+          puts Requirement.pending(description).colored_string
+        end
+      end
     end
-    # rubocop:enable Naming/PredicateName
+
+    private_class_method def self.random_str
+      ::SecureRandom.alphanumeric(5)
+    end
   end
 end
 

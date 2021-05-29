@@ -4,6 +4,10 @@ AllCops:
   NewCops: enable
   TargetRubyVersion: 2.7
 
+  Exclude:
+    - test.rb
+    - test/*.rb
+
 require:
   - rubocop-performance
   - rubocop-md

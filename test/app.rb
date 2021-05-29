@@ -1,22 +1,18 @@
 # frozen_string_literal: true
 
 class Foo
-  def self.call
+  def foo
     42
   end
 
-  module Fooo
-  end
-end
-
-module Bar
-  def self.call
-    42
+  class Fooo
+    class Foooo
+    end
   end
 end
 
-module Baz
-  def self.call
-    42
+class Bar
+  def bar
+    43
   end
 end

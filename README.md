@@ -2,11 +2,26 @@
 
 A minimalist [RSpec](https://github.com/rspec/rspec) clone with an emphasis on correctness and simplicity.
 
+![What did you expect?](https://raw.githubusercontent.com/cyril/r_spec.rb/main/what-did-you-expect.jpg)
+
 ## Status
 
 [![Gem Version](https://badge.fury.io/rb/r_spec.svg)](https://badge.fury.io/rb/r_spec)
 [![Build Status](https://travis-ci.org/cyril/r_spec.rb.svg?branch=main)](https://travis-ci.org/cyril/r_spec.rb)
 [![Inline Docs](https://inch-ci.org/github/cyril/r_spec.rb.svg)](https://inch-ci.org/github/cyril/r_spec.rb)
+
+## Goal
+
+This clone attempts to provide most of RSpec's DSL without magic power, so that its code could reasonably become less complex than the code of your application.
+
+## Some differences
+
+* Less features and an implementation with much less code complexity.
+* Spec files can also be executed directly with the `ruby` executable.
+* There cannot be more than one expectation per example.
+* There is no option to activate monkey-patching.
+* Does not rely on hacks such as `at_exit` hook to trigger the tests.
+* Built-in matchers do not trust _actual_ and do not send it any message.
 
 ## Important ⚠️
 
@@ -16,7 +31,7 @@ To avoid confusion in the community, please note that:
 it is **[`r_spec`](https://rubygems.org/gems/r_spec)**;
 - this project is totally independent of [rspec.info](https://rspec.info/).
 
-## Note
+### Note
 
 Following [RubyGems naming conventions](https://guides.rubygems.org/name-your-gem/#use-underscores-for-multiple-words), the module name for this project is `RSpec`.
 

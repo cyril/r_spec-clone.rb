@@ -7,12 +7,6 @@
 # versions of RuboCop, may require this file to be generated again.
 
 # Offense count: 1
-# Configuration parameters: AllowComments.
-Lint/EmptyClass:
-  Exclude:
-    - 'lib/r_spec/test.rb'
-
-# Offense count: 2
 # Configuration parameters: CountComments, CountAsOne, ExcludedMethods, IgnoredMethods.
 Metrics/MethodLength:
-  Max: 19
+  Max: 15

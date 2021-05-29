@@ -6,7 +6,7 @@
 #
 module RSpec
   # Specs are built with this method.
-  def self.describe(const = Object, &block)
+  def self.describe(const, &block)
     raise ::TypeError, const.class.inspect unless const.is_a?(::Module)
 
     DSL.describe(const, &block)
@@ -14,4 +14,3 @@ module RSpec
 end
 
 require_relative File.join("r_spec", "dsl")
-require_relative File.join("r_spec", "test")
