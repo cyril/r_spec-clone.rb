@@ -2,7 +2,7 @@
 
 A minimalist [RSpec](https://github.com/rspec/rspec) clone with an emphasis on correctness and simplicity.
 
-![What did you expect?](https://raw.githubusercontent.com/cyril/r_spec.rb/main/what-did-you-expect.jpg)
+![What did you expect?](https://github.com/cyril/r_spec.rb/raw/main/img/what-did-you-expect.jpg)
 
 ## Status
 
@@ -40,7 +40,7 @@ Following [RubyGems naming conventions](https://guides.rubygems.org/name-your-ge
 Add this line to your application's Gemfile:
 
 ```ruby
-gem "r_spec"
+gem "r_spec", ">= 1.0.0.beta1"
 ```
 
 And then execute:
@@ -52,7 +52,7 @@ bundle
 Or install it yourself as:
 
 ```sh
-gem install r_spec
+gem install r_spec --pre
 ```
 
 ## Usage
