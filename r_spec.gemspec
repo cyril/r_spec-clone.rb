@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
     "source_code_uri"   => "https://github.com/cyril/r_spec.rb"
   }
 
-  spec.add_dependency "expresenter", "~> 1.1.0"
+  spec.add_dependency "expresenter", "~> 1.2.0"
   spec.add_dependency "matchi-rspec", "~> 1.1.0"
 
   spec.add_development_dependency "bundler"
