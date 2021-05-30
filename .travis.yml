@@ -1,26 +1,8 @@
-language: ruby
+---
 sudo: false
+language: ruby
 cache: bundler
-script: 'bundle exec rake test:coverage --trace'
-before_install:
-  - gem install bundler
 rvm:
-  - 2.3.3
-  - 2.4.0
-  - 2.5.0
-  - 2.6.2
-  - ruby-head
-  - jruby-head
-  - rbx-3
-matrix:
-  allow_failures:
-    - rvm: ruby-head
-    - rvm: jruby-head
-    - rvm: rbx-3
-notifications:
-  webhooks:
-    urls:
-      - https://webhooks.gitter.im/e/a44b19cc5cf6db25fa87
-    on_success: change
-    on_failure: always
-    on_start: never
+  - 2.7.3
+  - 3.0.1
+before_install: gem install bundler

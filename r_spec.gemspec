@@ -1,29 +1,33 @@
 # frozen_string_literal: true
 
 Gem::Specification.new do |spec|
-  spec.name          = 'r_spec'
-  spec.version       = File.read('VERSION.semver').chomp
-  spec.authors       = ['Cyril Kato']
-  spec.email         = ['contact@cyril.email']
+  spec.name         = "r_spec"
+  spec.version      = File.read("VERSION.semver").chomp
+  spec.author       = "Cyril Kato"
+  spec.email        = "contact@cyril.email"
+  spec.summary      = "A minimalist RSpec clone"
+  spec.description  = "A minimalist RSpec clone with an emphasis on correctness and simplicity."
+  spec.homepage     = "https://r-spec.dev/"
+  spec.required_ruby_version = Gem::Requirement.new(">= 2.7.0")
+  spec.license      = "MIT"
+  spec.files        = Dir["LICENSE.md", "README.md", "lib/**/*"]
 
-  spec.summary       = 'Rspec clone with Fix.'
-  spec.description   = 'A small Rspec clone based on Fix specing framework.'
-  spec.homepage      = 'https://github.com/cyril/r_spec'
-  spec.license       = 'MIT'
+  spec.metadata = {
+    "bug_tracker_uri"   => "https://github.com/cyril/r_spec.rb/issues",
+    "documentation_uri" => "https://rubydoc.info/gems/r_spec",
+    "source_code_uri"   => "https://github.com/cyril/r_spec.rb"
+  }
 
-  spec.files         =
-    `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^test/}) }
-  spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
-  spec.require_paths = ['lib']
+  spec.add_dependency "expresenter", "~> 1.2.0"
+  spec.add_dependency "matchi-rspec", "~> 1.1.0"
 
-  spec.add_dependency 'fix-expect',             '~> 0.3.5'
-  spec.add_dependency 'fix-its',                '~> 0.5.4'
-  spec.add_dependency 'matchi-rspec',           '~> 0.1.3'
-
-  spec.add_development_dependency 'bundler',    '~> 2.0'
-  spec.add_development_dependency 'rake',       '~> 12.3'
-  spec.add_development_dependency 'rubocop',    '~> 0.70'
-  spec.add_development_dependency 'simplecov',  '~> 0.16'
-  spec.add_development_dependency 'spectus',    '~> 3.0'
-  spec.add_development_dependency 'yard',       '~> 0.9'
+  spec.add_development_dependency "bundler"
+  spec.add_development_dependency "rake"
+  spec.add_development_dependency "rubocop-md"
+  spec.add_development_dependency "rubocop-performance"
+  spec.add_development_dependency "rubocop-rake"
+  spec.add_development_dependency "rubocop-rspec"
+  spec.add_development_dependency "rubocop-thread_safety"
+  spec.add_development_dependency "simplecov"
+  spec.add_development_dependency "yard"
 end
