@@ -5,8 +5,7 @@ AllCops:
   TargetRubyVersion: 2.7
 
   Exclude:
-    - test.rb
-    - test/*.rb
+    - spec/**/*.rb
 
 require:
   - rubocop-performance

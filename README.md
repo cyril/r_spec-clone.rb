@@ -22,6 +22,7 @@ This clone attempts to provide most of RSpec's DSL without magic power, so that 
 * There is no option to activate monkey-patching.
 * Does not rely on hacks such as `at_exit` hook to trigger the tests.
 * Built-in matchers do not trust _actual_ and do not send it any message.
+* The subject must be explicitly defined, otherwise it is not implemented.
 
 ## Important ⚠️
 
@@ -57,22 +58,30 @@ gem install r_spec --pre
 
 ## Usage
 
-Given this `greeting_spec.rb` spec:
+Given this `before_example_spec.rb` spec:
 
 ```ruby
 require "r_spec"
 
-greeting = "Hello, world!"
-
-RSpec.describe String do
-  context "Alice" do
-    before { greeting.gsub!("world", "Alice") }
-    it { expect(greeting).to eql "Hello, Alice!" }
+RSpec.describe Array do
+  before do
+    @elements = []
   end
 
-  context "Bob" do
-    before { greeting.gsub!("world", "Bob") }
-    it { expect(greeting).to eql "Hello, Bob!" }
+  describe "initialized in before" do
+    it "has 0 elements" do
+      expect(@elements.count).to be(0)
+    end
+
+    context "when a new element is added" do
+      before do
+        @elements << 1
+      end
+
+      it "has 1 element" do
+        expect(@elements.count).to be(1)
+      end
+    end
   end
 end
 ```
@@ -80,22 +89,25 @@ end
 It can be tested in the console with the command:
 
 ```sh
-ruby greeting_spec.rb
+ruby before_example_spec.rb
 ```
 
-> ..
->
-> Ran 2 tests in 0.010994 seconds
-> 100% compliant - 0 infos, 0 failures, 0 errors
+    before_example_spec.rb:11 Success: expected to be 0.
+    before_example_spec.rb:20 Success: expected to be 1.
+
+## Test suite
+
+__RSpec clone__'s test set is self-described here: [./spec/](https://github.com/cyril/r_spec.rb/blob/main/spec/)
 
 ## Contact
 
 * Home page: https://r-spec.dev/
 * Source code: https://github.com/cyril/r_spec.rb
+* Twitter: https://twitter.com/cyri_
 
 ## Versioning
 
-__R_Spec__ follows [Semantic Versioning 2.0](https://semver.org/).
+__RSpec clone__ follows [Semantic Versioning 2.0](https://semver.org/).
 
 ## License
 
