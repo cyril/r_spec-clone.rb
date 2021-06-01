@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 module RSpec
-  # This class evaluate the expectation with the given value.
+  # Exam class.
+  #
+  # @api private
   class Exam
     # Execute the untested code from the given value against the matcher.
     #

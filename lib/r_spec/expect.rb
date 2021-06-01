@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 module RSpec
+  # Expect class.
+  #
+  # @api private
   class Expect
     def initialize(actual)
       @actual = actual

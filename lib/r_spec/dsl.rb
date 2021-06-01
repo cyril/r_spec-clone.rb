@@ -5,6 +5,9 @@ require "matchi/rspec"
 require "securerandom"
 
 module RSpec
+  # Abstract class for handling the domain-specific language.
+  #
+  # @api private
   class DSL
     def self.before(&block)
       define_method(:initialize) do |*args, **kwargs|
@@ -54,6 +57,7 @@ module RSpec
         def expect(actual)
           undef expect
           undef is_expected
+          undef pending
 
           Expect.new(actual)
         end
@@ -65,6 +69,10 @@ module RSpec
         # rubocop:enable Naming/PredicateName
 
         def pending(description)
+          undef expect
+          undef is_expected
+          undef pending
+
           puts Requirement.pending(description).colored_string
         end
       end

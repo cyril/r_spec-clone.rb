@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 module RSpec
-  # Set of tests.
+  # Main test namespace.
   #
-  # rubocop:disable Lint/EmptyClass
-  class Test
+  # @api private
+  #
+  module Test
   end
-  # rubocop:enable Lint/EmptyClass
 end

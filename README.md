@@ -58,7 +58,7 @@ gem install r_spec --pre
 
 ## Usage
 
-Given this `before_example_spec.rb` spec:
+Given this [./spec/before/before_example_spec.rb](https://github.com/cyril/r_spec.rb/blob/main/spec/before/before_example_spec.rb) spec:
 
 ```ruby
 require "r_spec"
@@ -89,11 +89,12 @@ end
 It can be tested in the console with the command:
 
 ```sh
-ruby before_example_spec.rb
+ruby spec/before/before_example_spec.rb
 ```
 
-    before_example_spec.rb:11 Success: expected to be 0.
-    before_example_spec.rb:20 Success: expected to be 1.
+    spec/before/before_example_spec.rb:11 Success: expected to be 0.
+    spec/before/before_example_spec.rb:20 Success: expected to be 1.
+    Coverage report generated for RSpec clone to /Users/cyril/github/cyril/r_spec/coverage. 90 / 100 LOC (90.0%) covered.
 
 ## Test suite
 
