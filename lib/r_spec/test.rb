@@ -1,10 +1,7 @@
 # frozen_string_literal: true
 
 module RSpec
-  # Main test namespace.
-  #
-  # @api private
-  #
+  # Namespace to collect test classes.
   module Test
   end
 end

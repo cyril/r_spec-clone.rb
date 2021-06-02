@@ -2,7 +2,7 @@
 
 require_relative File.join("r_spec", "dsl")
 
-# Main namespace.
+# Top level namespace for the RSpec clone.
 #
 # @example
 #   require "r_spec"

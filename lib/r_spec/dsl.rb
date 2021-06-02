@@ -48,6 +48,7 @@ module RSpec
       i.instance_eval(&block)
     end
 
+    # @private
     private_class_method def self.example
       ::Class.new(self) do
         include ::Matchi::Helper
@@ -59,7 +60,7 @@ module RSpec
           undef is_expected
           undef pending
 
-          Expect.new(actual)
+          ExpectationTarget.new(actual)
         end
 
         # rubocop:disable Naming/PredicateName
@@ -78,11 +79,12 @@ module RSpec
       end
     end
 
+    # @private
     private_class_method def self.random_str
       ::SecureRandom.alphanumeric(5)
     end
   end
 end
 
-require_relative "expect"
+require_relative "expectation_target"
 require_relative "test"

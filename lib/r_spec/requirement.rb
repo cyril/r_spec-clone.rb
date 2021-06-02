@@ -4,8 +4,6 @@ require "expresenter"
 
 module RSpec
   # Namespace for the requirement.
-  #
-  # @api private
   class Requirement
     def self.pending(description)
       ::Expresenter.call(true).new(
