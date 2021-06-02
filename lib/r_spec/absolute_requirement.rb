@@ -20,18 +20,23 @@ module RSpec
 
     # Initialize the requirement class.
     #
-    # @param actual   [#object_id]  The actual object to test.
+    # @param actual   [#object_id]  The actual value.
     # @param matcher  [#matches?]   The matcher.
     # @param negate   [Boolean]     Positive or negative assertion?
     def initialize(actual:, matcher:, negate:)
-      @exam     = Exam.new(actual: actual, negate: negate, matcher: matcher)
+      @actual   = actual
+      @got      = negate ^ matcher.matches? { actual }
       @matcher  = matcher
       @negate   = negate
       @result   = expectation_result
     end
 
-    # @return [Exam] The exam.
-    attr_reader :exam
+    # @return [#object_id] The actual value.
+    attr_reader :actual
+
+    # @return [Boolean] Report to the spec requirement level if the
+    #   expectation is true or false.
+    attr_reader :got
 
     # @return [#matches?] The matcher that performed a boolean comparison
     #   between the actual value and the expected value.
@@ -44,7 +49,7 @@ module RSpec
     #
     # @return [Boolean] Report if the expectation pass or fail?
     def pass?
-      exam.valid?
+      valid?
     end
 
     # The consequence of the expectation.
@@ -74,18 +79,24 @@ module RSpec
     # @return [Expresenter::Fail, Expresenter::Pass] The test result.
     def expectation_result
       ::Expresenter.call(pass?).new(
-        actual:   exam.actual,
+        actual:   actual,
         error:    nil,
         expected: matcher.expected,
-        got:      exam.got,
+        got:      got,
         negate:   negate?,
-        valid:    exam.valid?,
+        valid:    valid?,
         matcher:  matcher.class.to_sym,
         level:    :MUST
       )
     end
+
+    # Report to the spec requirement if the test pass or fail.
+    #
+    # @return [Boolean] Report if the test pass or fail?
+    def valid?
+      got
+    end
   end
 end
 
-require_relative "exam"
 require_relative "pending"
