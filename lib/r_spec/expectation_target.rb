@@ -31,7 +31,7 @@ module RSpec
     #
     # @param matcher [#matches?] The matcher.
     def to(matcher)
-      Requirement.new(actual: @actual, matcher: matcher, negate: false).call
+      AbsoluteRequirement.new(actual: @actual, matcher: matcher, negate: false).call
     end
 
     # Runs the given expectation, passing if `matcher` returns false.
@@ -41,9 +41,9 @@ module RSpec
     #
     # @param (see #to)
     def not_to(matcher)
-      Requirement.new(actual: @actual, matcher: matcher, negate: true).call
+      AbsoluteRequirement.new(actual: @actual, matcher: matcher, negate: true).call
     end
   end
 end
 
-require_relative "requirement"
+require_relative "absolute_requirement"

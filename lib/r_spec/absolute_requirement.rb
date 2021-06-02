@@ -4,7 +4,7 @@ require "expresenter"
 
 module RSpec
   # Namespace for the requirement.
-  class Requirement
+  class AbsoluteRequirement
     def self.pending(description)
       ::Expresenter.call(true).new(
         actual:   nil,

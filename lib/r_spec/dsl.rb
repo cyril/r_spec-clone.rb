@@ -74,7 +74,7 @@ module RSpec
           undef is_expected
           undef pending
 
-          puts Requirement.pending(description).colored_string
+          puts AbsoluteRequirement.pending(description).colored_string
         end
       end
     end
