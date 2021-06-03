@@ -58,29 +58,31 @@ gem install r_spec --pre
 
 ## Usage
 
-Given this [./spec/before/before_example_spec.rb](https://github.com/cyril/r_spec.rb/blob/main/spec/before/before_example_spec.rb) spec:
+Let's test an array:
 
 ```ruby
+# array_spec.rb
+
 require "r_spec"
 
 RSpec.describe Array do
   before do
-    @elements = []
+    @elements = described_class.new
   end
 
-  describe "initialized in before" do
-    it "has 0 elements" do
-      expect(@elements.count).to be(0)
+  describe "#count" do
+    subject do
+      @elements.count
     end
+
+    it { is_expected.to be 0 }
 
     context "when a new element is added" do
       before do
         @elements << 1
       end
 
-      it "has 1 element" do
-        expect(@elements.count).to be(1)
-      end
+      it { is_expected.to be 1 }
     end
   end
 end
@@ -89,16 +91,15 @@ end
 It can be tested in the console with the command:
 
 ```sh
-ruby spec/before/before_example_spec.rb
+ruby array_spec.rb
 ```
 
-    spec/before/before_example_spec.rb:11 Success: expected to be 0.
-    spec/before/before_example_spec.rb:20 Success: expected to be 1.
-    Coverage report generated for RSpec clone to /Users/cyril/github/cyril/r_spec/coverage. 90 / 100 LOC (90.0%) covered.
+    array_spec.rb:15 Success: expected to be 0.
+    array_spec.rb:22 Success: expected to be 1.
 
 ## Test suite
 
-__RSpec clone__'s test set is self-described here: [./spec/](https://github.com/cyril/r_spec.rb/blob/main/spec/)
+__RSpec clone__'s specifications are self-described here: [spec/](https://github.com/cyril/r_spec.rb/blob/main/spec/)
 
 ## Contact
 

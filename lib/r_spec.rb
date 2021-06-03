@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require_relative File.join("r_spec", "dsl")
-
 # Top level namespace for the RSpec clone.
 #
 # @example
@@ -15,8 +13,8 @@ require_relative File.join("r_spec", "dsl")
 module RSpec
   # Specs are built with this method.
   #
-  # @param const [Module] module to include in block context
-  # @param block [Proc] the block to define the specs
+  # @param const [Module] A module to include in block context.
+  # @param block [Proc] The block to define the specs.
   #
   # @api public
   def self.describe(const, &block)
@@ -25,3 +23,5 @@ module RSpec
     DSL.describe(const, &block)
   end
 end
+
+require_relative File.join("r_spec", "dsl")
