@@ -30,3 +30,11 @@ Layout/HashAlignment:
 Layout/LineLength:
   Exclude:
     - README.md
+
+Lint/InheritException:
+  Exclude:
+    - lib/r_spec/pending.rb
+
+Naming/PredicateName:
+  Exclude:
+    - lib/r_spec/dsl.rb

@@ -3,9 +3,7 @@
 require "expresenter"
 
 module RSpec
-  # Exception for not implemented expectations.
-  #
-  # rubocop:disable Lint/InheritException
+  # Exception for pending expectations.
   class Pending < ::NotImplementedError
     # @param description [String] The not implemented expectation description.
     #
@@ -23,5 +21,4 @@ module RSpec
       ).colored_string
     end
   end
-  # rubocop:enable Lint/InheritException
 end

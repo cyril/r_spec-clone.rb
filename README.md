@@ -103,9 +103,9 @@ __RSpec clone__'s specifications are self-described here: [spec/](https://github
 
 ## Contact
 
-* Home page: [https://r-spec.dev/](https://r-spec.dev/)
-* Source code: [https://github.com/cyril/r_spec.rb](https://github.com/cyril/r_spec.rb)
-* Twitter: [https://twitter.com/cyri_](https://twitter.com/cyri_)
+* Home page: https://r-spec.dev
+* Source code: https://github.com/cyril/r_spec.rb
+* Twitter: https://twitter.com/cyri_
 
 ## Versioning
 

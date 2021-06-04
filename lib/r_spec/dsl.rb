@@ -31,7 +31,8 @@ module RSpec
     # @param const [Module, #object_id] A module to include in block context.
     # @param block [Proc] The block to define the specs.
     def self.describe(const, &block)
-      desc = Test.const_set("Test#{random_str}", ::Class.new(self))
+      root = const_set("Test", ::Module.new)
+      desc = root.const_set("Test#{random_str}", ::Class.new(self))
 
       if const.is_a?(::Module)
         desc.define_method(:described_class) { const }
@@ -85,12 +86,9 @@ module RSpec
         # Wraps the target of an expectation with the subject as actual value.
         #
         # @return [ExpectationTarget] (see #expect)
-        #
-        # rubocop:disable Naming/PredicateName
         def is_expected
           expect(subject)
         end
-        # rubocop:enable Naming/PredicateName
 
         def pending(description)
           undef expect
@@ -113,4 +111,3 @@ end
 
 require_relative "expectation_target"
 require_relative "pending"
-require_relative "test"
