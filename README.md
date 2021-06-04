@@ -18,7 +18,6 @@ This clone attempts to provide most of RSpec's DSL without magic power, so that 
 
 * Less features and an implementation with much less code complexity.
 * Spec files can also be executed directly with the `ruby` executable.
-* There cannot be more than one expectation per example.
 * There is no option to activate monkey-patching.
 * Does not rely on hacks such as `at_exit` hook to trigger the tests.
 * Built-in matchers do not trust _actual_ and do not send it any message.
@@ -41,7 +40,7 @@ Following [RubyGems naming conventions](https://guides.rubygems.org/name-your-ge
 Add this line to your application's Gemfile:
 
 ```ruby
-gem "r_spec", ">= 1.0.0.beta1"
+gem "r_spec", ">= 1.0.0.beta2"
 ```
 
 And then execute:

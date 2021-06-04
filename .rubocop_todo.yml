@@ -9,4 +9,12 @@
 # Offense count: 2
 # Configuration parameters: CountComments, CountAsOne, ExcludedMethods, IgnoredMethods.
 Metrics/MethodLength:
-  Max: 19
+  Max: 16
+
+# Offense count: 3
+# Cop supports --auto-correct.
+Style/StringConcatenation:
+  Exclude:
+    - 'lib/r_spec/expectation_target.rb'
+    - 'lib/r_spec/log.rb'
+    - 'lib/r_spec/pending.rb'

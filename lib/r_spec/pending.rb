@@ -9,7 +9,7 @@ module RSpec
     #
     # @return [nil] Write a pending expectation to STDOUT.
     def self.result(message)
-      puts ::Expresenter.call(true).with(
+      warn "  " + ::Expresenter.call(true).with(
         actual:   new(message),
         error:    nil,
         expected: self,

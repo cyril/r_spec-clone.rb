@@ -31,8 +31,7 @@ module RSpec
     # @param const [Module, #object_id] A module to include in block context.
     # @param block [Proc] The block to define the specs.
     def self.describe(const, &block)
-      root = const_set("Test", ::Module.new)
-      desc = root.const_set("Test#{random_str}", ::Class.new(self))
+      desc = Test.const_set("Test#{random_str}", ::Class.new(self))
 
       if const.is_a?(::Module)
         desc.define_method(:described_class) { const }
@@ -52,10 +51,9 @@ module RSpec
     # @raise (see ExpectationTarget#result)
     # @return (see ExpectationTarget#result)
     def self.it(_name = nil, &block)
-      raise ::ArgumentError, "Missing block for #{name.inspect} test" unless block
+      raise ::ArgumentError, "Missing block" unless block
 
-      path_info = block.source_location.join(":")
-      print "\e[3m#{path_info}\e[23m "
+      puts "\e[37m#{block.source_location.join(':')}\e[0m"
 
       i = example.new
       i.instance_eval(&block)
@@ -76,10 +74,6 @@ module RSpec
         #
         # @return [ExpectationTarget] The target of the expectation.
         def expect(actual)
-          undef expect
-          undef is_expected
-          undef pending
-
           ExpectationTarget.new(actual)
         end
 
@@ -90,11 +84,16 @@ module RSpec
           expect(subject)
         end
 
-        def pending(description)
-          undef expect
-          undef is_expected
-          undef pending
+        def log(message)
+          Log.result(message)
+        end
 
+        # Indicate that an example is disabled pending some action.
+        #
+        # @param description [String] The reason why the example is pending.
+        #
+        # @return [nil] Write a message to STDOUT.
+        def pending(description)
           Pending.result(description)
         end
       end
@@ -110,4 +109,6 @@ module RSpec
 end
 
 require_relative "expectation_target"
+require_relative "log"
 require_relative "pending"
+require_relative "test"

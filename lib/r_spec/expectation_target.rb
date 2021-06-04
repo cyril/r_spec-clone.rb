@@ -76,7 +76,7 @@ module RSpec
     # @raise [SystemExit] Terminate execution immediately by calling
     #   `Kernel.exit(false)` with a failure message written to STDERR.
     def result(matcher:, negate:, passed:)
-      puts ::Expresenter.call(passed).with(
+      puts "  " + ::Expresenter.call(passed).with(
         actual:   @actual,
         error:    nil,
         expected: matcher.expected,
@@ -87,7 +87,7 @@ module RSpec
         level:    :MUST
       ).colored_string
     rescue ::Expresenter::Fail => e
-      abort e.colored_string
+      abort "  #{e.colored_string}"
     end
   end
 end
