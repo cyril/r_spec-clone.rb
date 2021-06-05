@@ -5,6 +5,8 @@ require "expresenter"
 module RSpec
   module ExpectationTarget
     # Abstract class.
+    #
+    # @private
     class Base
       # Runs the given expectation, passing if `matcher` returns true.
       #

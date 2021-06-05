@@ -19,6 +19,8 @@ module RSpec
     #
     # @note `RSpec::ExpectationTarget::Value` is not intended to be instantiated
     #   directly by users. Use `expect` instead.
+    #
+    # @private
     class Value < Base
       # Instantiate a new expectation target.
       #
@@ -36,8 +38,8 @@ module RSpec
       # @param matcher  [#matches?] The matcher.
       # @param negate   [Boolean]   Positive or negative assertion?
       #
-      # @raise (see #result)
-      # @return (see #result)
+      # @raise (see Base#result)
+      # @return (see Base#result)
       def absolute_requirement(matcher:, negate:)
         valid = negate ^ matcher.matches? { @actual }
 

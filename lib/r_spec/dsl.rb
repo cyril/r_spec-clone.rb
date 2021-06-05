@@ -42,6 +42,7 @@ module RSpec
       desc
     end
 
+    # Add `context` to the DSL.
     singleton_class.send(:alias_method, :context, :describe)
 
     # Evaluate an expectation.
@@ -62,8 +63,10 @@ module RSpec
     # @private
     #
     # @return [Class<DSL>] The class of the example to be tested.
-    private_class_method def self.example
+    def self.example
+      # Dynamic creation of an example class.
       ::Class.new(self) do
+        # Include a collection of matchers.
         include ::Matchi::Helper
 
         private
@@ -84,6 +87,11 @@ module RSpec
           expect(subject)
         end
 
+        # Output a message to the console.
+        #
+        # @param message [String] The string to be notified about.
+        #
+        # @return [nil] Write a message to STDOUT.
         def log(message)
           Log.result(message)
         end
@@ -102,9 +110,11 @@ module RSpec
     # @private
     #
     # @return [String] A random string.
-    private_class_method def self.random_str
+    def self.random_str
       ::SecureRandom.alphanumeric(5)
     end
+
+    private_class_method :example, :random_str
   end
 end
 

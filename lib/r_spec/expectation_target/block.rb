@@ -20,10 +20,12 @@ module RSpec
     #
     # @note `RSpec::ExpectationTarget::Block` is not intended to be instantiated
     #   directly by users. Use `expect` instead.
+    #
+    # @private
     class Block < Base
       # Instantiate a new expectation target.
       #
-      # @param block [#Proc] The code to evaluate.
+      # @param block [#call] The code to evaluate.
       #
       # @api private
       def initialize(block)
@@ -37,8 +39,8 @@ module RSpec
       # @param matcher  [#matches?] The matcher.
       # @param negate   [Boolean]   Positive or negative assertion?
       #
-      # @raise (see #result)
-      # @return (see #result)
+      # @raise (see Base#result)
+      # @return (see Base#result)
       def absolute_requirement(matcher:, negate:)
         exam = ::Spectus::Exam.new(
           callable:  @callable,
