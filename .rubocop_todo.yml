@@ -6,16 +6,15 @@
 # Note that changes in the inspected code, or installation of new
 # versions of RuboCop, may require this file to be generated again.
 
-# Offense count: 5
+# Offense count: 3
 # Configuration parameters: CountComments, CountAsOne, ExcludedMethods, IgnoredMethods.
 Metrics/MethodLength:
-  Max: 28
+  Max: 16
 
-# Offense count: 4
+# Offense count: 3
 # Cop supports --auto-correct.
 Style/StringConcatenation:
   Exclude:
-    - 'lib/r_spec/block_expectation_target.rb'
+    - 'lib/r_spec/expectation_target/base.rb'
     - 'lib/r_spec/log.rb'
     - 'lib/r_spec/pending.rb'
-    - 'lib/r_spec/value_expectation_target.rb'

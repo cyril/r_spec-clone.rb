@@ -48,8 +48,8 @@ module RSpec
     #
     # @param block [Proc] An expectation to evaluate.
     #
-    # @raise (see ExpectationTarget#result)
-    # @return (see ExpectationTarget#result)
+    # @raise (see ExpectationTarget::Base#result)
+    # @return (see ExpectationTarget::Base#result)
     def self.it(_name = nil, &block)
       raise ::ArgumentError, "Missing block" unless block
 
@@ -74,15 +74,7 @@ module RSpec
         #
         # @return [ExpectationTarget] The target of the expectation.
         def expect(actual = self.class.superclass, &block)
-          if self.class.superclass.equal?(actual)
-            raise ::ArgumentError, "Pass either an argument or a block" unless block
-
-            BlockExpectationTarget.new(&block)
-          else
-            raise ::ArgumentError, "Cannot pass both an argument and a block" if block
-
-            ValueExpectationTarget.new(actual)
-          end
+          ExpectationTarget.call(self.class.superclass, actual, block)
         end
 
         # Wraps the target of an expectation with the subject as actual value.
@@ -116,8 +108,7 @@ module RSpec
   end
 end
 
-require_relative "block_expectation_target"
-require_relative "value_expectation_target"
+require_relative "expectation_target"
 require_relative "log"
 require_relative "pending"
 require_relative "test"
