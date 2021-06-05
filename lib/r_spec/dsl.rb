@@ -6,6 +6,9 @@ require "securerandom"
 module RSpec
   # Abstract class for handling the domain-specific language.
   class DSL
+    # Run some shared setup before each of the specs in the describe in which it
+    # is called.
+    #
     # @param block [Proc] The content to execute at the class initialization.
     def self.before(&block)
       define_method(:initialize) do |*args, **kwargs|
@@ -14,23 +17,27 @@ module RSpec
       end
     end
 
+    # Sets a user-defined property.
+    #
     # @param block [Proc] The content of the method to define.
     # @return [Symbol] A protected method that define the block content.
     def self.let(name, &block)
       protected define_method(name.to_sym, &block)
     end
 
+    # Sets a user-defined property named `subject`.
+    #
     # @param block [Proc] The subject to set.
     # @return [Symbol] A `subject` method that define the block content.
     def self.subject(&block)
       let(__method__, &block)
     end
 
-    # Describe a set of expectations.
+    # Create a group of specs.
     #
     # @param const [Module, #object_id] A module to include in block context.
     # @param block [Proc] The block to define the specs.
-    def self.describe(const, &block)
+    def self.describe(const = nil, &block)
       desc = Sandbox.const_set(random_test_const_name, ::Class.new(self))
 
       if const.is_a?(::Module)
@@ -45,7 +52,8 @@ module RSpec
     # Add `context` to the DSL.
     singleton_class.send(:alias_method, :context, :describe)
 
-    # Evaluate an expectation.
+    # Define a single spec. A spec should contain one or more expectations that
+    # test the state of the code.
     #
     # @param block [Proc] An expectation to evaluate.
     #
@@ -71,7 +79,7 @@ module RSpec
 
         private
 
-        # Wraps the target of an expectation with the actual value.
+        # Create an expectation for a spec.
         #
         # @param actual [#object_id] The actual value.
         #
@@ -96,7 +104,7 @@ module RSpec
           Log.result(message)
         end
 
-        # Indicate that an example is disabled pending some action.
+        # Mark a spec as pending, expectation results will be ignored.
         #
         # @param description [String] The reason why the example is pending.
         #

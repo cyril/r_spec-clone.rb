@@ -7,13 +7,15 @@ RSpec.describe "described class" do
     expect { described_class }.to raise_exception(NameError)
   end
 
-  describe Integer do
-    it { expect(described_class).to be(Integer) }
+  describe do
+    describe Integer do
+      it { expect(described_class).to be(Integer) }
 
-    describe 'inner' do
-      describe String do
-        it "is available as described_class" do
-          expect(described_class).to be(String)
+      context 'inner' do
+        describe String do
+          it "is available as described_class" do
+            expect(described_class).to be(String)
+          end
         end
       end
     end

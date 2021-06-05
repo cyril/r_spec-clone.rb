@@ -17,7 +17,7 @@ module RSpec
   # @param block [Proc] The block to define the specs.
   #
   # @api public
-  def self.describe(const, &block)
+  def self.describe(const = nil, &block)
     DSL.describe(const, &block)
   end
 end
