@@ -13,13 +13,11 @@
 module RSpec
   # Specs are built with this method.
   #
-  # @param const [Module] A module to include in block context.
+  # @param const [Module, String] A module to include in block context.
   # @param block [Proc] The block to define the specs.
   #
   # @api public
   def self.describe(const, &block)
-    raise ::TypeError, const.class.inspect unless const.is_a?(::Module)
-
     DSL.describe(const, &block)
   end
 end

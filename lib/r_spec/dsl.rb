@@ -31,7 +31,7 @@ module RSpec
     # @param const [Module, #object_id] A module to include in block context.
     # @param block [Proc] The block to define the specs.
     def self.describe(const, &block)
-      desc = Test.const_set("Test#{random_str}", ::Class.new(self))
+      desc = Test.const_set(random_test_const_name, ::Class.new(self))
 
       if const.is_a?(::Module)
         desc.define_method(:described_class) { const }
@@ -109,12 +109,12 @@ module RSpec
 
     # @private
     #
-    # @return [String] A random string.
-    def self.random_str
-      ::SecureRandom.alphanumeric(5)
+    # @return [String] A random constant name for a test class.
+    def self.random_test_const_name
+      "Test#{::SecureRandom.hex(4).to_i(16)}"
     end
 
-    private_class_method :example, :random_str
+    private_class_method :example, :random_test_const_name
   end
 end
 

@@ -6,7 +6,7 @@ Gem::Specification.new do |spec|
   spec.author       = "Cyril Kato"
   spec.email        = "contact@cyril.email"
   spec.summary      = "A minimalist RSpec clone"
-  spec.description  = "A minimalist RSpec clone with an emphasis on correctness and simplicity."
+  spec.description  = "A minimalist RSpec clone with all the essentials."
   spec.homepage     = "https://r-spec.dev/"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.7.0")
   spec.license      = "MIT"

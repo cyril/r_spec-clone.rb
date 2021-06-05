@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    r_spec (1.0.0.beta2)
+    r_spec (1.0.0.beta3)
       expresenter (~> 1.2.0)
       matchi-rspec (~> 1.1.0)
       spectus (~> 3.3.2)

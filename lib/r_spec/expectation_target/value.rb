@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "expresenter"
-
 require_relative "base"
 
 module RSpec

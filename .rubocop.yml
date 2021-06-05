@@ -41,3 +41,7 @@ Naming/PredicateName:
 
 Metrics/ParameterLists:
   Max: 6
+
+Style/ClassAndModuleChildren:
+  Exclude:
+    - README.md

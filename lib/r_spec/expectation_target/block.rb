@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require "expresenter"
 require "spectus/exam"
 
 require_relative "base"
