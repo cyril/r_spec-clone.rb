@@ -2,6 +2,6 @@
 
 module RSpec
   # Namespace to collect test classes.
-  module Test
+  module Sandbox
   end
 end

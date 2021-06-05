@@ -71,7 +71,7 @@ end
 Corresponding Ruby code:
 
 ```ruby
-module RSpec::Test
+module RSpec::Sandbox
   class Test3582143298
     protected
 
@@ -101,7 +101,7 @@ end
 Corresponding Ruby code:
 
 ```ruby
-module RSpec::Test
+module RSpec::Sandbox
   class Test3582143298
     protected
 
@@ -129,14 +129,12 @@ end
 Corresponding Ruby code:
 
 ```ruby
-module RSpec::Test
+module RSpec::Sandbox
   class Test3582143298
     # main describe block
   end
-end
 
-module RSpec::Test
-  class Test198623541 < RSpec::Test::Test3582143298
+  class Test198623541 < Test3582143298
     # embedded describe block
   end
 end
@@ -157,7 +155,7 @@ end
 Corresponding Ruby code:
 
 ```ruby
-module RSpec::Test
+module RSpec::Sandbox
   class Test3582143298
     protected
 
@@ -191,7 +189,7 @@ end
 Corresponding Ruby code:
 
 ```ruby
-module RSpec::Test
+module RSpec::Sandbox
   class Test3582143298
     def initialize
       puts "hello"
@@ -213,12 +211,12 @@ end
 Corresponding Ruby code:
 
 ```ruby
-module RSpec::Test
+module RSpec::Sandbox
   class Test3582143298
   end
 end
 
-example_class = Class.new(RSpec::Test::Test3582143298) do
+example_class = Class.new(RSpec::Sandbox::Test3582143298) do
   include Matchi::Helper
 
   # Declaration of private methods (`expect`, `is_expected`, `log`, `pending`).

@@ -31,7 +31,7 @@ module RSpec
     # @param const [Module, #object_id] A module to include in block context.
     # @param block [Proc] The block to define the specs.
     def self.describe(const, &block)
-      desc = Test.const_set(random_test_const_name, ::Class.new(self))
+      desc = Sandbox.const_set(random_test_const_name, ::Class.new(self))
 
       if const.is_a?(::Module)
         desc.define_method(:described_class) { const }
@@ -121,4 +121,4 @@ end
 require_relative "expectation_target"
 require_relative "log"
 require_relative "pending"
-require_relative "test"
+require_relative "sandbox"
