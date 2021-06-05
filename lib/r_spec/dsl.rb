@@ -73,8 +73,16 @@ module RSpec
         # @param actual [#object_id] The actual value.
         #
         # @return [ExpectationTarget] The target of the expectation.
-        def expect(actual)
-          ExpectationTarget.new(actual)
+        def expect(actual = self.class.superclass, &block)
+          if self.class.superclass.equal?(actual)
+            raise ::ArgumentError, "Pass either an argument or a block" unless block
+
+            BlockExpectationTarget.new(&block)
+          else
+            raise ::ArgumentError, "Cannot pass both an argument and a block" if block
+
+            ValueExpectationTarget.new(actual)
+          end
         end
 
         # Wraps the target of an expectation with the subject as actual value.
@@ -108,7 +116,8 @@ module RSpec
   end
 end
 
-require_relative "expectation_target"
+require_relative "block_expectation_target"
+require_relative "value_expectation_target"
 require_relative "log"
 require_relative "pending"
 require_relative "test"

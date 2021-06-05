@@ -38,3 +38,6 @@ Lint/InheritException:
 Naming/PredicateName:
   Exclude:
     - lib/r_spec/dsl.rb
+
+Metrics/ParameterLists:
+  Max: 6
