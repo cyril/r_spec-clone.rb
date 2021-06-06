@@ -196,12 +196,12 @@ Run a single file:
 ruby spec/my/test/file_spec.rb
 ```
 
-Even though I don't recommend it, the `rspec` executable could also be used:
+I know that sounds weird, but the [`rspec` command line](https://relishapp.com/rspec/rspec-core/docs/command-line) is also working pretty well:
 
 ```sh
 rspec spec/my/test/file_spec.rb
-rspec spec/my/test/
 rspec spec/my/test/file_spec.rb:42
+rspec spec/my/test/
 rspec
 ```
 
