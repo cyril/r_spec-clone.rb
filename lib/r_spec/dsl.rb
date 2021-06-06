@@ -95,15 +95,6 @@ module RSpec
           expect(subject)
         end
 
-        # Output a message to the console.
-        #
-        # @param message [String] The string to be notified about.
-        #
-        # @return [nil] Write a message to STDOUT.
-        def log(message)
-          Log.result(message)
-        end
-
         # Mark a spec as pending, expectation results will be ignored.
         #
         # @param description [String] The reason why the example is pending.
@@ -127,6 +118,5 @@ module RSpec
 end
 
 require_relative "expectation_target"
-require_relative "log"
 require_relative "pending"
 require_relative "sandbox"

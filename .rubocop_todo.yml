@@ -21,12 +21,11 @@ Lint/EmptyClass:
 # Offense count: 3
 # Configuration parameters: CountComments, CountAsOne, ExcludedMethods, IgnoredMethods.
 Metrics/MethodLength:
-  Max: 16
+  Max: 14
 
-# Offense count: 3
+# Offense count: 2
 # Cop supports --auto-correct.
 Style/StringConcatenation:
   Exclude:
     - 'lib/r_spec/expectation_target/base.rb'
-    - 'lib/r_spec/log.rb'
     - 'lib/r_spec/pending.rb'

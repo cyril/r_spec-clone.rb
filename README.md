@@ -219,7 +219,7 @@ end
 example_class = Class.new(RSpec::Sandbox::Test3582143298) do
   include Matchi::Helper
 
-  # Declaration of private methods (`expect`, `is_expected`, `log`, `pending`).
+  # Declaration of private methods (`expect`, `is_expected`, `pending`).
 end
 
 example_class.new.instance_eval do
