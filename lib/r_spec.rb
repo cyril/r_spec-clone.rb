@@ -58,7 +58,7 @@ module RSpec
   #
   # @api public
   def self.describe(const = nil, &block)
-    DSL.describe(const, &block)
+    Dsl.describe(const, &block)
   end
 end
 

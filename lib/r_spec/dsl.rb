@@ -4,7 +4,7 @@ require "securerandom"
 
 module RSpec
   # Abstract class for handling the domain-specific language.
-  class DSL
+  class Dsl
     # Instructs the spec runner to execute the given block before each spec in
     # the spec suite.
     #
@@ -69,7 +69,7 @@ module RSpec
 
     # @private
     #
-    # @return [Class<DSL>] The class of the example to be tested.
+    # @return [Class<Dsl>] The class of the example to be tested.
     def self.example
       ::Class.new(self) { include ExpectationHelper }
     end
