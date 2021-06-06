@@ -25,6 +25,7 @@ This clone attempts to provide most of RSpec's DSL without magic power.
 * The `subject` must be explicitly defined, otherwise it is not implemented.
 * Expectations cannot be added inside a `before` block.
 * [Arbitrary helper methods](https://relishapp.com/rspec/rspec-core/v/3-10/docs/helper-methods/arbitrary-helper-methods) are not exposed to examples.
+* The `let` method defines a helper method rather than a memoized helper method.
 
 ## Important ⚠️
 
