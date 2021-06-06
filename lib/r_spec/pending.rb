@@ -4,6 +4,8 @@ require "expresenter"
 
 module RSpec
   # Exception for pending expectations.
+  #
+  # @api private
   class Pending < ::NotImplementedError
     # @param message [String] The not implemented expectation description.
     #

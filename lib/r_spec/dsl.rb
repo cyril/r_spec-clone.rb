@@ -1,13 +1,12 @@
 # frozen_string_literal: true
 
-require "matchi/rspec"
 require "securerandom"
 
 module RSpec
   # Abstract class for handling the domain-specific language.
   class DSL
-    # Run some shared setup before each of the specs in the describe in which it
-    # is called.
+    # Instructs the spec runner to execute the given block before each spec in
+    # the spec suite.
     #
     # @param block [Proc] The content to execute at the class initialization.
     def self.before(&block)
@@ -72,38 +71,7 @@ module RSpec
     #
     # @return [Class<DSL>] The class of the example to be tested.
     def self.example
-      # Dynamic creation of an example class.
-      ::Class.new(self) do
-        # Include a collection of matchers.
-        include ::Matchi::Helper
-
-        private
-
-        # Create an expectation for a spec.
-        #
-        # @param actual [#object_id] The actual value.
-        #
-        # @return [ExpectationTarget] The target of the expectation.
-        def expect(actual = self.class.superclass, &block)
-          ExpectationTarget.call(self.class.superclass, actual, block)
-        end
-
-        # Wraps the target of an expectation with the subject as actual value.
-        #
-        # @return [ExpectationTarget] (see #expect)
-        def is_expected
-          expect(subject)
-        end
-
-        # Mark a spec as pending, expectation results will be ignored.
-        #
-        # @param description [String] The reason why the example is pending.
-        #
-        # @return [nil] Write a message to STDOUT.
-        def pending(description)
-          Pending.result(description)
-        end
-      end
+      ::Class.new(self) { include ExpectationHelper }
     end
 
     # @private
@@ -117,6 +85,5 @@ module RSpec
   end
 end
 
-require_relative "expectation_target"
-require_relative "pending"
+require_relative "expectation_helper"
 require_relative "sandbox"

@@ -4,9 +4,10 @@ require "expresenter"
 
 module RSpec
   module ExpectationTarget
-    # Abstract class.
+    # Abstract expectation target base class.
     #
-    # @private
+    # @note `RSpec::ExpectationTarget` is not intended to be instantiated
+    #   directly by users. Use `expect` instead.
     class Base
       # Runs the given expectation, passing if `matcher` returns true.
       #
@@ -17,6 +18,8 @@ module RSpec
       #
       # @raise (see #result)
       # @return (see #result)
+      #
+      # @api public
       def to(matcher)
         absolute_requirement(matcher: matcher, negate: false)
       end
@@ -30,6 +33,8 @@ module RSpec
       #
       # @raise (see #result)
       # @return (see #result)
+      #
+      # @api public
       def not_to(matcher)
         absolute_requirement(matcher: matcher, negate: true)
       end
@@ -47,6 +52,8 @@ module RSpec
       #
       # @raise [SystemExit] Terminate execution immediately by calling
       #   `Kernel.exit(false)` with a failure message written to STDERR.
+      #
+      # @api private
       def result(actual:, error:, got:, matcher:, negate:, valid:)
         puts "  " + ::Expresenter.call(valid).with(
           actual:   actual,

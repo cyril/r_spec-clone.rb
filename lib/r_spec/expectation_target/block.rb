@@ -6,7 +6,7 @@ require_relative "base"
 
 module RSpec
   module ExpectationTarget
-    # Wraps the target of an expectation.
+    # Wraps the target of an expectation with a block.
     #
     # @example
     #   expect { something } # => ExpectationTarget::Block wrapping something
@@ -19,14 +19,10 @@ module RSpec
     #
     # @note `RSpec::ExpectationTarget::Block` is not intended to be instantiated
     #   directly by users. Use `expect` instead.
-    #
-    # @private
     class Block < Base
       # Instantiate a new expectation target.
       #
       # @param block [#call] The code to evaluate.
-      #
-      # @api private
       def initialize(block)
         super()
 
@@ -36,10 +32,12 @@ module RSpec
       protected
 
       # @param matcher  [#matches?] The matcher.
-      # @param negate   [Boolean]   Positive or negative assertion?
+      # @param negate   [Boolean]   The assertion is positive or negative.
       #
-      # @raise (see Base#result)
-      # @return (see Base#result)
+      # @return [nil] Write a message to STDOUT.
+      #
+      # @raise [SystemExit] Terminate execution immediately by calling
+      #   `Kernel.exit(false)` with a failure message written to STDERR.
       def absolute_requirement(matcher:, negate:)
         exam = ::Spectus::Exam.new(
           callable:  @callable,

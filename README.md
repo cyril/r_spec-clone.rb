@@ -1,6 +1,6 @@
 # RSpec clone
 
-A minimalist [RSpec](https://github.com/rspec/rspec) clone with all the essentials.
+A minimalist __[RSpec](https://github.com/rspec/rspec) clone__ with all the essentials.
 
 ![What did you expect?](https://github.com/cyril/r_spec.rb/raw/main/img/what-did-you-expect.svg)
 
@@ -53,6 +53,59 @@ Or install it yourself as:
 
 ```sh
 gem install r_spec --pre
+```
+
+## Overview
+
+__RSpec clone__ provides a structure for writing executable examples of how your code should behave.
+A domain specific language allows you to write them in a way similar to natural language.
+
+A basic spec looks something like this:
+
+```ruby
+require "r_spec"
+
+RSpec.describe Array do
+  describe "#size" do
+    it "correctly reports the number of elements in the Array" do
+      expect([1, 2, 3].size).to eq 3
+    end
+  end
+
+  describe "#empty?" do
+    it "is empty when no elements are in the array" do
+      expect([].empty?).to be_true
+    end
+
+    it "is not empty if there are elements in the array" do
+      expect([1].empty?).to be_false
+    end
+  end
+end
+```
+
+It can be executed with the command `ruby array_spec.rb`:
+
+```txt
+array_spec.rb:5 Success: expected to eq 3.
+array_spec.rb:11 Success: expected true to be_true.
+array_spec.rb:15 Success: expected false to be_false.
+```
+
+Test files are structured by use of the `describe` or `context` methods. Typically a top level `describe` defines the outer unit (such as a class) that is to be tested by the spec. Further `describe` calls can be nested within the outer unit to specify smaller units under test (such as individual methods). `describe` can also be used to set up a certain context - think empty [Array](https://ruby-doc.org/core-3.0.1/Array.html) versus Array with elements. The `context` method behaves just like the `describe` method and may be used instead, to emphasize context to the reader.
+
+Within a `describe` block, concrete test cases are defined with `it`. A descriptive string can be supplied to `it` describing what the test case tests specifically.
+
+Specs then use the `expect` method to verify that the expected value is returned. See the example above for details.
+
+By convention, specs live in the `spec/` directory of a project. You can run the specs of a project by running `rake spec` (see [Rake integration example](#label-Rake+integration+example)), or a single file with `ruby`.
+
+```sh
+# Run all specs in files matching spec/**/*_spec.rb
+bundle exec rake spec
+
+# Run a single file
+ruby spec/my/test/file_spec.rb
 ```
 
 ## Usage
@@ -216,63 +269,17 @@ module RSpec::Sandbox
   end
 end
 
-example_class = Class.new(RSpec::Sandbox::Test3582143298) do
-  include Matchi::Helper
-
-  # Declaration of private methods (`expect`, `is_expected`, `pending`).
-end
-
-example_class.new.instance_eval do
-  ExpectationTarget::Value.new(41.next).to be(42)
-end
+example = Class.new(RSpec::Sandbox::Test3582143298) { include ExpectationHelper }
+example.new.instance_eval { ExpectationTarget::Value.new(41.next).to be(42) }
 ```
 
-    Success: expected to be 42.
-
-## Example
-
-Let's test an array:
-
-```ruby
-# array_spec.rb
-
-require "r_spec"
-
-RSpec.describe Array do
-  before do
-    @elements = described_class.new
-  end
-
-  describe "#count" do
-    subject do
-      @elements.count
-    end
-
-    it { is_expected.to be 0 }
-
-    context "when a new element is added" do
-      before do
-        @elements << 1
-      end
-
-      it { is_expected.to be 1 }
-    end
-  end
-end
+```txt
+Success: expected to be 42.
 ```
-
-It can be tested in the console with the command:
-
-```sh
-ruby array_spec.rb
-```
-
-    array_spec.rb:15 Success: expected to be 0.
-    array_spec.rb:22 Success: expected to be 1.
 
 ## Rake integration example
 
-The following `Rakefile` should be enough:
+The following `Rakefile` settings should be enough:
 
 ```ruby
 require "bundler/gem_tasks"

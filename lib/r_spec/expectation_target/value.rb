@@ -4,7 +4,7 @@ require_relative "base"
 
 module RSpec
   module ExpectationTarget
-    # Wraps the target of an expectation.
+    # Wraps the target of an expectation with a value.
     #
     # @example
     #   expect(something) # => ExpectationTarget::Value wrapping something
@@ -17,14 +17,10 @@ module RSpec
     #
     # @note `RSpec::ExpectationTarget::Value` is not intended to be instantiated
     #   directly by users. Use `expect` instead.
-    #
-    # @private
     class Value < Base
       # Instantiate a new expectation target.
       #
       # @param actual [#object_id] The actual value.
-      #
-      # @api private
       def initialize(actual)
         super()
 
@@ -34,10 +30,12 @@ module RSpec
       protected
 
       # @param matcher  [#matches?] The matcher.
-      # @param negate   [Boolean]   Positive or negative assertion?
+      # @param negate   [Boolean]   The assertion is positive or negative.
       #
-      # @raise (see Base#result)
-      # @return (see Base#result)
+      # @return [nil] Write a message to STDOUT.
+      #
+      # @raise [SystemExit] Terminate execution immediately by calling
+      #   `Kernel.exit(false)` with a failure message written to STDERR.
       def absolute_requirement(matcher:, negate:)
         valid = negate ^ matcher.matches? { @actual }
 
