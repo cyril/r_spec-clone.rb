@@ -1,4 +1,5 @@
 # frozen_string_literal: true
 
-desc "run specs"
+# rubocop:disable Rake/Desc
 task spec: :test
+# rubocop:enable Rake/Desc

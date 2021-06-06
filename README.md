@@ -270,6 +270,24 @@ ruby array_spec.rb
     array_spec.rb:15 Success: expected to be 0.
     array_spec.rb:22 Success: expected to be 1.
 
+## Rake integration example
+
+The following `Rakefile` should be enough:
+
+```ruby
+require "bundler/gem_tasks"
+require "rake/testtask"
+
+Rake::TestTask.new do |t|
+  t.pattern = "spec/**/*_spec.rb"
+  t.verbose = true
+  t.warning = true
+end
+
+task spec: :test
+task default: :test
+```
+
 ## Test suite
 
 __RSpec clone__'s specifications are self-described here: [spec/](https://github.com/cyril/r_spec.rb/blob/main/spec/)
