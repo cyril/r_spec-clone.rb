@@ -24,6 +24,7 @@ This clone attempts to provide most of RSpec's DSL without magic power.
 * Built-in matchers do not trust _actual_ and do not send it messages.
 * The `subject` must be explicitly defined, otherwise it is not implemented.
 * Expectations cannot be added inside a `before` block.
+* [Arbitrary helper methods](https://relishapp.com/rspec/rspec-core/v/3-10/docs/helper-methods/arbitrary-helper-methods) are not exposed to examples.
 
 ## Important ⚠️
 

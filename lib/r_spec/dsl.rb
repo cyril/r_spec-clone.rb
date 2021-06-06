@@ -18,10 +18,12 @@ module RSpec
 
     # Sets a user-defined property.
     #
-    # @param block [Proc] The content of the method to define.
+    # @param name   [String, Symbol] The name of the property.
+    # @param block  [Proc] The content of the method to define.
+    #
     # @return [Symbol] A protected method that define the block content.
-    def self.let(name, &block)
-      protected define_method(name.to_sym, &block)
+    def self.let(name, *args, **kwargs, &block)
+      protected define_method(name.to_sym, *args, **kwargs, &block)
     end
 
     # Sets a user-defined property named `subject`.
