@@ -2,7 +2,7 @@
 
 A minimalist [RSpec](https://github.com/rspec/rspec) clone with all the essentials.
 
-![What did you expect?](https://github.com/cyril/r_spec.rb/raw/main/img/what-did-you-expect.jpg)
+![What did you expect?](https://github.com/cyril/r_spec.rb/raw/main/img/what-did-you-expect.svg)
 
 ## Status
 
