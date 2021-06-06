@@ -2,7 +2,7 @@
 
 A minimalist __[RSpec](https://github.com/rspec/rspec) clone__ with all the essentials.
 
-![What did you expect?](https://github.com/cyril/r_spec.rb/raw/main/img/what-did-you-expect.svg)
+![What did you RSpec?](https://github.com/cyril/r_spec.rb/raw/main/img/what-did-you-rspec.svg)
 
 ## Status
 
@@ -65,7 +65,7 @@ Inspired by [RSpec](https://rspec.info/), it includes a domain specific language
 
 A basic spec looks something like this:
 
-[![Super DRY](https://asciinema.org/a/418672.svg)](https://asciinema.org/a/418672?autoplay=1)
+[![Super DRY example](https://asciinema.org/a/418672.svg)](https://asciinema.org/a/418672?autoplay=1)
 
 ## Usage
 
