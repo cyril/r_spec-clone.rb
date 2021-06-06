@@ -159,7 +159,7 @@ expect(actual).to be_instance_of(expected_class) # passes if actual.instance_of?
 
 By convention, specs live in the `spec/` directory of a project. Spec files should end with `_spec.rb` to be recognizable as such.
 
-Depending of the project settings, you may run the specs of a project by running `rake spec` (see [`rake` integration example](#label-rake+integration+example) below).
+Depending of the project settings, you may run the specs of a project by running `rake spec` (see [`rake` integration example](#rake-integration-example) below).
 A single file can also be executed directly with the Ruby interpreter.
 
 #### Examples
