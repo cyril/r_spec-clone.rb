@@ -292,7 +292,7 @@ task default: :test
 
 __RSpec clone__'s specifications are self-described here: [spec/](https://github.com/cyril/r_spec.rb/blob/main/spec/)
 
-[![asciicast](https://asciinema.org/a/418565.svg)](https://asciinema.org/a/418565)
+[![asciicast](https://asciinema.org/a/418565.svg)](https://asciinema.org/a/418565?autoplay=1)
 
 ## Contact
 
