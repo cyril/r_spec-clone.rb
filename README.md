@@ -19,9 +19,10 @@ This clone attempts to provide most of RSpec's DSL without magic power.
 * Less features and an implementation with much less code complexity.
 * Spec files can also be executed directly with the `ruby` executable.
 * There is no option to activate monkey-patching.
-* Does not rely on hacks such as `at_exit` hook to trigger the tests.
-* Built-in matchers do not trust _actual_ and do not send it any message.
-* The subject must be explicitly defined, otherwise it is not implemented.
+* It does not rely on hacks such as `at_exit` hook to trigger the tests.
+* Built-in matchers do not trust _actual_ and do not send it messages.
+* The `subject` must be explicitly defined, otherwise it is not implemented.
+* Expectations cannot be added inside a `before` block.
 
 ## Important ⚠️
 
@@ -58,7 +59,8 @@ gem install r_spec --pre
 ## Overview
 
 __RSpec clone__ provides a structure for writing executable examples of how your code should behave.
-A domain specific language allows you to write them in a way similar to natural language.
+
+Inspired by [RSpec](https://rspec.info/), it includes a domain specific language (DSL) that allows you to write examples in a way similar to plain english.
 
 A basic spec looks something like this:
 
@@ -66,218 +68,150 @@ A basic spec looks something like this:
 require "r_spec"
 
 RSpec.describe Array do
-  describe "#size" do
-    it "correctly reports the number of elements in the Array" do
-      expect([1, 2, 3].size).to eq 3
-    end
-  end
+  subject { [1, 2, 3] }
 
-  describe "#empty?" do
-    it "is empty when no elements are in the array" do
-      expect([].empty?).to be_true
-    end
+  context "when inherited" do
+    subject { super() + [4, 5, 6] }
 
-    it "is not empty if there are elements in the array" do
-      expect([1].empty?).to be_false
-    end
+    it { is_expected.to eq([1, 2, 3, 4, 5, 6]) }
   end
 end
 ```
 
-It can be executed with the command `ruby array_spec.rb`:
-
-```txt
-array_spec.rb:5 Success: expected to eq 3.
-array_spec.rb:11 Success: expected true to be_true.
-array_spec.rb:15 Success: expected false to be_false.
+```sh
+ruby spec/array_spec.rb
 ```
 
-Test files are structured by use of the `describe` or `context` methods. Typically a top level `describe` defines the outer unit (such as a class) that is to be tested by the spec. Further `describe` calls can be nested within the outer unit to specify smaller units under test (such as individual methods). `describe` can also be used to set up a certain context - think empty [Array](https://ruby-doc.org/core-3.0.1/Array.html) versus Array with elements. The `context` method behaves just like the `describe` method and may be used instead, to emphasize context to the reader.
-
-Within a `describe` block, concrete test cases are defined with `it`. A descriptive string can be supplied to `it` describing what the test case tests specifically.
-
-Specs then use the `expect` method to verify that the expected value is returned. See the example above for details.
-
-By convention, specs live in the `spec/` directory of a project. You can run the specs of a project by running `rake spec` (see [Rake integration example](#label-Rake+integration+example)), or a single file with `ruby`.
-
-```sh
-# Run all specs in files matching spec/**/*_spec.rb
-bundle exec rake spec
-
-# Run a single file
-ruby spec/my/test/file_spec.rb
+```txt
+spec/array_spec:9
+  Success: expected to eq [1, 2, 3, 4, 5, 6].
 ```
 
 ## Usage
 
-To understand how the framework builds and runs tests, here are some correspondences between the DSL syntax and the generated Ruby code.
+### Anatomy of a spec file
 
-### `describe` method
+To use the spec module and DSL, you need to add `require "r_spec"` to your spec files.
+Many projects use a custom spec helper which organizes these includes.
 
-Example of specification content:
+Concrete test cases are defined in `it` blocks.
+An optional descriptive string states it's purpose and a block contains the main logic performing the test.
 
-```ruby
-RSpec.describe String do
-end
-```
+An `it` block contains an example that should invoke the code to be tested and define what is expected of it.
+Each example can contain multiple expectations, but it should test only one specific behaviour.
 
-Corresponding Ruby code:
+To express an expectation, wrap an object or block in `expect`, call `to` or `not_to` and pass it a matcher object.
 
-```ruby
-module RSpec::Sandbox
-  class Test3582143298
-    protected
+If the expectation is met, code execution continues.
+Otherwise the example has _failed_ and other code will not be executed.
 
-    def described_class
-      String
-    end
-  end
-end
-```
+Test cases that have been defined or outlined but are not yet expected to work can be defined using `pending` instead of `expect`. They will not be run but show up in the spec report as pending.
 
-### `context` method
+In test files, specs are structured by example groups which are defined by `describe` and `context` sections.
+Typically a top level `describe` defines the outer unit (such as a class) to be tested by the spec.
+Further `describe` sections can be nested within the outer unit to specify smaller units under test (such as individual methods).
 
-The behavior of the `context` method is exactly the same as `describe`.
+For unit tests, it is recommended to follow the conventions for method names:
 
-### `subject` method
+* outer `describe` is the name of the class, inner `describe` targets methods;
+* instance methods are prefixed with `#`, class methods with `.`.
 
-Example of specification content:
+To establish certain contexts - think _empty array_ versus _array with elements_ - the `context` method may be used to communicate this to the reader.
+It has a different name, but behaves exactly like `describe`.
 
-```ruby
-RSpec.describe "Subject" do
-  subject do
-    :foo
-  end
-end
-```
+`describe` and `context` take an optional description as argument and a block containing the individual specs or nested groupings.
 
-Corresponding Ruby code:
+### Expectations
+
+Expectations define if the value being tested (_actual_) matches a certain value or specific criteria.
+
+#### Equivalence
 
 ```ruby
-module RSpec::Sandbox
-  class Test3582143298
-    protected
-
-    def subject
-      :foo
-    end
-  end
-end
+expect(actual).to eql(expected) # passes if expected.eql?(actual)
+expect(actual).to eq(expected)  # passes if expected.eql?(actual)
 ```
 
-### Embedded `describe` method
-
-Example of specification content:
+#### Identity
 
 ```ruby
-RSpec.describe "Describe" do
-  # main describe block
-
-  describe "Embedded describe" do
-    # embedded describe block
-  end
-end
+expect(actual).to equal(expected) # passes if expected.equal?(actual)
+expect(actual).to be(expected)    # passes if expected.equal?(actual)
 ```
 
-Corresponding Ruby code:
+#### Regular expressions
 
 ```ruby
-module RSpec::Sandbox
-  class Test3582143298
-    # main describe block
-  end
-
-  class Test198623541 < Test3582143298
-    # embedded describe block
-  end
-end
+expect(actual).to match(expected) # passes if expected.match?(actual)
 ```
 
-### `let` method
-
-Example of specification content:
+#### Expecting errors
 
 ```ruby
-RSpec.describe do
-  let(:var0) { 42 }
-  let(:var1) { 42 + var3 }
-  let(:var3) { 42 }
-end
+expect { actual }.to raise_exception(ExpectedError) # passes if ExpectedError is raised
 ```
 
-Corresponding Ruby code:
+#### Truth
 
 ```ruby
-module RSpec::Sandbox
-  class Test3582143298
-    protected
-
-    def var0
-      42
-    end
-
-    def var1
-      42 + var3
-    end
-
-    def var3
-      42
-    end
-  end
-end
+expect(actual).to be_true # passes if true.equal?(actual)
 ```
 
-### `before` method
-
-Example of specification content:
+#### Untruth
 
 ```ruby
-RSpec.describe do
-  before do
-    puts "hello"
-  end
-end
+expect(actual).to be_false # passes if false.equal?(actual)
 ```
 
-Corresponding Ruby code:
+#### Nil
 
 ```ruby
-module RSpec::Sandbox
-  class Test3582143298
-    def initialize
-      puts "hello"
-    end
-  end
-end
+expect(actual).to be_nil # passes if nil.equal?(actual)
 ```
 
-### `expect` method
-
-Example of specification content:
+#### Type/class
 
 ```ruby
-RSpec.describe do
-  it { expect(41.next).to be(42) }
-end
+expect(actual).to be_instance_of(expected_class) # passes if actual.instance_of?(expected_class)
 ```
 
-Corresponding Ruby code:
+### Running specs
 
-```ruby
-module RSpec::Sandbox
-  class Test3582143298
-  end
-end
+By convention, specs live in the `spec/` directory of a project. Spec files should end with `_spec.rb` to be recognizable as such.
 
-example = Class.new(RSpec::Sandbox::Test3582143298) { include ExpectationHelper }
-example.new.instance_eval { ExpectationTarget::Value.new(41.next).to be(42) }
+Depending of the project settings, you may run the specs of a project by running `rake spec` (see [`rake` integration example](#label-rake+integration+example) below).
+A single file can also be executed directly with the Ruby interpreter.
+
+#### Examples
+
+Run all specs in files matching `spec/**/*_spec.rb`:
+
+```sh
+bundle exec rake spec
 ```
 
-```txt
-Success: expected to be 42.
+Run a single file:
+
+```sh
+ruby spec/my/test/file_spec.rb
 ```
 
-## Rake integration example
+Even though I don't recommend it, the `rspec` executable could also be used:
+
+```sh
+rspec spec/my/test/file_spec.rb
+rspec spec/my/test/
+rspec spec/my/test/file_spec.rb:42
+rspec
+```
+
+### Spec helper
+
+Many projects use a custom spec helper file, usually named `spec/spec_helper.rb`.
+
+This file is used to require `r_spec` and other includes, like the code from the project needed for every spec file.
+
+### `rake` integration example
 
 The following `Rakefile` settings should be enough:
 

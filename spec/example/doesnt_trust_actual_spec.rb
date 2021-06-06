@@ -2,9 +2,10 @@
 
 require_relative File.join("..", "spec_helper")
 
-$app = "💩"
-def $app.equal?(*) true; end
+APP = "💩"
 
-RSpec.describe String do
-  it { expect($app).not_to be "🌈" }
+def APP.equal?(*) true end
+
+RSpec.describe APP.class do
+  it { expect(described_class).not_to be "🌈" }
 end

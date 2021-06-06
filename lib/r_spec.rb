@@ -2,11 +2,51 @@
 
 # Top level namespace for the RSpec clone.
 #
-# @example
+# @example The true from the false
+#   require "r_spec"
+#
+#   RSpec.describe do
+#     it { expect(false).not_to be true }
+#   end
+#
+# @example The basic behavior of arrays
+#   require "r_spec"
+#
+#   RSpec.describe Array do
+#     describe "#size" do
+#       it "correctly reports the number of elements in the Array" do
+#         expect([1, 2, 3].size).to eq 3
+#       end
+#     end
+#
+#     describe "#empty?" do
+#       it "is empty when no elements are in the array" do
+#         expect([].empty?).to be_true
+#       end
+#
+#       it "is not empty if there are elements in the array" do
+#         expect([1].empty?).to be_false
+#       end
+#     end
+#   end
+#
+# @example An inherited definition of let
 #   require "r_spec"
 #
 #   RSpec.describe Integer do
-#     it { expect(41.next).to be 42 }
+#     let(:answer) { 42 }
+#
+#     it "returns the value" do
+#       expect(answer).to be(42)
+#     end
+#
+#     context "when the number is incremented" do
+#       let(:answer) { super().next }
+#
+#       it "returns the next value" do
+#         expect(answer).to be(43)
+#       end
+#     end
 #   end
 #
 # @api public
