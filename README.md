@@ -64,28 +64,7 @@ Inspired by [RSpec](https://rspec.info/), it includes a domain specific language
 
 A basic spec looks something like this:
 
-```ruby
-require "r_spec"
-
-RSpec.describe Array do
-  subject { [1, 2, 3] }
-
-  context "when inherited" do
-    subject { super() + [4, 5, 6] }
-
-    it { is_expected.to eq([1, 2, 3, 4, 5, 6]) }
-  end
-end
-```
-
-```sh
-ruby spec/array_spec.rb
-```
-
-```txt
-spec/array_spec:9
-  Success: expected to eq [1, 2, 3, 4, 5, 6].
-```
+[![Super DRY](https://asciinema.org/a/418672.svg)](https://asciinema.org/a/418672?autoplay=1)
 
 ## Usage
 
@@ -232,8 +211,6 @@ task default: :test
 ## Test suite
 
 __RSpec clone__'s specifications are self-described here: [spec/](https://github.com/cyril/r_spec.rb/blob/main/spec/)
-
-[![asciicast](https://asciinema.org/a/418565.svg)](https://asciinema.org/a/418565?autoplay=1)
 
 ## Contact
 
