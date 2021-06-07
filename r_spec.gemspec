@@ -15,7 +15,8 @@ Gem::Specification.new do |spec|
   spec.metadata = {
     "bug_tracker_uri"   => "https://github.com/cyril/r_spec.rb/issues",
     "documentation_uri" => "https://rubydoc.info/gems/r_spec",
-    "source_code_uri"   => "https://github.com/cyril/r_spec.rb"
+    "source_code_uri"   => "https://github.com/cyril/r_spec.rb",
+    "wiki_uri"          => "https://github.com/cyril/r_spec.rb/wiki"
   }
 
   spec.add_dependency "expresenter", "~> 1.2.0"
