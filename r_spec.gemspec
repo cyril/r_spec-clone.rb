@@ -6,7 +6,7 @@ Gem::Specification.new do |spec|
   spec.author       = "Cyril Kato"
   spec.email        = "contact@cyril.email"
   spec.summary      = "A minimalist RSpec clone"
-  spec.description  = "A minimalist RSpec clone with all the essentials."
+  spec.description  = "#{spec.summary} with all the essentials."
   spec.homepage     = "https://r-spec.dev/"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.7.0")
   spec.license      = "MIT"
@@ -19,7 +19,7 @@ Gem::Specification.new do |spec|
   }
 
   spec.add_dependency "expresenter", "~> 1.2.0"
-  spec.add_dependency "matchi-rspec", "~> 1.1.0"
+  spec.add_dependency "matchi-rspec", "~> 1.1.1"
   spec.add_dependency "spectus", "~> 3.3.2"
 
   spec.add_development_dependency "bundler"

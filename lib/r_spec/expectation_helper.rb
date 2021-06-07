@@ -64,6 +64,10 @@ module RSpec
   #   matcher.matches? { "foo" } # => true
   #   matcher.matches? { 4 } # => false
   #
+  #   matcher = be_an_instance_of(String) # => Matchi::Matcher::BeAnInstanceOf.new(String)
+  #   matcher.matches? { "foo" } # => true
+  #   matcher.matches? { 4 } # => false
+  #
   # @see https://github.com/fixrb/matchi
   # @see https://github.com/fixrb/matchi-rspec
   module ExpectationHelper

@@ -13,7 +13,7 @@ A minimalist __[RSpec](https://github.com/rspec/rspec) clone__ with all the esse
 
 ## Goal
 
-This clone attempts to provide most of RSpec's DSL without magic power.
+This clone attempts to provide most of RSpec's DSL to express expected outcomes of a code example without magic power.
 
 ## Some differences
 
@@ -130,7 +130,7 @@ expect(actual).to match(expected) # passes if expected.match?(actual)
 #### Expecting errors
 
 ```ruby
-expect { actual }.to raise_exception(ExpectedError) # passes if ExpectedError is raised
+expect { actual }.to raise_exception(expected) # passes if expected exception is raised
 ```
 
 #### Truth
@@ -154,7 +154,8 @@ expect(actual).to be_nil # passes if nil.equal?(actual)
 #### Type/class
 
 ```ruby
-expect(actual).to be_instance_of(expected_class) # passes if actual.instance_of?(expected_class)
+expect(actual).to be_instance_of(expected)    # passes if expected.equal?(actual.class)
+expect(actual).to be_an_instance_of(expected) # passes if expected.equal?(actual.class)
 ```
 
 ### Running specs
