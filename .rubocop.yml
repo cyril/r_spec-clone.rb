@@ -37,7 +37,8 @@ Lint/InheritException:
 
 Naming/PredicateName:
   Exclude:
-    - lib/r_spec/expectation_helper.rb
+    - lib/r_spec/expectation_helper/it.rb
+    - lib/r_spec/expectation_helper/its.rb
 
 Metrics/ParameterLists:
   Max: 6

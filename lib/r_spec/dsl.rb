@@ -65,15 +65,59 @@ module RSpec
 
       puts "\e[37m#{block.source_location.join(':')}\e[0m"
 
-      i = example.new
+      i = it_example.new
+      i.instance_eval(&block)
+    end
+
+    # Define a single spec. A spec should contain one or more expectations that
+    # test the state of the code.
+    #
+    # @example The value after 41
+    #   require "r_spec"
+    #
+    #   RSpec.describe Integer do
+    #     subject { 41 }
+    #
+    #     its(:next) { is_expected.to be 42 }
+    #   end
+    #
+    # @example Without defining a subject
+    #   require "r_spec"
+    #
+    #   RSpec.describe Integer do
+    #     its(:next) { is_expected.to raise_exception NameError }
+    #   end
+    #
+    # @param attribute [String, Symbol] The property to call to subject.
+    #
+    # @raise (see ExpectationTarget::Base#result)
+    # @return (see ExpectationTarget::Base#result)
+    def self.its(attribute, *args, **kwargs, &block)
+      raise ::ArgumentError, "Missing block" unless block
+
+      puts "\e[37m#{block.source_location.join(':')}\e[0m"
+
+      i = its_example.new
+
+      i.define_singleton_method(:actual) do
+        subject.public_send(attribute, *args, **kwargs)
+      end
+
       i.instance_eval(&block)
     end
 
     # @private
     #
     # @return [Class<Dsl>] The class of the example to be tested.
-    def self.example
-      ::Class.new(self) { include ExpectationHelper }
+    def self.it_example
+      ::Class.new(self) { include ExpectationHelper::It }
+    end
+
+    # @private
+    #
+    # @return [Class<Dsl>] The class of the example to be tested.
+    def self.its_example
+      ::Class.new(self) { include ExpectationHelper::Its }
     end
 
     # @private
@@ -83,7 +127,7 @@ module RSpec
       "Test#{::SecureRandom.hex(4).to_i(16)}"
     end
 
-    private_class_method :example, :random_test_const_name
+    private_class_method :it_example, :its_example, :random_test_const_name
   end
 end
 

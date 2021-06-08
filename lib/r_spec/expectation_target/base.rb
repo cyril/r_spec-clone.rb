@@ -6,7 +6,7 @@ module RSpec
   module ExpectationTarget
     # Abstract expectation target base class.
     #
-    # @note `RSpec::ExpectationTarget` is not intended to be instantiated
+    # @note `RSpec::ExpectationTarget::Base` is not intended to be instantiated
     #   directly by users. Use `expect` instead.
     class Base
       # Runs the given expectation, passing if `matcher` returns true.

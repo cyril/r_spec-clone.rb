@@ -18,7 +18,7 @@ Style/AsciiComments:
   Exclude:
     - '**/*.md'
     - '**/*.markdown'
-    - 'lib/r_spec/expectation_helper.rb'
+    - 'lib/r_spec/expectation_helper/base.rb'
 
 # Offense count: 2
 # Cop supports --auto-correct.
@@ -26,3 +26,11 @@ Style/StringConcatenation:
   Exclude:
     - 'lib/r_spec/expectation_target/base.rb'
     - 'lib/r_spec/pending.rb'
+
+# Offense count: 1
+# Cop supports --auto-correct.
+# Configuration parameters: AutoCorrect, AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
+# URISchemes: http, https
+# IgnoredPatterns: (?-mix:^\#)
+Layout/LineLength:
+  Max: 121

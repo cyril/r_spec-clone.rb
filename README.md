@@ -26,6 +26,7 @@ This clone attempts to provide most of RSpec's DSL to express expected outcomes 
 * Expectations cannot be added inside a `before` block.
 * [Arbitrary helper methods](https://relishapp.com/rspec/rspec-core/v/3-10/docs/helper-methods/arbitrary-helper-methods) are not exposed to examples.
 * The `let` method defines a helper method rather than a memoized helper method.
+* The one-liner `is_expected` syntax also works with block expectations.
 
 ## Important ⚠️
 
@@ -44,7 +45,7 @@ Following [RubyGems naming conventions](https://guides.rubygems.org/name-your-ge
 Add this line to your application's Gemfile:
 
 ```ruby
-gem "r_spec", ">= 1.0.0.beta3"
+gem "r_spec", ">= 1.0.0.beta4"
 ```
 
 And then execute:
