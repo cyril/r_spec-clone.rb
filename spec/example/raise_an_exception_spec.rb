@@ -10,7 +10,7 @@ RSpec.describe Integer do
       let(:divisor) { 0 }
 
       it "expects an exception to be raised" do
-        expect { subject / divisor }.to raise_exception ZeroDivisionError
+        expect { subject / divisor }.to raise_exception ::ZeroDivisionError
       end
     end
 
@@ -18,7 +18,7 @@ RSpec.describe Integer do
       let(:divisor) { 2 }
 
       it "does not expect an exception to be raised" do
-        expect { subject / divisor }.not_to raise_exception ZeroDivisionError
+        expect { subject / divisor }.not_to raise_exception ::ZeroDivisionError
       end
     end
   end

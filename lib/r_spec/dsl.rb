@@ -85,7 +85,7 @@ module RSpec
     #   require "r_spec"
     #
     #   RSpec.describe Integer do
-    #     its(:next) { is_expected.to raise_exception NameError }
+    #     its(:next) { is_expected.to raise_exception RSpec::Error::UndefinedSubject }
     #   end
     #
     # @param attribute [String, Symbol] The property to call to subject.
@@ -128,8 +128,20 @@ module RSpec
     end
 
     private_class_method :it_example, :its_example, :random_test_const_name
+
+    protected
+
+    def described_class
+      raise Error::UndefinedDescribedClass,
+            "the first argument to at least one example group must be a module"
+    end
+
+    def subject
+      raise Error::UndefinedSubject, "subject not explicitly defined"
+    end
   end
 end
 
+require_relative "error"
 require_relative "expectation_helper"
 require_relative "sandbox"

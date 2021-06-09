@@ -4,7 +4,7 @@ require_relative File.join("..", "spec_helper")
 
 RSpec.describe "described class" do
   it "does not implement the method" do
-    expect { described_class }.to raise_exception(NameError)
+    expect { described_class }.to raise_exception(::RSpec::Error::UndefinedDescribedClass)
   end
 
   describe do

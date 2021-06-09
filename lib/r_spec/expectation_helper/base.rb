@@ -2,7 +2,7 @@
 
 require "matchi/rspec"
 
-require_relative File.join("..", "pending")
+require_relative File.join("..", "error", "pending_expectation")
 
 module RSpec
   module ExpectationHelper
@@ -89,7 +89,7 @@ module RSpec
       #
       # @api public
       def pending(description)
-        Pending.result(description)
+        Error::PendingExpectation.result(description)
       end
     end
   end

@@ -22,7 +22,8 @@ This clone attempts to provide most of RSpec's DSL to express expected outcomes 
 * There is no option to activate monkey-patching.
 * It does not rely on hacks such as `at_exit` hook to trigger the tests.
 * Built-in matchers do not trust _actual_ and do not send it messages.
-* The `subject` must be explicitly defined, otherwise it is not implemented.
+* If no `subject` has been explicitly determined, none is defined.
+* If no described class is set, `described_class` is undefined instead of `nil`.
 * Expectations cannot be added inside a `before` block.
 * [Arbitrary helper methods](https://relishapp.com/rspec/rspec-core/v/3-10/docs/helper-methods/arbitrary-helper-methods) are not exposed to examples.
 * The `let` method defines a helper method rather than a memoized helper method.
