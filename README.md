@@ -227,12 +227,18 @@ __RSpec clone__'s specifications are self-described here: [spec/](https://github
 
 __RSpec clone__ follows [Semantic Versioning 2.0](https://semver.org/).
 
-## Special thanks
+## Special thanks ❤️
 
 I would like to thank the whole [RSpec team](https://rspec.info/about/) for all their work.
 It's a great framework and it's a pleasure to work with every day.
 
-Without RSpec, this clone would not have been possible. ❤️
+Without RSpec, this clone would not have been possible.
+
+## Buy me a coffee ☕
+
+If you like this project please consider making a small donation.
+
+[![Donate with Ethereum](https://github.com/cyril/r_spec.rb/raw/main/img/donate-eth.svg)](https://etherscan.io/address/0x834b5c1feaff5aebf9cd0f25dc38e741d65ab773)
 
 ## License
 
