@@ -80,7 +80,7 @@ module RSpec
     #   end
     #
     #   # Output to the console
-    #   #   Success: expected 41 to be_an_instance_of Integer.
+    #   #   Success: expected 41 to be an instance of Integer.
     #   #   Success: divided by 0.
     #
     # @param _name [String, nil] The name of the spec.

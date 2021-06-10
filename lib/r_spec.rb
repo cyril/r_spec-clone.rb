@@ -35,8 +35,8 @@
 #
 #   # Output to the console
 #   #   Success: expected to eq 3.
-#   #   Success: expected true to be_true.
-#   #   Success: expected false to be_false.
+#   #   Success: expected true to be true.
+#   #   Success: expected false to be false.
 #
 # @example An inherited definition of let
 #   require "r_spec"

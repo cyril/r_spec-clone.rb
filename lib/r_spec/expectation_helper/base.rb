@@ -87,6 +87,9 @@ module RSpec
       # @example Output a message to the console and return nil
       #   pending("something else getting finished") # => nil
       #
+      #   # Output to the console
+      #   #   Warning: something else getting finished.
+      #
       # @api public
       def pending(description)
         Error::PendingExpectation.result(description)

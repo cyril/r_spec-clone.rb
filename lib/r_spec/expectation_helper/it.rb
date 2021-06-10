@@ -27,7 +27,7 @@ module RSpec
 
       # Wraps the target of an expectation with the subject as actual value.
       #
-      # @return (see #expect)
+      # @return [Block] The wrapped target of an expectation.
       #
       # @example
       #   is_expected # => #<RSpec::ExpectationTarget::Block:0x00007fb6b8263df8 @callable=#<Proc:0x00007fb6b8263e20>>

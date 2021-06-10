@@ -19,9 +19,9 @@ Gem::Specification.new do |spec|
     "wiki_uri"          => "https://github.com/cyril/r_spec.rb/wiki"
   }
 
-  spec.add_dependency "expresenter", "~> 1.2.0"
+  spec.add_dependency "expresenter", "~> 1.2.1"
   spec.add_dependency "matchi-rspec", "~> 1.1.1"
-  spec.add_dependency "spectus", "~> 3.3.2"
+  spec.add_dependency "spectus", "~> 3.3.3"
 
   spec.add_development_dependency "bundler"
   spec.add_development_dependency "rake"
