@@ -9,6 +9,9 @@
 #     it { expect(false).not_to be true }
 #   end
 #
+#   # Output to the console
+#   #   Success: expected false not to be true.
+#
 # @example The basic behavior of arrays
 #   require "r_spec"
 #
@@ -30,6 +33,11 @@
 #     end
 #   end
 #
+#   # Output to the console
+#   #   Success: expected to eq 3.
+#   #   Success: expected true to be_true.
+#   #   Success: expected false to be_false.
+#
 # @example An inherited definition of let
 #   require "r_spec"
 #
@@ -48,6 +56,10 @@
 #       end
 #     end
 #   end
+#
+#   # Output to the console
+#   #   Success: expected to be 42.
+#   #   Success: expected to be 43.
 #
 # @api public
 module RSpec

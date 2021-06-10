@@ -53,9 +53,37 @@ module RSpec
     # Add `context` to the DSL.
     singleton_class.send(:alias_method, :context, :describe)
 
-    # Define a single spec. A spec should contain one or more expectations that
-    # test the state of the code.
+    # Use the `it` method to define a single spec. A spec should contain one or
+    # more expectations that test the state of the code.
     #
+    # @example The integer after 41
+    #   require "r_spec"
+    #
+    #   RSpec.describe Integer do
+    #     it { expect(41.next).to be 42 }
+    #   end
+    #
+    #   # Output to the console
+    #   #   Success: expected to be 42.
+    #
+    # @example A division by zero
+    #   require "r_spec"
+    #
+    #   RSpec.describe Integer do
+    #     subject { 41 }
+    #
+    #     it { is_expected.to be_an_instance_of described_class }
+    #
+    #     it "raises an error" do
+    #       expect { subject / 0 }.to raise_exception ZeroDivisionError
+    #     end
+    #   end
+    #
+    #   # Output to the console
+    #   #   Success: expected 41 to be_an_instance_of Integer.
+    #   #   Success: divided by 0.
+    #
+    # @param _name [String, nil] The name of the spec.
     # @param block [Proc] An expectation to evaluate.
     #
     # @raise (see ExpectationTarget::Base#result)
@@ -69,10 +97,10 @@ module RSpec
       i.instance_eval(&block)
     end
 
-    # Define a single spec. A spec should contain one or more expectations that
-    # test the state of the code.
+    # Use the `its` method to define a single spec that specifies the actual
+    # value of an attribute of the subject using `is_expected`.
     #
-    # @example The value after 41
+    # @example The integer after 41
     #   require "r_spec"
     #
     #   RSpec.describe Integer do
@@ -81,14 +109,35 @@ module RSpec
     #     its(:next) { is_expected.to be 42 }
     #   end
     #
-    # @example Without defining a subject
+    #   # Output to the console
+    #   #   Success: expected to be 42.
+    #
+    # @example A division by zero
     #   require "r_spec"
     #
     #   RSpec.describe Integer do
-    #     its(:next) { is_expected.to raise_exception RSpec::Error::UndefinedSubject }
+    #     subject { 41 }
+    #
+    #     its(:/, 0) { is_expected.to raise_exception ZeroDivisionError }
     #   end
     #
+    #   # Output to the console
+    #   #   Success: divided by 0.
+    #
+    # @example A spec without subject
+    #   require "r_spec"
+    #
+    #   RSpec.describe Integer do
+    #     its(:boom) { is_expected.to raise_exception RSpec::Error::UndefinedSubject }
+    #   end
+    #
+    #   # Output to the console
+    #   #   Success: subject not explicitly defined.
+    #
     # @param attribute [String, Symbol] The property to call to subject.
+    # @param args [Array] An optional list of arguments.
+    # @param kwargs [Hash] An optional list of keyword arguments.
+    # @param block [Proc] An expectation to evaluate.
     #
     # @raise (see ExpectationTarget::Base#result)
     # @return (see ExpectationTarget::Base#result)
