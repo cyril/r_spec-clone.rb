@@ -99,7 +99,7 @@ For unit tests, it is recommended to follow the conventions for method names:
 * outer `describe` is the name of the class, inner `describe` targets methods;
 * instance methods are prefixed with `#`, class methods with `.`.
 
-To establish certain contexts - think _empty array_ versus _array with elements_ - the `context` method may be used to communicate this to the reader.
+To establish certain contexts — think _empty array_ versus _array with elements_ — the `context` method may be used to communicate this to the reader.
 It has a different name, but behaves exactly like `describe`.
 
 `describe` and `context` take an optional description as argument and a block containing the individual specs or nested groupings.
