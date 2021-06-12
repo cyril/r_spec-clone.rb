@@ -2,6 +2,11 @@
 
 require "securerandom"
 
+require_relative "console"
+require_relative "error"
+require_relative "expectation_helper"
+require_relative "sandbox"
+
 module RSpec
   # Abstract class for handling the domain-specific language.
   class Dsl
@@ -89,12 +94,31 @@ module RSpec
     # @raise (see ExpectationTarget::Base#result)
     # @return (see ExpectationTarget::Base#result)
     def self.it(_name = nil, &block)
-      raise ::ArgumentError, "Missing block" unless block
-
-      puts "\e[37m#{block.source_location.join(':')}\e[0m"
+      raise ::ArgumentError, "Missing example block" unless block
 
       i = it_example.new
       i.instance_eval(&block)
+    rescue ::SystemExit
+      Console.source(*block.source_location)
+
+      exit false
+    end
+
+    # Mark a spec as pending, expectation results will be ignored.
+    #
+    # @param message [String] The reason why the example is pending.
+    #
+    # @return [nil] Write a message to STDOUT.
+    #
+    # @example Output a message to the console and return nil
+    #   pending("something else getting finished") # => nil
+    #
+    #   # Output to the console
+    #   #   Warning: something else getting finished.
+    #
+    # @api public
+    def self.pending(message)
+      Console.passed_spec Error::PendingExpectation.result(message)
     end
 
     # Use the `its` method to define a single spec that specifies the actual
@@ -142,9 +166,7 @@ module RSpec
     # @raise (see ExpectationTarget::Base#result)
     # @return (see ExpectationTarget::Base#result)
     def self.its(attribute, *args, **kwargs, &block)
-      raise ::ArgumentError, "Missing block" unless block
-
-      puts "\e[37m#{block.source_location.join(':')}\e[0m"
+      raise ::ArgumentError, "Missing example block" unless block
 
       i = its_example.new
 
@@ -153,6 +175,10 @@ module RSpec
       end
 
       i.instance_eval(&block)
+    rescue ::SystemExit
+      Console.source(*block.source_location)
+
+      exit false
     end
 
     # @private
@@ -190,7 +216,3 @@ module RSpec
     end
   end
 end
-
-require_relative "error"
-require_relative "expectation_helper"
-require_relative "sandbox"

@@ -81,15 +81,14 @@ Many projects use a custom spec helper which organizes these includes.
 Concrete test cases are defined in `it` blocks.
 An optional descriptive string states it's purpose and a block contains the main logic performing the test.
 
+Test cases that have been defined or outlined but are not yet expected to work can be defined using `pending` instead of `it`. They will not be run but show up in the spec report as pending.
+
 An `it` block contains an example that should invoke the code to be tested and define what is expected of it.
 Each example can contain multiple expectations, but it should test only one specific behaviour.
 
-To express an expectation, wrap an object or block in `expect`, call `to` or `not_to` and pass it a matcher object.
-
+To express an expectation, wrap an object or block in `expect`, call `to` (or `not_to`) and pass it a matcher object.
 If the expectation is met, code execution continues.
 Otherwise the example has _failed_ and other code will not be executed.
-
-Test cases that have been defined or outlined but are not yet expected to work can be defined using `pending` instead of `expect`. They will not be run but show up in the spec report as pending.
 
 In test files, specs are structured by example groups which are defined by `describe` and `context` sections.
 Typically a top level `describe` defines the outer unit (such as a class) to be tested by the spec.
@@ -214,6 +213,16 @@ task spec: :test
 task default: :test
 ```
 
+## Performance
+
+Benchmark against an single expectation executed 100 times from the console.
+
+| Framework   | Seconds to complete |
+|-------------|---------------------|
+| RSpec clone | [13.2](https://github.com/cyril/r_spec.rb/blob/main/benchmark/r_spec.rb) |
+| RSpec       | [32.7](https://github.com/cyril/r_spec.rb/blob/main/benchmark/rspec.rb) |
+| minitest    | [17.6](https://github.com/cyril/r_spec.rb/blob/main/benchmark/minitest.rb) |
+
 ## Test suite
 
 __RSpec clone__'s specifications are self-described here: [spec/](https://github.com/cyril/r_spec.rb/blob/main/spec/)
@@ -223,10 +232,6 @@ __RSpec clone__'s specifications are self-described here: [spec/](https://github
 * Home page: https://r-spec.dev
 * Source code: https://github.com/cyril/r_spec.rb
 * Twitter: [https://twitter.com/cyri\_](https://twitter.com/cyri\_)
-
-## Versioning
-
-__RSpec clone__ follows [Semantic Versioning 2.0](https://semver.org/).
 
 ## Special thanks ❤️
 
@@ -240,6 +245,10 @@ Without RSpec, this clone would not have been possible.
 If you like this project please consider making a small donation.
 
 [![Donate with Ethereum](https://github.com/cyril/r_spec.rb/raw/main/img/donate-eth.svg)](https://etherscan.io/address/0x834b5c1feaff5aebf9cd0f25dc38e741d65ab773)
+
+## Versioning
+
+__RSpec clone__ follows [Semantic Versioning 2.0](https://semver.org/).
 
 ## License
 

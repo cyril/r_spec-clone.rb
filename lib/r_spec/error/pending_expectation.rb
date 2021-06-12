@@ -12,7 +12,7 @@ module RSpec
       #
       # @return [nil] Write a pending expectation to STDOUT.
       def self.result(message)
-        warn "  " + ::Expresenter.call(true).with(
+        ::Expresenter.call(true).with(
           actual:   new(message),
           error:    nil,
           expected: self,
@@ -21,7 +21,7 @@ module RSpec
           negate:   true,
           level:    :SHOULD,
           valid:    false
-        ).colored_string
+        )
       end
     end
   end

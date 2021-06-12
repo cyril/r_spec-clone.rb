@@ -3,7 +3,9 @@
 require_relative File.join("..", "spec_helper")
 
 RSpec.describe do
-  it "is implemented but waiting" do
-    pending("something else getting finished")
+  pending "is implemented but waiting" do
+    expect("something").to eq("getting finished")
   end
+
+  pending "is not yet implemented and waiting"
 end

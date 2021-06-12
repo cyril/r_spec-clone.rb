@@ -2,6 +2,8 @@
 
 require "expresenter"
 
+require_relative File.join("..", "console")
+
 module RSpec
   module ExpectationTarget
     # Abstract expectation target base class.
@@ -9,6 +11,13 @@ module RSpec
     # @note `RSpec::ExpectationTarget::Base` is not intended to be instantiated
     #   directly by users. Use `expect` instead.
     class Base
+      # Instantiate a new expectation target.
+      #
+      # @param actual [#object_id] The actual value of the code to evaluate.
+      def initialize(actual)
+        @actual = actual
+      end
+
       # Runs the given expectation, passing if `matcher` returns true.
       #
       # @example _Absolute requirement_ definition
@@ -55,7 +64,7 @@ module RSpec
       #
       # @api private
       def result(actual:, error:, got:, matcher:, negate:, valid:)
-        puts "  " + ::Expresenter.call(valid).with(
+        Console.passed_spec ::Expresenter.call(valid).with(
           actual:   actual,
           error:    error,
           expected: matcher.expected,
@@ -64,9 +73,9 @@ module RSpec
           valid:    valid,
           matcher:  matcher.class.to_sym,
           level:    :MUST
-        ).colored_string
+        )
       rescue ::Expresenter::Fail => e
-        abort "  #{e.colored_string}"
+        Console.failed_spec(e)
       end
     end
   end

@@ -77,23 +77,6 @@ module RSpec
     # @see https://github.com/fixrb/matchi-rspec
     module Base
       include ::Matchi::Helper
-
-      # Mark a spec as pending, expectation results will be ignored.
-      #
-      # @param description [String] The reason why the example is pending.
-      #
-      # @return [nil] Write a message to STDOUT.
-      #
-      # @example Output a message to the console and return nil
-      #   pending("something else getting finished") # => nil
-      #
-      #   # Output to the console
-      #   #   Warning: something else getting finished.
-      #
-      # @api public
-      def pending(description)
-        Error::PendingExpectation.result(description)
-      end
     end
   end
 end

@@ -20,15 +20,6 @@ module RSpec
     # @note `RSpec::ExpectationTarget::Block` is not intended to be instantiated
     #   directly by users. Use `expect` instead.
     class Block < Base
-      # Instantiate a new expectation target.
-      #
-      # @param block [#call] The code to evaluate.
-      def initialize(block)
-        super()
-
-        @callable = block
-      end
-
       protected
 
       # @param matcher  [#matches?] The matcher.
@@ -40,7 +31,7 @@ module RSpec
       #   `Kernel.exit(false)` with a failure message written to STDERR.
       def absolute_requirement(matcher:, negate:)
         exam = ::Spectus::Exam.new(
-          callable:  @callable,
+          callable:  @actual,
           isolation: false,
           negate:    negate,
           matcher:   matcher

@@ -18,15 +18,6 @@ module RSpec
     # @note `RSpec::ExpectationTarget::Value` is not intended to be instantiated
     #   directly by users. Use `expect` instead.
     class Value < Base
-      # Instantiate a new expectation target.
-      #
-      # @param actual [#object_id] The actual value.
-      def initialize(actual)
-        super()
-
-        @actual = actual
-      end
-
       protected
 
       # @param matcher  [#matches?] The matcher.

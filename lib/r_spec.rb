@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative File.join("r_spec", "dsl")
+
 # Top level namespace for the RSpec clone.
 #
 # @example The true from the false
@@ -73,5 +75,3 @@ module RSpec
     Dsl.describe(const, &block)
   end
 end
-
-require_relative File.join("r_spec", "dsl")

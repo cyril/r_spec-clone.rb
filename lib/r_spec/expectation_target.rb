@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+require_relative File.join("expectation_target", "block")
+require_relative File.join("expectation_target", "value")
+
 module RSpec
   # Wraps the target of an expectation.
   #
@@ -25,6 +28,3 @@ module RSpec
     end
   end
 end
-
-require_relative File.join("expectation_target", "block")
-require_relative File.join("expectation_target", "value")
