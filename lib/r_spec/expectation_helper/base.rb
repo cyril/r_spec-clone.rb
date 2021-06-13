@@ -9,7 +9,7 @@ module RSpec
     # Abstract expectation helper base module.
     #
     # This module defines a number of methods to create expectations, which are
-    # automatically included into example namespaces.
+    # automatically included into examples.
     #
     # It also includes a collection of expectation matchers 🤹
     #

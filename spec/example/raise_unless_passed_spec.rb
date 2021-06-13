@@ -26,4 +26,17 @@ RSpec.describe RSpec do
 
     it { is_expected.to be_false }
   end
+
+  context "when passing the actual value through its system" do
+    subject do
+      ::RSpec.describe Integer do
+        subject { 4 }
+        its(:itself) { is_expected.to be 42 }
+      end
+    rescue ::SystemExit => e
+      e.success?
+    end
+
+    it { is_expected.to be_false }
+  end
 end

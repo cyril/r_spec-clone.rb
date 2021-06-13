@@ -40,10 +40,39 @@ module RSpec
     #
     # @param block [Proc] The content to execute at the class initialization.
     def self.before(&block)
-      define_method(:initialize) do |*args, **kwargs|
+      define_method(:initialize) do
         super()
-        instance_exec(*args, **kwargs, &block)
+        instance_eval(&block)
       end
+
+      private :initialize
+    end
+
+    # Executes the given block after each spec in the current context runs.
+    #
+    # @example
+    #   require "r_spec"
+    #
+    #   RSpec.describe Integer do
+    #     after do
+    #       puts "That is the answer to everything."
+    #     end
+    #
+    #     it { expect(42).to be 42 }
+    #   end
+    #
+    #   # Output to the console
+    #   #   Success: expected to be 42.
+    #   #   That is the answer to everything.
+    #
+    # @param block [Proc] The content to execute at the class initialization.
+    def self.after(&block)
+      define_method(:terminate) do
+        instance_exec(&block)
+        super()
+      end
+
+      private :terminate
     end
 
     # Sets a user-defined property.
@@ -122,7 +151,6 @@ module RSpec
       end
 
       desc.instance_eval(&block)
-      desc
     end
 
     # Defines an example group that establishes a specific context, like _empty
@@ -153,7 +181,6 @@ module RSpec
     def self.context(_description = nil, &block)
       desc = Sandbox.const_set(random_context_const_name, ::Class.new(self))
       desc.instance_eval(&block)
-      desc
     end
 
     # Defines a concrete test case.
@@ -203,6 +230,8 @@ module RSpec
       Console.source(*block.source_location)
 
       exit false
+    ensure
+      i.send(:terminate)
     end
 
     # Use the {.its} method to define a single spec that specifies the actual
@@ -264,6 +293,8 @@ module RSpec
       Console.source(*block.source_location)
 
       exit false
+    ensure
+      i.send(:terminate)
     end
 
     # Defines a pending test case.
@@ -335,5 +366,7 @@ module RSpec
     def subject
       raise Error::UndefinedSubject, "subject not explicitly defined"
     end
+
+    def terminate; end
   end
 end
