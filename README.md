@@ -2,7 +2,7 @@
 
 A minimalist __[RSpec](https://github.com/rspec/rspec) clone__ with all the essentials.
 
-![What did you RSpec?](https://github.com/cyril/r_spec.rb/raw/main/img/what-did-you-rspec.svg)
+![What did you RSpec?](https://github.com/cyril/r_spec.rb/raw/main/img/what-did-you-rspec.jpg)
 
 ## Status
 
