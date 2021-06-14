@@ -7,13 +7,13 @@ RSpec.describe Integer do
     add_one(value)
   end
 
-  let(:add_one) { |i| i.next }
+  let(:add_one, &:next)
 
   context "when the value is 7" do
     let(:value) { 7 }
 
     it "returns the next value" do
-      is_expected.to be(8)
+      expect(subject).to be(8)
     end
   end
 
@@ -21,7 +21,7 @@ RSpec.describe Integer do
     let(:value) { 41 }
 
     it "returns the next value" do
-      is_expected.to be(42)
+      expect(subject).to be(42)
     end
   end
 end

@@ -31,6 +31,7 @@ RSpec.describe RSpec do
     subject do
       ::RSpec.describe Integer do
         subject { 4 }
+
         its(:itself) { is_expected.to be 42 }
       end
     rescue ::SystemExit => e

@@ -11,11 +11,12 @@ A minimalist __[RSpec](https://github.com/rspec/rspec) clone__ with all the esse
 [![Inline Docs](https://inch-ci.org/github/cyril/r_spec.rb.svg)](https://inch-ci.org/github/cyril/r_spec.rb)
 [![Documentation](https://img.shields.io/:yard-docs-38c800.svg)](https://rubydoc.info/gems/r_spec/frames)
 
-## Goal
+## Project Goals
 
-This clone attempts to provide most of RSpec's DSL to express expected outcomes of a code example without magic power.
+* Enforce the guidelines and best practices outlined in the community [RSpec style guide](https://rspec.rubystyle.guide/).
+* Provide most of RSpec's DSL to express expected outcomes of a code example without magic power.
 
-## Some differences
+## Some Differences
 
 * Less features and an implementation with much less code complexity.
 * Spec files can also be executed directly with the `ruby` executable.
@@ -28,6 +29,10 @@ This clone attempts to provide most of RSpec's DSL to express expected outcomes 
 * [Arbitrary helper methods](https://relishapp.com/rspec/rspec-core/v/3-10/docs/helper-methods/arbitrary-helper-methods) are not exposed to examples.
 * The `let` method defines a helper method rather than a memoized helper method.
 * The one-liner `is_expected` syntax also works with block expectations.
+* All `subject` definitions must come _before_ examples.
+* All `before` definitions must come _before_ examples.
+* All `after` definitions must come _before_ examples.
+* All `let` definitions must come _before_ examples.
 
 ## Important ⚠️
 
@@ -223,7 +228,7 @@ Benchmark against an single expectation executed 100 times from the console.
 | RSpec       | [32.7](https://github.com/cyril/r_spec.rb/blob/main/benchmark/rspec.rb) |
 | minitest    | [17.6](https://github.com/cyril/r_spec.rb/blob/main/benchmark/minitest.rb) |
 
-## Test suite
+## Test Suite
 
 __RSpec clone__'s specifications are self-described here: [spec/](https://github.com/cyril/r_spec.rb/blob/main/spec/)
 
@@ -233,14 +238,14 @@ __RSpec clone__'s specifications are self-described here: [spec/](https://github
 * Source code: https://github.com/cyril/r_spec.rb
 * Twitter: [https://twitter.com/cyri\_](https://twitter.com/cyri\_)
 
-## Special thanks ❤️
+## Special Thanks ❤️
 
 I would like to thank the whole [RSpec team](https://rspec.info/about/) for all their work.
 It's a great framework and it's a pleasure to work with every day.
 
 Without RSpec, this clone would not have been possible.
 
-## Buy me a coffee ☕
+## Buy me a Coffee ☕
 
 If you like this project please consider making a small donation.
 

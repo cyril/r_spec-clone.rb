@@ -2,10 +2,20 @@
 
 require_relative File.join("..", "spec_helper")
 
+# rubocop:disable Style/MutableConstant
 APP = "💩"
+# rubocop:enable Style/MutableConstant
 
-def APP.equal?(*) true end
+RSpec.describe String do
+  subject do
+    APP
+  end
 
-RSpec.describe APP.class do
-  it { expect(described_class).not_to be "🌈" }
+  before do
+    def APP.equal?(*)
+      true
+    end
+  end
+
+  it { expect(APP).not_to be "🌈" }
 end

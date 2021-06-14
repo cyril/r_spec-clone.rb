@@ -7,7 +7,7 @@ require_relative File.join("r_spec", "dsl")
 # @example The true from the false
 #   require "r_spec"
 #
-#   RSpec.describe do
+#   RSpec.describe "The true from the false" do
 #     it { expect(false).not_to be true }
 #   end
 #
@@ -71,7 +71,7 @@ module RSpec
   # @param block [Proc] The block to define the specs.
   #
   # @api public
-  def self.describe(const = nil, &block)
+  def self.describe(const, &block)
     Dsl.describe(const, &block)
   end
 end

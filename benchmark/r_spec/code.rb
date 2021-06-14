@@ -3,6 +3,6 @@
 require "r_spec"
 
 # An RSpec clone spec with 1 expectation.
-RSpec.describe do
+RSpec.describe "The true from the false" do
   it { expect(false).not_to be(true) }
 end

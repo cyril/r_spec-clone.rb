@@ -80,7 +80,7 @@ module RSpec
     # @example
     #   require "r_spec"
     #
-    #   RSpec.describe do
+    #   RSpec.describe "Name stories" do
     #     let(:name) { "Bob" }
     #
     #     it { expect(name).to eq "Bob" }
@@ -140,9 +140,9 @@ module RSpec
     #   # Output to the console
     #   #   Success: expected to eq "foobar".
     #
-    # @param const [Module, #object_id] A module to include in block context.
+    # @param const [Module, String] A module to include in block context.
     # @param block [Proc] The block to define the specs.
-    def self.describe(const = nil, &block)
+    def self.describe(const, &block)
       desc = Sandbox.const_set(random_context_const_name, ::Class.new(self))
 
       if const.is_a?(::Module)
@@ -161,7 +161,7 @@ module RSpec
     # @example
     #   require "r_spec"
     #
-    #   RSpec.describe do
+    #   RSpec.describe "web resource" do
     #     context "when resource is not found" do
     #       pending "responds with 404"
     #     end
@@ -305,23 +305,16 @@ module RSpec
     # @example
     #   require "r_spec"
     #
-    #   RSpec.describe do
+    #   RSpec.describe "an example" do
     #     pending "is implemented but waiting" do
-    #       expect("something").to eq("getting finished")
+    #       expect something to be finished
     #     end
-    #   end
     #
-    #   # Output to the console
-    #   #   Warning: is implemented but waiting.
-    #
-    # @example
-    #   require "r_spec"
-    #
-    #   RSpec.describe do
     #     pending "is not yet implemented and waiting"
     #   end
     #
     #   # Output to the console
+    #   #   Warning: is implemented but waiting.
     #   #   Warning: is not yet implemented and waiting.
     #
     # @param message [String] The reason why the example is pending.

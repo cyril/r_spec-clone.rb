@@ -42,3 +42,10 @@ Metrics/ParameterLists:
 Style/ClassAndModuleChildren:
   Exclude:
     - README.md
+
+RSpec/NestedGroups:
+  Max: 5
+
+RSpec/FilePath:
+  CustomTransform:
+    RSpec: r_spec

@@ -1,20 +1,20 @@
 # frozen_string_literal: true
 
 require_relative File.join("..", "spec_helper")
-require 'tempfile'
+require "tempfile"
 
 RSpec.describe Tempfile do
+  subject do
+    @file
+  end
+
   before do
-    @file = described_class.new('test after syntax')
+    @file = described_class.new("test after syntax")
   end
 
   after do
     @file.close
     @file.unlink
-  end
-
-  subject do
-    @file
   end
 
   its(:read) { is_expected.to eq "" }
