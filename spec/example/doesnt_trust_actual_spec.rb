@@ -13,9 +13,11 @@ RSpec.describe String do
 
   before do
     def APP.equal?(*)
+      # :nocov:
       true
+      # :nocov:
     end
   end
 
-  it { expect(APP).not_to be "🌈" }
+  it { is_expected.not_to be "🌈" }
 end
