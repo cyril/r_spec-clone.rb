@@ -220,13 +220,16 @@ task default: :test
 
 ## Performance
 
-Benchmark against an single expectation executed 100 times from the console.
+### Runtime
+
+Benchmark against 100 executions of a file containing one expectation (lower is better).
 
 | Framework   | Seconds to complete |
 |-------------|---------------------|
-| RSpec clone | [13.2](https://github.com/cyril/r_spec.rb/blob/main/benchmark/r_spec.rb) |
-| RSpec       | [32.7](https://github.com/cyril/r_spec.rb/blob/main/benchmark/rspec.rb) |
-| minitest    | [17.6](https://github.com/cyril/r_spec.rb/blob/main/benchmark/minitest.rb) |
+| `r_spec`    | 12.5                |
+| `rspec`     | 32.2                |
+| `minitest`  | 17.5                |
+| `test-unit` | 20.5                |
 
 ## Test Suite
 

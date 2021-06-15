@@ -1,11 +1,8 @@
 # frozen_string_literal: true
 
-require "securerandom"
-
 require_relative "console"
 require_relative "error"
 require_relative "expectation_helper"
-require_relative "sandbox"
 
 module RSpec
   # Abstract class for handling the domain-specific language.
@@ -101,10 +98,9 @@ module RSpec
     #
     # @return [Symbol] A private method that define the block content.
     def self.let(name, *args, **kwargs, &block)
-      raise Error::ReservedMethod       if %i[initialize terminate].include?(name.to_sym)
-      raise Error::AlreadyDefinedMethod if private_instance_methods(false).include?(name.to_sym)
+      raise Error::ReservedMethod if %i[initialize terminate].include?(name.to_sym)
 
-      private define_method(name.to_sym, *args, **kwargs, &block)
+      private define_method(name, *args, **kwargs, &block)
     end
 
     # Sets a user-defined property named {#subject}.
@@ -146,7 +142,7 @@ module RSpec
     # @param const [Module, String] A module to include in block context.
     # @param block [Proc] The block to define the specs.
     def self.describe(const, &block)
-      desc = Sandbox.const_set(random_context_const_name, ::Class.new(self))
+      desc = ::Class.new(self)
       desc.let(:described_class) { const } if const.is_a?(::Module)
       desc.instance_eval(&block)
     end
@@ -177,7 +173,7 @@ module RSpec
     #   "when", "with" or "without".
     # @param block [Proc] The block to define the specs.
     def self.context(_description = nil, &block)
-      desc = Sandbox.const_set(random_context_const_name, ::Class.new(self))
+      desc = ::Class.new(self)
       desc.instance_eval(&block)
     end
 
@@ -338,14 +334,7 @@ module RSpec
       ::Class.new(self) { include ExpectationHelper::Its }
     end
 
-    # @private
-    #
-    # @return [String] A random constant name for a test class.
-    def self.random_context_const_name
-      "Context#{::SecureRandom.hex(4).to_i(16)}"
-    end
-
-    private_class_method :it_example, :its_example, :random_context_const_name
+    private_class_method :it_example, :its_example
 
     private
 

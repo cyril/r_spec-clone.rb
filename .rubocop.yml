@@ -30,6 +30,7 @@ Layout/HashAlignment:
 Layout/LineLength:
   Exclude:
     - README.md
+    - benchmark/test-unit.rb
 
 Naming/PredicateName:
   Exclude:
@@ -38,6 +39,13 @@ Naming/PredicateName:
 
 Metrics/ParameterLists:
   Max: 6
+
+Naming/FileName:
+  Exclude:
+    - benchmark/test-unit.rb
+    - CODE_OF_CONDUCT.md
+    - LICENSE.md
+    - README.md
 
 Style/ClassAndModuleChildren:
   Exclude:
