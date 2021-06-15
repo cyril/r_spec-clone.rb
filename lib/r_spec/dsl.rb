@@ -101,7 +101,8 @@ module RSpec
     #
     # @return [Symbol] A private method that define the block content.
     def self.let(name, *args, **kwargs, &block)
-      raise ArgumentError if %i[initialize terminate].include?(name.to_sym)
+      raise Error::ReservedMethod       if %i[initialize terminate].include?(name.to_sym)
+      raise Error::AlreadyDefinedMethod if private_instance_methods(false).include?(name.to_sym)
 
       private define_method(name.to_sym, *args, **kwargs, &block)
     end
