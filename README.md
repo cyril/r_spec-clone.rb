@@ -222,7 +222,7 @@ task default: :test
 
 ### Runtime
 
-Benchmark against 100 executions of a file containing one expectation (lower is better).
+Benchmark against [100 executions of a file containing one expectation](https://github.com/cyril/r_spec.rb/blob/main/benchmark/) (lower is better).
 
 | Framework   | Seconds to complete |
 |-------------|---------------------|
