@@ -99,9 +99,11 @@ module RSpec
     # @param name   [String, Symbol] The name of the property.
     # @param block  [Proc] The content of the method to define.
     #
-    # @return [Symbol] A protected method that define the block content.
+    # @return [Symbol] A private method that define the block content.
     def self.let(name, *args, **kwargs, &block)
-      protected define_method(name.to_sym, *args, **kwargs, &block)
+      raise ArgumentError if %i[initialize terminate].include?(name.to_sym)
+
+      private define_method(name.to_sym, *args, **kwargs, &block)
     end
 
     # Sets a user-defined property named {#subject}.
@@ -144,12 +146,7 @@ module RSpec
     # @param block [Proc] The block to define the specs.
     def self.describe(const, &block)
       desc = Sandbox.const_set(random_context_const_name, ::Class.new(self))
-
-      if const.is_a?(::Module)
-        desc.define_method(:described_class) { const }
-        desc.send(:protected, :described_class)
-      end
-
+      desc.let(:described_class) { const } if const.is_a?(::Module)
       desc.instance_eval(&block)
     end
 
@@ -349,7 +346,7 @@ module RSpec
 
     private_class_method :it_example, :its_example, :random_context_const_name
 
-    protected
+    private
 
     def described_class
       raise Error::UndefinedDescribedClass,
