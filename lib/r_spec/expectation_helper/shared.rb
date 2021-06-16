@@ -75,7 +75,7 @@ module RSpec
     #
     # @see https://github.com/fixrb/matchi
     # @see https://github.com/fixrb/matchi-rspec
-    module Base
+    module Shared
       include ::Matchi::Helper
     end
   end

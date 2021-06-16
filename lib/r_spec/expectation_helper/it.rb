@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-require_relative "base"
+require_relative "shared"
 require_relative File.join("..", "expectation_target")
 
 module RSpec
   module ExpectationHelper
     # {RSpec::DSL#it}'s expectation helper module.
     module It
-      include Base
+      include Shared
 
       # Create an expectation for a spec.
       #
