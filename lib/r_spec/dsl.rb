@@ -218,14 +218,14 @@ module RSpec
     def self.it(_name = nil, &block)
       raise ::ArgumentError, "Missing example block" unless block
 
-      i = it_example.new
-      i.instance_eval(&block)
+      example = ::Class.new(self) { include ExpectationHelper::It }.new
+      example.instance_eval(&block)
     rescue ::SystemExit
       Console.source(*block.source_location)
 
       exit false
     ensure
-      i.send(:terminate)
+      example.send(:terminate)
     end
 
     # Use the {.its} method to define a single spec that specifies the actual
@@ -276,19 +276,21 @@ module RSpec
     def self.its(attribute, *args, **kwargs, &block)
       raise ::ArgumentError, "Missing example block" unless block
 
-      i = its_example.new
+      example = ::Class.new(self) do
+        include ExpectationHelper::Its
 
-      i.define_singleton_method(:actual) do
-        subject.public_send(attribute, *args, **kwargs)
-      end
+        define_method(:actual) do
+          subject.public_send(attribute, *args, **kwargs)
+        end
+      end.new
 
-      i.instance_eval(&block)
+      example.instance_eval(&block)
     rescue ::SystemExit
       Console.source(*block.source_location)
 
       exit false
     ensure
-      i.send(:terminate)
+      example.send(:terminate)
     end
 
     # Defines a pending test case.
@@ -319,22 +321,6 @@ module RSpec
     def self.pending(message)
       Console.passed_spec Error::PendingExpectation.result(message)
     end
-
-    # @private
-    #
-    # @return [Class<Dsl>] The class of the example to be tested.
-    def self.it_example
-      ::Class.new(self) { include ExpectationHelper::It }
-    end
-
-    # @private
-    #
-    # @return [Class<Dsl>] The class of the example to be tested.
-    def self.its_example
-      ::Class.new(self) { include ExpectationHelper::Its }
-    end
-
-    private_class_method :it_example, :its_example
 
     private
 
