@@ -5,7 +5,7 @@ require_relative File.join("..", "expectation_target")
 
 module RSpec
   module ExpectationHelper
-    # {RSpec::DSL#it}'s expectation helper module.
+    # {RSpec::Dsl.it}'s expectation helper module.
     module It
       include Shared
 

@@ -10,6 +10,8 @@ module RSpec
     BEFORE_METHOD = :initialize
     AFTER_METHOD  = :terminate
 
+    private_constant :BEFORE_METHOD, :AFTER_METHOD
+
     # Executes the given block before each spec in the current context runs.
     #
     # @example

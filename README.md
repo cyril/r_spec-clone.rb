@@ -51,7 +51,7 @@ Following [RubyGems naming conventions](https://guides.rubygems.org/name-your-ge
 Add this line to your application's Gemfile:
 
 ```ruby
-gem "r_spec", ">= 1.0.0.beta6"
+gem "r_spec", ">= 1.0.0.beta7"
 ```
 
 And then execute:
@@ -226,7 +226,7 @@ Benchmark against [100 executions of a file containing one expectation](https://
 
 | Framework   | Seconds to complete |
 |-------------|---------------------|
-| `r_spec`    | 12.5                |
+| `r_spec`    | 13.0                |
 | `rspec`     | 32.2                |
 | `minitest`  | 17.5                |
 | `test-unit` | 20.5                |
