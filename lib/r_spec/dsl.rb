@@ -7,6 +7,9 @@ require_relative "expectation_helper"
 module RSpec
   # Abstract class for handling the domain-specific language.
   class Dsl
+    BEFORE_METHOD = :initialize
+    AFTER_METHOD  = :terminate
+
     # Executes the given block before each spec in the current context runs.
     #
     # @example
@@ -37,12 +40,12 @@ module RSpec
     #
     # @param block [Proc] The content to execute at the class initialization.
     def self.before(&block)
-      define_method(:initialize) do
+      define_method(BEFORE_METHOD) do
         super()
         instance_eval(&block)
       end
 
-      private :initialize
+      private BEFORE_METHOD
     end
 
     # Executes the given block after each spec in the current context runs.
@@ -64,12 +67,12 @@ module RSpec
     #
     # @param block [Proc] The content to execute at the class initialization.
     def self.after(&block)
-      define_method(:terminate) do
+      define_method(AFTER_METHOD) do
         instance_exec(&block)
         super()
       end
 
-      private :terminate
+      private AFTER_METHOD
     end
 
     # Sets a user-defined property.
@@ -98,7 +101,7 @@ module RSpec
     #
     # @return [Symbol] A private method that define the block content.
     def self.let(name, *args, **kwargs, &block)
-      raise Error::ReservedMethod if %i[initialize terminate].include?(name.to_sym)
+      raise Error::ReservedMethod if [BEFORE_METHOD, AFTER_METHOD].include?(name.to_sym)
 
       private define_method(name, *args, **kwargs, &block)
     end
@@ -225,7 +228,7 @@ module RSpec
 
       exit false
     ensure
-      example.send(:terminate)
+      example.send(AFTER_METHOD)
     end
 
     # Use the {.its} method to define a single spec that specifies the actual
@@ -290,7 +293,7 @@ module RSpec
 
       exit false
     ensure
-      example.send(:terminate)
+      example.send(AFTER_METHOD)
     end
 
     # Defines a pending test case.
@@ -333,6 +336,8 @@ module RSpec
       raise Error::UndefinedSubject, "subject not explicitly defined"
     end
 
-    def terminate; end
+    define_method(AFTER_METHOD) do
+      # do nothing by default
+    end
   end
 end
