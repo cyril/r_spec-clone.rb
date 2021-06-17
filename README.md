@@ -10,12 +10,12 @@ A minimalist __[RSpec](https://github.com/rspec/rspec) clone__ with all the esse
 [![Build Status](https://travis-ci.org/cyril/r_spec.rb.svg?branch=main)](https://travis-ci.org/cyril/r_spec.rb)
 [![Documentation](https://img.shields.io/:yard-docs-38c800.svg)](https://rubydoc.info/gems/r_spec/frames)
 
-## Project Goals
+## Project goals
 
 * Enforce the guidelines and best practices outlined in the community [RSpec style guide](https://rspec.rubystyle.guide/).
 * Provide most of RSpec's DSL to express expected outcomes of a code example without magic power.
 
-## Some Differences
+## Some differences
 
 * Less features and an implementation with much less code complexity.
 * Spec files can also be executed directly with the `ruby` executable.
@@ -28,10 +28,7 @@ A minimalist __[RSpec](https://github.com/rspec/rspec) clone__ with all the esse
 * [Arbitrary helper methods](https://relishapp.com/rspec/rspec-core/v/3-10/docs/helper-methods/arbitrary-helper-methods) are not exposed to examples.
 * The `let` method defines a helper method rather than a memoized helper method.
 * The one-liner `is_expected` syntax also works with block expectations.
-* All `subject` definitions must come _before_ examples.
-* All `before` definitions must come _before_ examples.
-* All `after` definitions must come _before_ examples.
-* All `let` definitions must come _before_ examples.
+* `subject`, `before`, `after` and `let` definitions must come before examples.
 
 ## Important ⚠️
 
@@ -230,7 +227,7 @@ Benchmark against [100 executions of a file containing one expectation](https://
 | `minitest`  | 17.5                |
 | `test-unit` | 20.5                |
 
-## Test Suite
+## Test suite
 
 __RSpec clone__'s specifications are self-described here: [spec/](https://github.com/cyril/r_spec.rb/blob/main/spec/)
 
@@ -240,14 +237,14 @@ __RSpec clone__'s specifications are self-described here: [spec/](https://github
 * Source code: https://github.com/cyril/r_spec.rb
 * Twitter: [https://twitter.com/cyri\_](https://twitter.com/cyri\_)
 
-## Special Thanks ❤️
+## Special thanks ❤️
 
 I would like to thank the whole [RSpec team](https://rspec.info/about/) for all their work.
 It's a great framework and it's a pleasure to work with every day.
 
 Without RSpec, this clone would not have been possible.
 
-## Buy me a Coffee ☕
+## Buy me a coffee ☕
 
 If you like this project please consider making a small donation.
 
