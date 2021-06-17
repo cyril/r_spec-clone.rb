@@ -230,7 +230,7 @@ module RSpec
 
       exit false
     ensure
-      example.send(AFTER_METHOD)
+      example&.send(AFTER_METHOD)
     end
 
     # Use the {.its} method to define a single spec that specifies the actual
@@ -295,7 +295,7 @@ module RSpec
 
       exit false
     ensure
-      example.send(AFTER_METHOD)
+      example&.send(AFTER_METHOD)
     end
 
     # Defines a pending test case.
