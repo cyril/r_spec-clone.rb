@@ -47,7 +47,7 @@ Following [RubyGems naming conventions](https://guides.rubygems.org/name-your-ge
 Add this line to your application's Gemfile:
 
 ```ruby
-gem "r_spec", ">= 1.0.0.beta7"
+gem "r_spec", ">= 1.0.0.beta8"
 ```
 
 And then execute:
