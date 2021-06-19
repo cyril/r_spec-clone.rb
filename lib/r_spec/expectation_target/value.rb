@@ -28,15 +28,19 @@ module RSpec
       # @raise [SystemExit] Terminate execution immediately by calling
       #   `Kernel.exit(false)` with a failure message written to STDERR.
       def absolute_requirement(matcher:, negate:)
-        valid = negate ^ matcher.matches? { @actual }
+        experiment = ::TestTube.pass(
+          @actual,
+          matcher: matcher,
+          negate:  negate
+        )
 
         result(
-          actual:  @actual,
-          error:   nil,
-          got:     valid,
+          experiment.got.equal?(true),
+          actual:  experiment.actual,
+          error:   experiment.error,
+          got:     experiment.got,
           matcher: matcher,
-          negate:  negate,
-          valid:   valid
+          negate:  negate
         )
       end
     end

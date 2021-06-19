@@ -19,8 +19,7 @@ module RSpec
           got:      false,
           matcher:  :raise_exception,
           negate:   true,
-          level:    :SHOULD,
-          valid:    false
+          level:    :SHOULD
         )
       end
     end

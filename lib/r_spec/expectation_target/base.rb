@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "expresenter"
+require "test_tube"
 
 require_relative File.join("..", "console")
 
@@ -50,12 +51,12 @@ module RSpec
 
       protected
 
+      # @param passed   [Boolean]         The high expectation passed or failed.
       # @param actual   [#object_id]      The actual value.
       # @param error    [Exception, nil]  Any raised exception.
       # @param got      [Boolean, nil]    Any returned value.
       # @param matcher  [#matches?]       The matcher.
       # @param negate   [Boolean]         The assertion is positive or negative.
-      # @param valid    [Boolean]         The result of an expectation.
       #
       # @return [nil] Write a message to STDOUT.
       #
@@ -63,14 +64,13 @@ module RSpec
       #   `Kernel.exit(false)` with a failure message written to STDERR.
       #
       # @api private
-      def result(actual:, error:, got:, matcher:, negate:, valid:)
-        Console.passed_spec ::Expresenter.call(valid).with(
+      def result(passed, actual:, error:, got:, matcher:, negate:)
+        Console.passed_spec ::Expresenter.call(passed).with(
           actual:   actual,
           error:    error,
           expected: matcher.expected,
           got:      got,
           negate:   negate,
-          valid:    valid,
           matcher:  matcher.class.to_sym,
           level:    :MUST
         )

@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "spectus/exam"
-
 require_relative "base"
 
 module RSpec
@@ -30,20 +28,20 @@ module RSpec
       # @raise [SystemExit] Terminate execution immediately by calling
       #   `Kernel.exit(false)` with a failure message written to STDERR.
       def absolute_requirement(matcher:, negate:)
-        exam = ::Spectus::Exam.new(
-          callable:  @actual,
+        experiment = ::TestTube.invoke(
+          @actual,
           isolation: false,
-          negate:    negate,
-          matcher:   matcher
+          matcher:   matcher,
+          negate:    negate
         )
 
         result(
-          actual:  exam.actual,
-          error:   exam.exception,
-          got:     exam.got,
+          experiment.got.equal?(true),
+          actual:  experiment.actual,
+          error:   experiment.error,
+          got:     experiment.got,
           matcher: matcher,
-          negate:  negate,
-          valid:   exam.valid?
+          negate:  negate
         )
       end
     end
