@@ -74,4 +74,27 @@ module RSpec
   def self.describe(const, &block)
     Dsl.describe(const, &block)
   end
+
+  # Defines a concrete test case.
+  #
+  # The test is performed by the block supplied to &block.
+  #
+  # @example The integer after 41
+  #   require "r_spec"
+  #
+  #   RSpec.it { expect(41.next).to be 42 }
+  #
+  #   # Output to the console
+  #   #   Success: expected to be 42.
+  #
+  # It is usually used inside a {Dsl.describe} or {Dsl.context} section.
+  #
+  # @param name [String, nil] The name of the spec.
+  # @param block [Proc] An expectation to evaluate.
+  #
+  # @raise (see RSpec::ExpectationTarget::Base#result)
+  # @return (see RSpec::ExpectationTarget::Base#result)
+  def self.it(name = nil, &block)
+    Dsl.it(name, &block)
+  end
 end
