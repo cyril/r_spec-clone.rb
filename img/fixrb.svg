@@ -1,23 +1,21 @@
-<?xml version="1.0"?>
-<svg width="500" height="500" xmlns="http://www.w3.org/2000/svg">
- <title>Fix logo - Love</title>
-
- <g>
-  <title>Layer 1</title>
-  <path stroke="#000" id="svg_21" d="m249.997009,480l0,0c-127.020157,0 -229.997009,-102.97644 -229.997009,-230.002014l0,0c0,-127.026581 102.976852,-229.997986 229.997009,-229.997986l0,0c60.998627,0 119.501801,24.231613 162.634552,67.363663c43.134735,43.137222 67.368439,101.633865 67.368439,162.634323l0,0l0,230.002014l-230.002991,0z" stroke-opacity="null" stroke-width="40" fill="#ffff00"/>
-  <path stroke="#000" fill="#ff0000" stroke-width="20" stroke-opacity="null" d="m128.250015,392.483124l29.000275,-71l28.999695,71l-57.999969,0z" id="svg_10" transform="rotate(180 157.24998474121094,356.9831237792969) "/>
-  <g stroke="null" id="svg_5">
-   <path stroke="#ff5656" fill="#bf0000" stroke-width="0" d="m219,396.168945l100.500946,-64.168945l100.499054,64.168945l-38.387146,103.831055l-124.223755,0l-38.389099,-103.831055l0,0z" id="svg_7"/>
-   <path stroke="#ff5656" fill="#ff0000" stroke-width="0" d="m261.412598,494.458313l58.087555,-154.740417l58.08728,154.740417l-116.174835,0z" id="svg_13"/>
-   <path stroke="#ff5656" fill="#800118" stroke-width="0" d="m226.252167,398.152283l93.258087,-59.401428l93.237579,59.401428l-186.495667,0z" id="svg_14" fill-opacity="0.7"/>
-   <path stroke="#ff5656" fill="#d0000d" stroke-width="0" stroke-opacity="null" d="m297.487549,398.088715l-35.762787,95.871124l-35.761765,-95.871124l71.524551,0z" id="svg_15"/>
-   <path stroke="#ff5656" fill="#ff3003" stroke-width="0" stroke-opacity="null" d="m413.049927,398.088715l-35.762787,95.871063l-35.76178,-95.871063l71.524567,0z" id="svg_17"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+  <title>Fix logo - Love</title>
+  <path d="m250 466c-127 0-230-99.8-230-223 0-123 103-223 230-223 61 0 120 23.5 163 65.3 43.1 41.8 67.4 98.5 67.4 158v223z" fill="#ff0" stroke="#000" stroke-opacity="null" stroke-width="39.4"/>
+  <path d="m186 321-29 71-29-71z" fill="#f00" stroke="#000" stroke-opacity="null" stroke-width="20"/>
+  <g stroke="#ff5656" stroke-width="0">
+    <path d="m219 396 101-64.2 100 64.2-38.4 104h-124z" fill="#bf0000"/>
+    <path d="m261 494 58.1-155 58.1 155z" fill="#f00"/>
+    <path d="m226 398 93.3-59.4 93.2 59.4z" fill="#800118" fill-opacity=".7"/>
+    <path d="m297 398-35.8 95.9-35.8-95.9z" fill="#d0000d" stroke-opacity="null"/>
+    <path d="m413 398-35.8 95.9-35.8-95.9z" fill="#ff3003" stroke-opacity="null"/>
   </g>
-  <g id="svg_23">
-   <ellipse stroke-width="20" ry="80" rx="80" id="svg_16" cy="160" cx="90" stroke-opacity="null" fill="#ffffff" stroke="#000"/>
-   <ellipse stroke-width="20" ry="80" rx="80" id="svg_12" cy="160" cx="224.499992" stroke-opacity="null" fill="#ffffff" stroke="#000"/>
+  <g transform="translate(0 1.55)">
+    <circle cx="90" cy="160" r="80" fill="#fff" stroke="#000" stroke-opacity="null" stroke-width="20"/>
+    <path d="m107 182c18.8-43.9 92.6 0 0 56.4-92.6-56.4-18.8-100 0-56.4z" fill="#f00" stroke="#a91200" stroke-width="6.63"/>
   </g>
-  <path fill="#ff0000" stroke-width="0" stroke-opacity="null" d="m120.000122,179.67067c19.863647,-46.288208 97.692017,0 0,59.513443c-97.69202,-59.513443 -19.864571,-105.801651 0,-59.513443z" id="svg_22" stroke="#000"/>
-  <path fill="#ff0000" stroke-width="0" stroke-opacity="null" d="m254.500122,179.67067c19.863617,-46.288208 97.691986,0 0,59.513443c-97.692032,-59.513443 -19.864578,-105.801651 0,-59.513443z" id="svg_9" stroke="#000"/>
- </g>
+  <g transform="translate(132 1.55)">
+    <circle cx="90" cy="160" r="80" fill="#fff" stroke="#000" stroke-opacity="null" stroke-width="20"/>
+    <path d="m107 182c18.8-43.9 92.6 0 0 56.4-92.6-56.4-18.8-100 0-56.4z" fill="#f00" stroke="#a91200" stroke-width="6.63"/>
+  </g>
 </svg>
