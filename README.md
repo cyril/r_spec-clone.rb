@@ -258,11 +258,10 @@ __RSpec clone__ follows [Semantic Versioning 2.0](https://semver.org/).
 
 The [gem](https://rubygems.org/gems/r_spec) is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
 
-***
+## One more thing
 
-<p>
-  This project is sponsored by:<br />
-  <a href="https://fixrb.dev/"><img
-    src="https://github.com/cyril/r_spec.rb/raw/main/img/fixrb.svg"
-    alt="Testing tools for Ruby" /></a>
-</p>
+Under the hood, __RSpec clone__ is largely animated by [a collection of testing libraries designed to make programmers happy](https://github.com/fixrb/).
+
+It's a living example of what we can do combining small libraries together that can boost the fun of programming.
+
+![Fix testing tools logo for Ruby](https://github.com/cyril/r_spec.rb/raw/main/img/fixrb.svg)
