@@ -234,6 +234,7 @@ __RSpec clone__'s specifications are self-described here: [spec/](https://github
 ## Contact
 
 * Home page: https://r-spec.dev
+* Cheatsheet: https://r-spec.dev/cheatsheet.html
 * Source code: https://github.com/cyril/r_spec.rb
 * Twitter: [https://twitter.com/cyri\_](https://twitter.com/cyri\_)
 
