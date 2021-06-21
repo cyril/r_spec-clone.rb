@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative File.join("..", "spec_helper")
+require_relative File.join("..", "..", "spec_helper")
 
 RSpec.describe RSpec do
   context "when passing the actual value through an argument" do

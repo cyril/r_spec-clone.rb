@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative File.join("..", "spec_helper")
+require_relative File.join("..", "..", "spec_helper")
 
 RSpec.describe Array do
   context "when the subject is missing" do

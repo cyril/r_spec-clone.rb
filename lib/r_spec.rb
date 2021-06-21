@@ -94,7 +94,38 @@ module RSpec
   #
   # @raise (see RSpec::ExpectationTarget::Base#result)
   # @return (see RSpec::ExpectationTarget::Base#result)
+  #
+  # @api public
   def self.it(name = nil, &block)
     Dsl.it(name, &block)
+  end
+
+  # Defines a pending test case.
+  #
+  # `&block` is never evaluated. It can be used to describe behaviour that is
+  # not yet implemented.
+  #
+  # @example
+  #   require "r_spec"
+  #
+  #   RSpec.pending "is implemented but waiting" do
+  #     expect something to be finished
+  #   end
+  #
+  #   RSpec.pending "is not yet implemented and waiting"
+  #
+  #   # Output to the console
+  #   #   Warning: is implemented but waiting.
+  #   #   Warning: is not yet implemented and waiting.
+  #
+  # It is usually used inside a {Dsl.describe} or {Dsl.context} section.
+  #
+  # @param message [String] The reason why the example is pending.
+  #
+  # @return [nil] Write a message to STDOUT.
+  #
+  # @api public
+  def self.pending(message)
+    Dsl.pending(message)
   end
 end

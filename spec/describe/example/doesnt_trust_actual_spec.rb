@@ -1,6 +1,6 @@
 # frozen_string_literal: false
 
-require_relative File.join("..", "spec_helper")
+require_relative File.join("..", "..", "spec_helper")
 
 # rubocop:disable Style/MutableConstant
 APP = "💩"
