@@ -26,11 +26,11 @@ end
 
 ```ruby
 before do
-# before each test
+  # before each test
 end
 
 after do
-# after each test
+  # after each test
 end
 ```
 
