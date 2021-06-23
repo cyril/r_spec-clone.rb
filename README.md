@@ -29,6 +29,7 @@ A minimalist __[RSpec](https://github.com/rspec/rspec) clone__ with all the esse
 * The `let` method defines a helper method rather than a memoized helper method.
 * The one-liner `is_expected` syntax also works with block expectations.
 * `subject`, `before`, `after` and `let` definitions must come before examples.
+* Each `context` runs its tests in _isolation_ to prevent side effects.
 
 ## Important ⚠️
 
@@ -101,7 +102,8 @@ For unit tests, it is recommended to follow the conventions for method names:
 * instance methods are prefixed with `#`, class methods with `.`.
 
 To establish certain contexts — think _empty array_ versus _array with elements_ — the `context` method may be used to communicate this to the reader.
-It has a different name, but behaves exactly like `describe`.
+Its behavior is slightly different from `describe` because each `context` runs its tests in isolation,
+so side effects caused by testing do not propagate out of contexts.
 
 `describe` and `context` take an optional description as argument and a block containing the individual specs or nested groupings.
 

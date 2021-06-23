@@ -19,6 +19,7 @@ Gem::Specification.new do |spec|
     "wiki_uri"          => "https://github.com/cyril/r_spec.rb/wiki"
   }
 
+  spec.add_dependency "aw", "~> 0.1.12"
   spec.add_dependency "expresenter", "~> 1.3.0"
   spec.add_dependency "matchi-rspec", "~> 1.1.2"
   spec.add_dependency "test_tube", "~> 1.1.0"

@@ -1,24 +1,30 @@
-# frozen_string_literal: true
+# frozen_string_literal: false
 
 require_relative File.join("..", "spec_helper")
 
-RSpec.describe RSpec::Dsl do
-  describe ".context" do
-    context "when foo is defined" do
-      let(:foo) { 42 }
+app = "Hello, world!"
 
-      it "is accessible from the context" do
-        expect { foo }.not_to raise_exception NameError
-      end
-    end
+RSpec.describe String do
+  subject do
+    app
+  end
 
-    context "when foo is undefined" do
-      it "is not accessible from the context" do
-        expect { foo }.to raise_exception NameError
-      end
-    end
+  before do
+    subject.gsub!("world", person)
+  end
+
+  context "when Alice is greeted" do
+    let(:person) { "Alice" }
+
+    it { is_expected.to eq "Hello, Alice!" }
+  end
+
+  context "when Bob is greeted" do
+    let(:person) { "Bob" }
+
+    it { is_expected.to eq "Hello, Bob!" }
   end
 end
 
-# Success: expected 42 not to raise exception NameError.
-# Success: undefined local variable or method `foo' for #<#<Class:0x00007feecf1b8558>:0x00007feecf1b8468>.
+# Success: expected to eq "Hello, Alice!".
+# Success: expected to eq "Hello, Bob!".

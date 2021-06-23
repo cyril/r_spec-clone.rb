@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "aw"
+
 require_relative "console"
 require_relative "error"
 require_relative "expectation_helper"
@@ -179,7 +181,7 @@ module RSpec
     # @param block [Proc] The block to define the specs.
     def self.context(_description = nil, &block)
       desc = ::Class.new(self)
-      desc.instance_eval(&block)
+      ::Aw.fork! { desc.instance_eval(&block) }
     end
 
     # Defines a concrete test case.

@@ -2,6 +2,7 @@ PATH
   remote: .
   specs:
     r_spec (1.0.0.beta10)
+      aw (~> 0.1.12)
       expresenter (~> 1.3.0)
       matchi-rspec (~> 1.1.2)
       test_tube (~> 1.1.0)
