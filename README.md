@@ -223,12 +223,7 @@ task default: :test
 
 Benchmark against [100 executions of a file containing one expectation](https://github.com/cyril/r_spec.rb/blob/main/benchmark/) (lower is better).
 
-| Framework   | Seconds to complete |
-|-------------|---------------------|
-| `r_spec`    | 13.0                |
-| `rspec`     | 32.2                |
-| `minitest`  | 17.5                |
-| `test-unit` | 20.5                |
+![Runtime](https://r-spec.dev/benchmark-runtime.png)
 
 ## Test suite
 
