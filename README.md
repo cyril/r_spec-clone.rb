@@ -6,10 +6,11 @@ A minimalist __[RSpec](https://github.com/rspec/rspec) clone__ with all the esse
 
 ## Status
 
-[![Gem Version](https://badge.fury.io/rb/r_spec.svg)](https://badge.fury.io/rb/r_spec)
-[![Documentation](https://img.shields.io/:yard-docs-38c800.svg)](https://rubydoc.info/gems/r_spec/frames)
+[![Version](https://img.shields.io/github/v/tag/cyril/r_spec.rb?include_prereleases&label=Version&logo=github&sort=semver)](https://github.com/cyril/r_spec.rb/releases)
+[![Yard documentation](https://img.shields.io/badge/Yard-documentation-blue.svg?)](https://rubydoc.info/github/cyril/r_spec.rb/main)
 [![CI](https://github.com/cyril/r_spec.rb/workflows/CI/badge.svg?branch=main)](https://github.com/cyril/r_spec.rb/actions?query=workflow%3Aci+branch%3Amain)
 [![RuboCop](https://github.com/cyril/r_spec.rb/workflows/RuboCop/badge.svg?branch=main)](https://github.com/cyril/r_spec.rb/actions?query=workflow%3Arubocop+branch%3Amain)
+[![License](https://img.shields.io/github/license/cyril/r_spec.rb?label=License&logo=github)](https://github.com/cyril/r_spec.rb/raw/main/LICENSE.md)
 
 ## Project goals
 
@@ -256,7 +257,7 @@ __RSpec clone__ follows [Semantic Versioning 2.0](https://semver.org/).
 
 ## License
 
-The [gem](https://rubygems.org/gems/r_spec) is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+The [gem](https://rubygems.org/gems/r_spec) is available as open source under the terms of the [MIT License](https://github.com/cyril/r_spec.rb/raw/main/LICENSE.md).
 
 ## One more thing
 
