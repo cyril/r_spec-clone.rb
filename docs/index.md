@@ -49,7 +49,7 @@ Following [RubyGems naming conventions](https://guides.rubygems.org/name-your-ge
 Add this line to your application's Gemfile:
 
 ```ruby
-gem "r_spec", ">= 1.0.0.beta10"
+gem "r_spec", ">= 1.0.0.beta11"
 ```
 
 And then execute:
@@ -231,9 +231,10 @@ __RSpec clone__'s specifications are self-described here: [spec/](https://github
 
 ## Contact
 
-* Home page: https://r-spec.dev
-* Cheatsheet: https://r-spec.dev/cheatsheet.html
-* Source code: https://github.com/cyril/r_spec.rb
+* Home page: [https://r-spec.dev/](https://r-spec.dev/)
+* Cheatsheet: [https://r-spec.dev/cheatsheet.html](https://r-spec.dev/cheatsheet.html)
+* Source code: [https://github.com/cyril/r_spec.rb](https://github.com/cyril/r_spec.rb)
+* API Doc: [https://rubydoc.info/gems/r_spec](https://rubydoc.info/gems/r_spec)
 * Twitter: [https://twitter.com/cyri\_](https://twitter.com/cyri\_)
 
 ## Special thanks ❤️
