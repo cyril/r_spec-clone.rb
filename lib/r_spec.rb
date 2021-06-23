@@ -92,7 +92,19 @@ module RSpec
     Dsl.context(description, &block)
   end
 
-  # Specs are built with this method.
+  # Defines an example group that describes a unit to be tested.
+  #
+  # @example
+  #   require "r_spec"
+  #
+  #   RSpec.describe String do
+  #     describe "+" do
+  #       it("concats") { expect("foo" + "bar").to eq "foobar" }
+  #     end
+  #   end
+  #
+  #   # Output to the console
+  #   #   Success: expected to eq "foobar".
   #
   # @param const [Module, String] A module to include in block context.
   # @param block [Proc] The block to define the specs.
