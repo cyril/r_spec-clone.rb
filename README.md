@@ -7,8 +7,9 @@ A minimalist __[RSpec](https://github.com/rspec/rspec) clone__ with all the esse
 ## Status
 
 [![Gem Version](https://badge.fury.io/rb/r_spec.svg)](https://badge.fury.io/rb/r_spec)
-[![CI](https://github.com/cyril/r_spec.rb/workflows/ci/badge.svg?branch=main)](https://github.com/cyril/r_spec.rb/actions?query=workflow%3Aci+branch%3Amain)
 [![Documentation](https://img.shields.io/:yard-docs-38c800.svg)](https://rubydoc.info/gems/r_spec/frames)
+[![CI](https://github.com/cyril/r_spec.rb/workflows/CI/badge.svg?branch=main)](https://github.com/cyril/r_spec.rb/actions?query=workflow%3Aci+branch%3Amain)
+[![RuboCop](https://github.com/cyril/r_spec.rb/workflows/RuboCop/badge.svg?branch=main)](https://github.com/cyril/r_spec.rb/actions?query=workflow%3Arubocop+branch%3Amain)
 
 ## Project goals
 
