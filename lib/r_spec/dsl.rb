@@ -157,7 +157,8 @@ module RSpec
     # Defines an example group that establishes a specific context, like _empty
     # array_ versus _array with elements_.
     #
-    # It is functionally equivalent to {.describe}.
+    # Unlike {.describe}, the block is evaluated in isolation in order to scope
+    # possible side effects inside its context.
     #
     # @example
     #   require "r_spec"

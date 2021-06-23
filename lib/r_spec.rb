@@ -65,6 +65,33 @@ require_relative File.join("r_spec", "dsl")
 #
 # @api public
 module RSpec
+  # Defines an example group that establishes a specific context, like _empty
+  # array_ versus _array with elements_.
+  #
+  # Unlike {.describe}, the block is evaluated in isolation in order to scope
+  # possible side effects inside its context.
+  #
+  # @example
+  #   require "r_spec"
+  #
+  #   RSpec.context "when divided by zero" do
+  #     subject { 42 / 0 }
+  #
+  #     it { is_expected.to raise_exception ZeroDivisionError }
+  #   end
+  #
+  #   # Output to the console
+  #   #   Success: divided by 0.
+  #
+  # @param description [String] A description that usually begins with "when",
+  #   "with" or "without".
+  # @param block [Proc] The block to define the specs.
+  #
+  # @api public
+  def self.context(description, &block)
+    Dsl.context(description, &block)
+  end
+
   # Specs are built with this method.
   #
   # @param const [Module, String] A module to include in block context.
