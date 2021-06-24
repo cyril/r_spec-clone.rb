@@ -50,7 +50,7 @@ Following [RubyGems naming conventions](https://guides.rubygems.org/name-your-ge
 Add this line to your application's Gemfile:
 
 ```ruby
-gem "r_spec", ">= 1.0.0.beta11"
+gem "r_spec"
 ```
 
 And then execute:
@@ -62,7 +62,7 @@ bundle
 Or install it yourself as:
 
 ```sh
-gem install r_spec --pre
+gem install r_spec
 ```
 
 ## Overview
