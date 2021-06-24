@@ -180,7 +180,7 @@ module RSpec
     # @param _description [String] A description that usually begins with
     #   "when", "with" or "without".
     # @param block [Proc] The block to define the specs.
-    def self.context(_description = nil, &block)
+    def self.context(_description, &block)
       desc = ::Class.new(self)
       ::Aw.fork! { desc.instance_eval(&block) }
     end
