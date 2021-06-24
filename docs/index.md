@@ -23,7 +23,7 @@ A minimalist __[RSpec](https://github.com/rspec/rspec) clone__ with all the esse
 * Spec files can also be executed directly with the `ruby` executable.
 * There is no option to activate monkey-patching.
 * It does not rely on hacks such as `at_exit` hook to trigger the tests.
-* Built-in matchers do not trust _actual_ and do not send it messages.
+* Built-in matchers [do not trust _actual_](https://asciinema.org/a/29172?autoplay=1&speed=2) and do not send it messages.
 * If no `subject` has been explicitly determined, none is defined.
 * If no described class is set, `described_class` is undefined instead of `nil`.
 * Expectations cannot be added inside a `before` block.
@@ -31,7 +31,7 @@ A minimalist __[RSpec](https://github.com/rspec/rspec) clone__ with all the esse
 * The `let` method defines a helper method rather than a memoized helper method.
 * The one-liner `is_expected` syntax also works with block expectations.
 * `subject`, `before`, `after` and `let` definitions must come before examples.
-* Each `context` runs its tests in _isolation_ to prevent side effects.
+* Each [`context` runs its tests in _isolation_](https://asciinema.org/a/29070?autoplay=1&speed=2) to prevent side effects.
 
 ## Important ⚠️
 
@@ -73,7 +73,7 @@ Inspired by [RSpec](https://rspec.info/), it includes a domain specific language
 
 A basic spec looks something like this:
 
-[![Super DRY example](https://asciinema.org/a/418672.svg)](https://asciinema.org/a/418672?autoplay=1)
+[![RSpec clone demo](https://asciinema.org/a/422210.svg)](https://asciinema.org/a/422210?autoplay=1&speed=2)
 
 ## Usage
 
