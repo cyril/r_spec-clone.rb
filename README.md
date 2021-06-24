@@ -15,7 +15,7 @@ A minimalist __[RSpec](https://github.com/rspec/rspec) clone__ with all the esse
 ## Project goals
 
 * Enforce the guidelines and best practices outlined in the community [RSpec style guide](https://rspec.rubystyle.guide/).
-* Provide most of RSpec's DSL to express expected outcomes of a code example without magic power.
+* Provide most of RSpec's DSL to express expected outcomes of a code example with no magical powers.
 
 ## Some differences
 
