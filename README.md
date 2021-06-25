@@ -6,7 +6,7 @@ A minimalist __[RSpec](https://github.com/rspec/rspec) clone__ with all the esse
 
 ## Status
 
-[![Version](https://img.shields.io/github/v/tag/cyril/r_spec.rb?include_prereleases&label=Version&logo=github&sort=semver)](https://github.com/cyril/r_spec.rb/releases)
+[![Version](https://img.shields.io/github/v/tag/cyril/r_spec.rb?label=Version&logo=github&sort=semver)](https://github.com/cyril/r_spec.rb/releases)
 [![Yard documentation](https://img.shields.io/badge/Yard-documentation-blue.svg?)](https://rubydoc.info/github/cyril/r_spec.rb/main)
 [![CI](https://github.com/cyril/r_spec.rb/workflows/CI/badge.svg?branch=main)](https://github.com/cyril/r_spec.rb/actions?query=workflow%3Aci+branch%3Amain)
 [![RuboCop](https://github.com/cyril/r_spec.rb/workflows/RuboCop/badge.svg?branch=main)](https://github.com/cyril/r_spec.rb/actions?query=workflow%3Arubocop+branch%3Amain)
