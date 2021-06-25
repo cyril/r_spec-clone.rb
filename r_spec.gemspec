@@ -11,6 +11,7 @@ Gem::Specification.new do |spec|
   spec.required_ruby_version = Gem::Requirement.new(">= 2.7.0")
   spec.license      = "MIT"
   spec.files        = Dir["LICENSE.md", "README.md", "lib/**/*"]
+  spec.executables  << 'r_spec'
 
   spec.metadata = {
     "bug_tracker_uri"   => "https://github.com/cyril/r_spec.rb/issues",
