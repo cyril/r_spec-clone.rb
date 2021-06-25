@@ -6,7 +6,7 @@ A minimalist __[RSpec](https://github.com/rspec/rspec) clone__ with all the esse
 
 ## Status
 
-[![Version](https://img.shields.io/github/v/tag/cyril/r_spec.rb?label=Version&logo=github&sort=semver)](https://github.com/cyril/r_spec.rb/releases)
+[![Version](https://img.shields.io/github/v/tag/cyril/r_spec.rb?label=Version&logo=github)](https://github.com/cyril/r_spec.rb/releases)
 [![Yard documentation](https://img.shields.io/badge/Yard-documentation-blue.svg?)](https://rubydoc.info/github/cyril/r_spec.rb/main)
 [![CI](https://github.com/cyril/r_spec.rb/workflows/CI/badge.svg?branch=main)](https://github.com/cyril/r_spec.rb/actions?query=workflow%3Aci+branch%3Amain)
 [![RuboCop](https://github.com/cyril/r_spec.rb/workflows/RuboCop/badge.svg?branch=main)](https://github.com/cyril/r_spec.rb/actions?query=workflow%3Arubocop+branch%3Amain)
@@ -22,7 +22,7 @@ A minimalist __[RSpec](https://github.com/rspec/rspec) clone__ with all the esse
 * Less features and an implementation with much less code complexity.
 * Spec files can also be executed directly with the `ruby` executable.
 * There is no option to activate monkey-patching.
-* It does not rely on hacks such as `at_exit` hook to trigger the tests.
+* It does not rely on hacks such as [`at_exit` hook](https://blog.arkency.com/2013/06/are-we-abusing-at-exit/) to trigger the tests.
 * Built-in matchers [do not trust _actual_](https://asciinema.org/a/29172?autoplay=1&speed=2) and do not send it messages.
 * If no `subject` has been explicitly determined, none is defined.
 * If no described class is set, `described_class` is undefined instead of `nil`.
