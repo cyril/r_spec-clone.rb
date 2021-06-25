@@ -15,8 +15,9 @@ module RSpec
       @target_files = TargetFiles.new(argv).running_files
     end
 
+    # catch flaky specs by shuffling the file list
     def run!
-      target_files.each do |target_file|
+      target_files.shuffle.each do |target_file|
         FileRunnerBasic.new(target_file).run!
       end
     end
