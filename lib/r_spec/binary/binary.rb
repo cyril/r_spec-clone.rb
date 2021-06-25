@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require_relative File.join("target_files")
-require_relative File.join("file_runner_basic")
+require_relative "target_files"
+require_relative "file_runner_basic"
 
 module RSpec
   # Spec file executor
