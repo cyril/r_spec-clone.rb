@@ -11,12 +11,17 @@ Gem::Specification.new do |spec|
   spec.required_ruby_version = Gem::Requirement.new(">= 2.7.0")
   spec.license      = "MIT"
   spec.files        = Dir["LICENSE.md", "README.md", "lib/**/*"]
+  spec.post_install_message = <<~TEXT
+    To avoid confusion with the original RSpec project,
+    the decision was made to rename "r_spec" into "r_spec-clone".
+    Please consider renaming to get the latest version. Happy testing!
+  TEXT
 
   spec.metadata = {
-    "bug_tracker_uri"   => "https://github.com/cyril/r_spec.rb/issues",
+    "bug_tracker_uri"   => "https://github.com/cyril/r_spec-clone.rb/issues",
     "documentation_uri" => "https://rubydoc.info/gems/r_spec",
-    "source_code_uri"   => "https://github.com/cyril/r_spec.rb",
-    "wiki_uri"          => "https://github.com/cyril/r_spec.rb/wiki"
+    "source_code_uri"   => "https://github.com/cyril/r_spec-clone.rb",
+    "wiki_uri"          => "https://github.com/cyril/r_spec-clone.rb/wiki"
   }
 
   spec.add_dependency "aw", "~> 0.1.12"
