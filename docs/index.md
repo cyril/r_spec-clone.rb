@@ -185,7 +185,7 @@ rspec
 
 Many projects use a custom spec helper file, usually named `spec/spec_helper.rb`.
 
-This file is used to require `r_spec-clone` and other includes, like the code from the project needed for every spec file.
+This file is used to require `r_spec/clone` and other includes, like the code from the project needed for every spec file.
 
 ### Rake integration example
 
