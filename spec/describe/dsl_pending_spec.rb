@@ -2,7 +2,7 @@
 
 require_relative File.join("..", "spec_helper")
 
-RSpec.describe RSpec::Dsl do
+RSpec.describe RSpec::Clone::Dsl do
   describe ".pending" do
     pending "is implemented but waiting" do
       # expect something to be finished

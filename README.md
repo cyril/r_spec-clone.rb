@@ -2,11 +2,15 @@
 
 A minimalist __RSpec clone__ with all the essentials.
 
-## Important ⚠️
+![What did you RSpec?](https://github.com/cyril/r_spec-clone.rb/raw/main/img/what-did-you-rspec.jpg)
 
-To avoid confusion with the original [RSpec project](https://rspec.info/),
-the decision was made to rename "`r_spec`" into "`r_spec-clone`".
-Please consider renaming to [get the latest version](https://github.com/cyril/r_spec-clone.rb/). Happy testing!
+## Status
+
+[![Version](https://img.shields.io/github/v/tag/cyril/r_spec-clone.rb?label=Version&logo=github)](https://github.com/cyril/r_spec-clone.rb/releases)
+[![Yard documentation](https://img.shields.io/badge/Yard-documentation-blue.svg?)](https://rubydoc.info/github/cyril/r_spec-clone.rb/main)
+[![CI](https://github.com/cyril/r_spec-clone.rb/workflows/CI/badge.svg?branch=main)](https://github.com/cyril/r_spec-clone.rb/actions?query=workflow%3Aci+branch%3Amain)
+[![RuboCop](https://github.com/cyril/r_spec-clone.rb/workflows/RuboCop/badge.svg?branch=main)](https://github.com/cyril/r_spec-clone.rb/actions?query=workflow%3Arubocop+branch%3Amain)
+[![License](https://img.shields.io/github/license/cyril/r_spec-clone.rb?label=License&logo=github)](https://github.com/cyril/r_spec-clone.rb/raw/main/LICENSE.md)
 
 ## Project goals
 
@@ -35,7 +39,7 @@ Please consider renaming to [get the latest version](https://github.com/cyril/r_
 Add this line to your application's Gemfile:
 
 ```ruby
-gem "r_spec"
+gem "r_spec-clone", ">= 1.0.0.rc1"
 ```
 
 And then execute:
@@ -47,7 +51,7 @@ bundle
 Or install it yourself as:
 
 ```sh
-gem install r_spec
+gem install r_spec-clone --pre
 ```
 
 ## Overview
@@ -64,7 +68,7 @@ A basic spec looks something like this:
 
 ### Anatomy of a spec file
 
-To use the `RSpec` module and its DSL, you need to add `require "r_spec"` to your spec files.
+To use the `RSpec` module and its DSL, you need to add `require "r_spec/clone"` to your spec files.
 Many projects use a custom spec helper which organizes these includes.
 
 Concrete test cases are defined in `it` blocks.
@@ -181,7 +185,7 @@ rspec
 
 Many projects use a custom spec helper file, usually named `spec/spec_helper.rb`.
 
-This file is used to require `r_spec` and other includes, like the code from the project needed for every spec file.
+This file is used to require `r_spec/clone` and other includes, like the code from the project needed for every spec file.
 
 ### Rake integration example
 
@@ -222,7 +226,7 @@ __RSpec clone__'s specifications are self-described here: [spec/](https://github
 * Home page: [https://r-spec.dev/](https://r-spec.dev/)
 * Cheatsheet: [https://clone.r-spec.dev/cheatsheet.html](https://clone.r-spec.dev/cheatsheet.html)
 * Source code: [https://github.com/cyril/r_spec-clone.rb](https://github.com/cyril/r_spec-clone.rb)
-* API Doc: [https://rubydoc.info/gems/r_spec](https://rubydoc.info/gems/r_spec)
+* API Doc: [https://rubydoc.info/gems/r_spec-clone](https://rubydoc.info/gems/r_spec-clone)
 * Twitter: [https://twitter.com/cyri\_](https://twitter.com/cyri\_)
 
 ## Special thanks ❤️
@@ -244,7 +248,7 @@ __RSpec clone__ follows [Semantic Versioning 2.0](https://semver.org/).
 
 ## License
 
-The [gem](https://rubygems.org/gems/r_spec) is available as open source under the terms of the [MIT License](https://github.com/cyril/r_spec-clone.rb/raw/main/LICENSE.md).
+The [gem](https://rubygems.org/gems/r_spec-clone) is available as open source under the terms of the [MIT License](https://github.com/cyril/r_spec-clone.rb/raw/main/LICENSE.md).
 
 ## One more thing
 

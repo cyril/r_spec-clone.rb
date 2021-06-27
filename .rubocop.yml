@@ -34,14 +34,15 @@ Layout/LineLength:
 
 Naming/PredicateName:
   Exclude:
-    - lib/r_spec/expectation_helper/it.rb
-    - lib/r_spec/expectation_helper/its.rb
+    - lib/r_spec/clone/expectation_helper/it.rb
+    - lib/r_spec/clone/expectation_helper/its.rb
 
 Metrics/ParameterLists:
   Max: 6
 
 Naming/FileName:
   Exclude:
+    - benchmark/r_spec-clone.rb
     - benchmark/test-unit.rb
     - CODE_OF_CONDUCT.md
     - LICENSE.md

@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require_relative File.join("r_spec", "dsl")
+require_relative File.join("r_spec", "clone", "dsl")
 
 # Top level namespace for the RSpec clone.
 #
 # @example The true from the false
-#   require "r_spec"
+#   require "r_spec/clone"
 #
 #   RSpec.describe "The true from the false" do
 #     it { expect(false).not_to be true }
@@ -15,7 +15,7 @@ require_relative File.join("r_spec", "dsl")
 #   #   Success: expected false not to be true.
 #
 # @example The basic behavior of arrays
-#   require "r_spec"
+#   require "r_spec/clone"
 #
 #   RSpec.describe Array do
 #     describe "#size" do
@@ -41,7 +41,7 @@ require_relative File.join("r_spec", "dsl")
 #   #   Success: expected false to be false.
 #
 # @example An inherited definition of let
-#   require "r_spec"
+#   require "r_spec/clone"
 #
 #   RSpec.describe Integer do
 #     let(:answer) { 42 }
@@ -72,7 +72,7 @@ module RSpec
   # possible side effects inside its context.
   #
   # @example
-  #   require "r_spec"
+  #   require "r_spec/clone"
   #
   #   RSpec.context "when divided by zero" do
   #     subject { 42 / 0 }
@@ -89,13 +89,13 @@ module RSpec
   #
   # @api public
   def self.context(description, &block)
-    Dsl.context(description, &block)
+    Clone::Dsl.context(description, &block)
   end
 
   # Defines an example group that describes a unit to be tested.
   #
   # @example
-  #   require "r_spec"
+  #   require "r_spec/clone"
   #
   #   RSpec.describe String do
   #     describe "+" do
@@ -111,7 +111,7 @@ module RSpec
   #
   # @api public
   def self.describe(const, &block)
-    Dsl.describe(const, &block)
+    Clone::Dsl.describe(const, &block)
   end
 
   # Defines a concrete test case.
@@ -119,14 +119,15 @@ module RSpec
   # The test is performed by the block supplied to &block.
   #
   # @example The integer after 41
-  #   require "r_spec"
+  #   require "r_spec/clone"
   #
   #   RSpec.it { expect(41.next).to be 42 }
   #
   #   # Output to the console
   #   #   Success: expected to be 42.
   #
-  # It is usually used inside a {Dsl.describe} or {Dsl.context} section.
+  # It is usually used inside a {Clone::Dsl.describe} or {Clone::Dsl.context}
+  # section.
   #
   # @param name [String, nil] The name of the spec.
   # @param block [Proc] An expectation to evaluate.
@@ -136,7 +137,7 @@ module RSpec
   #
   # @api public
   def self.it(name = nil, &block)
-    Dsl.it(name, &block)
+    Clone::Dsl.it(name, &block)
   end
 
   # Defines a pending test case.
@@ -145,7 +146,7 @@ module RSpec
   # not yet implemented.
   #
   # @example
-  #   require "r_spec"
+  #   require "r_spec/clone"
   #
   #   RSpec.pending "is implemented but waiting" do
   #     expect something to be finished
@@ -157,7 +158,8 @@ module RSpec
   #   #   Warning: is implemented but waiting.
   #   #   Warning: is not yet implemented and waiting.
   #
-  # It is usually used inside a {Dsl.describe} or {Dsl.context} section.
+  # It is usually used inside a {Clone::Dsl.describe} or {Clone::Dsl.context}
+  # section.
   #
   # @param message [String] The reason why the example is pending.
   #
@@ -165,6 +167,6 @@ module RSpec
   #
   # @api public
   def self.pending(message)
-    Dsl.pending(message)
+    Clone::Dsl.pending(message)
   end
 end

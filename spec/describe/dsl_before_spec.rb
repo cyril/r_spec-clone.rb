@@ -3,7 +3,7 @@
 require_relative File.join("..", "spec_helper")
 
 # rubocop:disable RSpec/InstanceVariable
-RSpec.describe RSpec::Dsl do
+RSpec.describe RSpec::Clone::Dsl do
   describe ".before" do
     before do
       @number = 0

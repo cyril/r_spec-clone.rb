@@ -2,10 +2,10 @@
 
 require_relative File.join("..", "spec_helper")
 
-RSpec.describe RSpec::Dsl do
+RSpec.describe RSpec::Clone::Dsl do
   describe ".its" do
-    its(:+, 1) { is_expected.to raise_exception ::RSpec::Error::UndefinedSubject }
-    its(:length) { is_expected.to raise_exception ::RSpec::Error::UndefinedSubject }
+    its(:+, 1) { is_expected.to raise_exception ::RSpec::Clone::Error::UndefinedSubject }
+    its(:length) { is_expected.to raise_exception ::RSpec::Clone::Error::UndefinedSubject }
 
     context "when a subject is defined" do
       subject do

@@ -18,7 +18,7 @@ Style/AsciiComments:
   Exclude:
     - '**/*.md'
     - '**/*.markdown'
-    - 'lib/r_spec/expectation_helper/shared.rb'
+    - 'lib/r_spec/clone/expectation_helper/shared.rb'
 
 # Offense count: 1
 # Cop supports --auto-correct.
