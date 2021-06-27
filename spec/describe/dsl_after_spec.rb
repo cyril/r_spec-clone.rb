@@ -2,7 +2,7 @@
 
 require_relative File.join("..", "spec_helper")
 
-RSpec.describe RSpec::Dsl do
+RSpec.describe RSpec::Clone::Dsl do
   describe ".after" do
     before do
       print "Hello, "

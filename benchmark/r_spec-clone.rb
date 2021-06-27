@@ -4,7 +4,7 @@ require "benchmark"
 
 time = Benchmark.measure do
   100.times do
-    `ruby r_spec/code.rb`
+    `ruby r_spec-clone/code.rb`
 
     # @example
     #   Success: expected false not to be true.

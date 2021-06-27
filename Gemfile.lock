@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    r_spec (1.0.1)
+    r_spec-clone (1.0.0.rc1)
       aw (~> 0.1.12)
       expresenter (~> 1.3.0)
       matchi-rspec (~> 1.1.2)
@@ -66,7 +66,7 @@ PLATFORMS
 
 DEPENDENCIES
   bundler
-  r_spec!
+  r_spec-clone!
   rake
   rubocop-md
   rubocop-performance

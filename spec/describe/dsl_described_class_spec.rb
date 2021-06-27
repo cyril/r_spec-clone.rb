@@ -4,9 +4,9 @@ require_relative File.join("..", "spec_helper")
 
 # rubocop:disable RSpec/DescribedClass:
 RSpec.describe "RSpec clone" do
-  describe RSpec::Dsl do
+  describe RSpec::Clone::Dsl do
     describe "#described_class" do
-      it { expect(described_class).to be(RSpec::Dsl) }
+      it { expect(described_class).to be(RSpec::Clone::Dsl) }
 
       describe Integer do
         it { expect(described_class).to be(Integer) }
@@ -15,7 +15,7 @@ RSpec.describe "RSpec clone" do
   end
 
   it "does not implement the method" do
-    expect { described_class }.to raise_exception(::RSpec::Error::UndefinedDescribedClass)
+    expect { described_class }.to raise_exception(::RSpec::Clone::Error::UndefinedDescribedClass)
   end
 end
 # rubocop:enable RSpec/DescribedClass:
