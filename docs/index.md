@@ -107,8 +107,6 @@ To establish certain contexts — think _empty array_ versus _array with element
 Its behavior is slightly different from `describe` because each `context` runs its tests in isolation,
 so side effects caused by testing do not propagate out of contexts.
 
-`describe` and `context` take an optional description as argument and a block containing the individual specs or nested groupings.
-
 ### Expectations
 
 Expectations define if the value being tested (_actual_) matches a certain value or specific criteria.
