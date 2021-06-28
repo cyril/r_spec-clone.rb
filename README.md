@@ -39,7 +39,7 @@ A minimalist __RSpec clone__ with all the essentials.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem "r_spec-clone", ">= 1.0.2"
+gem "r_spec-clone"
 ```
 
 And then execute:
