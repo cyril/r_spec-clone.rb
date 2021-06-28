@@ -215,7 +215,7 @@ bundle exec rake
 
 Benchmark against [100 executions of a file containing one expectation](https://github.com/cyril/r_spec-clone.rb/blob/main/benchmark/) (lower is better).
 
-![Runtime](https://clone.r-spec.dev/benchmark-runtime.png)
+![Runtime](https://r-spec.dev/benchmark-runtime.png)
 
 ## Test suite
 
@@ -224,7 +224,7 @@ __RSpec clone__'s specifications are self-described here: [spec/](https://github
 ## Contact
 
 * Home page: [https://r-spec.dev/](https://r-spec.dev/)
-* Cheatsheet: [https://clone.r-spec.dev/cheatsheet.html](https://clone.r-spec.dev/cheatsheet.html)
+* Cheatsheet: [https://r-spec.dev/cheatsheet.html](https://r-spec.dev/cheatsheet.html)
 * Source code: [https://github.com/cyril/r_spec-clone.rb](https://github.com/cyril/r_spec-clone.rb)
 * API Doc: [https://rubydoc.info/gems/r_spec-clone](https://rubydoc.info/gems/r_spec-clone)
 * Twitter: [https://twitter.com/cyri\_](https://twitter.com/cyri\_)

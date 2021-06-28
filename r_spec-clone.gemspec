@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.email        = "contact@cyril.email"
   spec.summary      = "A minimalist RSpec clone"
   spec.description  = "#{spec.summary} with all the essentials."
-  spec.homepage     = "https://clone.r-spec.dev/"
+  spec.homepage     = "https://r-spec.dev/"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.7.0")
   spec.license      = "MIT"
   spec.files        = Dir["LICENSE.md", "README.md", "lib/**/*"]
