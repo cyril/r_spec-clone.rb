@@ -220,8 +220,6 @@ module RSpec
       # @raise (see ExpectationTarget::Base#result)
       # @return (see ExpectationTarget::Base#result)
       def self.it(_name = nil, &block)
-        raise ::ArgumentError, "Missing example block" unless block
-
         example = ::Class.new(self) { include ExpectationHelper::It }.new
         fork! { run(example, &block) }
       end
@@ -272,8 +270,6 @@ module RSpec
       # @raise (see ExpectationTarget::Base#result)
       # @return (see ExpectationTarget::Base#result)
       def self.its(attribute, *args, **kwargs, &block)
-        raise ::ArgumentError, "Missing example block" unless block
-
         example = ::Class.new(self) do
           include ExpectationHelper::Its
 
