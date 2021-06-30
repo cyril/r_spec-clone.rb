@@ -32,7 +32,7 @@ A minimalist __RSpec clone__ with all the essentials.
 * The `let` method defines a helper method rather than a memoized helper method.
 * The one-liner `is_expected` syntax also works with block expectations.
 * `subject`, `before`, `after` and `let` definitions must come before examples.
-* Groups and examples are executed in subprocesses in the order they are defined.
+* Each example is run in a subprocess to isolate side effects.
 
 ## Installation
 
