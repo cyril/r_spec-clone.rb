@@ -30,7 +30,7 @@ Layout/HashAlignment:
 Layout/LineLength:
   Exclude:
     - README.md
-    - benchmark/test-unit.rb
+    - benchmark/**/*
 
 Naming/PredicateName:
   Exclude:
@@ -42,8 +42,8 @@ Metrics/ParameterLists:
 
 Naming/FileName:
   Exclude:
-    - benchmark/r_spec-clone.rb
-    - benchmark/test-unit.rb
+    - benchmark/**/*r_spec-clone*
+    - benchmark/**/*test-unit*
     - CODE_OF_CONDUCT.md
     - LICENSE.md
     - README.md
@@ -58,3 +58,6 @@ RSpec/NestedGroups:
 RSpec/FilePath:
   CustomTransform:
     RSpec: r_spec
+
+  Exclude:
+    - benchmark/**/*

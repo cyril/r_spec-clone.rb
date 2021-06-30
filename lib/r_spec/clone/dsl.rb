@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "aw"
-
 require_relative "console"
 require_relative "error"
 require_relative "expectation_helper"
@@ -152,14 +150,11 @@ module RSpec
       def self.describe(const, &block)
         desc = ::Class.new(self)
         desc.let(:described_class) { const } if const.is_a?(::Module)
-        desc.instance_eval(&block)
+        fork! { desc.instance_eval(&block) }
       end
 
-      # Defines an example group that establishes a specific context, like _empty
-      # array_ versus _array with elements_.
-      #
-      # Unlike {.describe}, the block is evaluated in isolation in order to scope
-      # possible side effects inside its context.
+      # Defines an example group that establishes a specific context, like
+      # _empty array_ versus _array with elements_.
       #
       # @example
       #   require "r_spec/clone"
@@ -183,7 +178,7 @@ module RSpec
       # @param block [Proc] The block to define the specs.
       def self.context(_description, &block)
         desc = ::Class.new(self)
-        ::Aw.fork! { desc.instance_eval(&block) }
+        fork! { desc.instance_eval(&block) }
       end
 
       # Defines a concrete test case.
@@ -228,13 +223,7 @@ module RSpec
         raise ::ArgumentError, "Missing example block" unless block
 
         example = ::Class.new(self) { include ExpectationHelper::It }.new
-        example.instance_eval(&block)
-      rescue ::SystemExit
-        Console.source(*block.source_location)
-
-        exit false
-      ensure
-        example&.send(AFTER_METHOD)
+        fork! { run(example, &block) }
       end
 
       # Use the {.its} method to define a single spec that specifies the actual
@@ -293,19 +282,13 @@ module RSpec
           end
         end.new
 
-        example.instance_eval(&block)
-      rescue ::SystemExit
-        Console.source(*block.source_location)
-
-        exit false
-      ensure
-        example&.send(AFTER_METHOD)
+        fork! { run(example, &block) }
       end
 
       # Defines a pending test case.
       #
-      # `&block` is never evaluated. It can be used to describe behaviour that is
-      # not yet implemented.
+      # `&block` is never evaluated. It can be used to describe behaviour that
+      # is not yet implemented.
       #
       # @example
       #   require "r_spec/clone"
@@ -330,6 +313,27 @@ module RSpec
       def self.pending(message)
         Console.passed_spec Error::PendingExpectation.result(message)
       end
+
+      # Creates a subprocess and runs the block inside.
+      def self.fork!(&block)
+        pid = fork(&block)
+        thread = ::Process.detach(pid)
+        exitstatus = thread.join.value.exitstatus
+        exit false unless exitstatus.zero?
+      end
+
+      # Execution of specifications.
+      def self.run(example, &block)
+        example.instance_eval(&block)
+      rescue ::SystemExit
+        Console.source(*block.source_location)
+
+        exit false
+      ensure
+        example&.send(AFTER_METHOD)
+      end
+
+      private_class_method :fork!, :run
 
       private
 

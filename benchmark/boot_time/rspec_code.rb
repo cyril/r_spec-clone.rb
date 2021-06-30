@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "rspec"
+require "rspec/autorun"
 
 # An RSpec spec with 1 expectation.
 RSpec.describe "The true from the false" do

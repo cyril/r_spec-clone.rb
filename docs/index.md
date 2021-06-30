@@ -32,7 +32,7 @@ A minimalist __RSpec clone__ with all the essentials.
 * The `let` method defines a helper method rather than a memoized helper method.
 * The one-liner `is_expected` syntax also works with block expectations.
 * `subject`, `before`, `after` and `let` definitions must come before examples.
-* Each [`context` runs its tests in _isolation_](https://asciinema.org/a/29070?autoplay=1&speed=2) to prevent side effects.
+* Groups and examples are _executed in subprocesses_ the order they are defined.
 
 ## Installation
 
@@ -93,8 +93,6 @@ For unit tests, it is recommended to follow the conventions for method names:
 * instance methods are prefixed with `#`, class methods with `.`.
 
 To establish certain contexts — think _empty array_ versus _array with elements_ — the `context` method may be used to communicate this to the reader.
-Its behavior is slightly different from `describe` because each `context` runs its tests in isolation,
-so side effects caused by testing do not propagate out of contexts.
 
 ### Expectations
 
