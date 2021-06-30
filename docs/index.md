@@ -209,11 +209,11 @@ bundle exec rake
 
 ## Performance
 
-### Runtime
+### Boot time
 
 Benchmark against [100 executions of a file containing one expectation](https://github.com/cyril/r_spec-clone.rb/blob/main/benchmark/) (lower is better).
 
-![Runtime](https://r-spec.dev/benchmark-runtime.png)
+![Runtime](https://r-spec.dev/benchmark-boot-time.svg)
 
 ## Test suite
 
