@@ -14,16 +14,15 @@ A minimalist __RSpec clone__ with all the essentials.
 
 ## Project goals
 
-1. Keep a low level of code complexity and ensure thread safety.
-2. The interface must translate into atomic and simple Ruby objects.
+1. Keep a low level of code complexity, avoid false negatives and false positives.
+2. Translate specification documents into atomic and thread safe Ruby objects.
 3. Avoid overloading the interface with additional alternative syntaxes.
 4. Provide most of RSpec's DSL to express expected outcomes of a code example.
 
 ## Some differences
 
-* Spec files can be executed with `ruby` directly.
 * There is no option to activate monkey-patching.
-* It does not rely on hacks such as [`at_exit` hook](https://blog.arkency.com/2013/06/are-we-abusing-at-exit/) to trigger the tests.
+* It does not rely on [hacks such as `at_exit` hook](https://blog.arkency.com/2013/06/are-we-abusing-at-exit/) to trigger the tests.
 * Built-in matchers [do not trust _actual_](https://asciinema.org/a/29172?autoplay=1&speed=2) and do not send it messages.
 * If no `subject` has been explicitly determined, none is defined.
 * If no described class is set, `described_class` is undefined instead of `nil`.
@@ -211,9 +210,15 @@ bundle exec rake
 
 ### Boot time
 
-Benchmark against [100 executions of a file containing one expectation](https://github.com/cyril/r_spec-clone.rb/blob/main/benchmark/) (lower is better).
+Benchmark against [100 executions of a file containing 1 expectation](https://github.com/cyril/r_spec-clone.rb/blob/main/benchmark/boot_time/) (lower is better).
 
-![Runtime](https://r-spec.dev/benchmark-boot-time.svg)
+![Boot time](https://r-spec.dev/benchmark-boot-time.svg)
+
+### Run time
+
+Benchmark against [1 execution of a file containing 10000 expectations](https://github.com/cyril/r_spec-clone.rb/blob/main/benchmark/run_time/) (lower is better).
+
+![Run time](https://r-spec.dev/benchmark-run-time.svg)
 
 ## Test suite
 
