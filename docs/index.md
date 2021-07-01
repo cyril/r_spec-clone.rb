@@ -31,7 +31,7 @@ A minimalist __RSpec clone__ with all the essentials.
 * The `let` method defines a helper method rather than a memoized helper method.
 * The one-liner `is_expected` syntax also works with block expectations.
 * `subject`, `before`, `after` and `let` definitions must come before examples.
-* Each example is run in a subprocess to isolate side effects.
+* Runs much faster.
 
 ## Installation
 
@@ -78,6 +78,8 @@ Test cases that have been defined or outlined but are not yet expected to work c
 An `it` block contains an example that should invoke the code to be tested and define what is expected of it.
 Each example can contain multiple expectations, but it should test only one specific behaviour.
 
+The `its` method can also be used to generate a nested example group with a single example that specifies the expected value (or the block expectations) of an attribute of the subject using `is_expected`.
+
 To express an expectation, wrap an object or block in `expect`, call `to` (or `not_to`) and pass it a matcher object.
 If the expectation is met, code execution continues.
 Otherwise the example has _failed_ and other code will not be executed.
@@ -92,6 +94,13 @@ For unit tests, it is recommended to follow the conventions for method names:
 * instance methods are prefixed with `#`, class methods with `.`.
 
 To establish certain contexts — think _empty array_ versus _array with elements_ — the `context` method may be used to communicate this to the reader.
+
+Finally, each block of code can be run in a subprocess to isolate side effects with the equivalent methods:
+
+* `describe!`
+* `context!`
+* `it!`
+* `its!`
 
 ### Expectations
 
@@ -216,7 +225,7 @@ Benchmark against [100 executions of a file containing 1 expectation](https://gi
 
 ### Run time
 
-Benchmark against [1 execution of a file containing 10000 expectations](https://github.com/cyril/r_spec-clone.rb/blob/main/benchmark/run_time/) (lower is better).
+Benchmark against [1 execution of a file containing 1,000,000 expectations](https://github.com/cyril/r_spec-clone.rb/blob/main/benchmark/run_time/) (lower is better).
 
 ![Run time](https://r-spec.dev/benchmark-run-time.svg)
 
