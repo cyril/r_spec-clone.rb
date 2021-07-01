@@ -150,8 +150,18 @@ module RSpec
       def self.describe(const, &block)
         desc = ::Class.new(self)
         desc.let(:described_class) { const } if const.is_a?(::Module)
-        fork! { desc.instance_eval(&block) }
+        desc.instance_eval(&block)
       end
+
+      # :nocov:
+      #
+      # Runs a describe example group in a subprocess to isolate side effects.
+      #
+      # @param (see #describe)
+      def self.describe!(const, &block)
+        fork! { describe(const, &block) }
+      end
+      # :nocov:
 
       # Defines an example group that establishes a specific context, like
       # _empty array_ versus _array with elements_.
@@ -178,8 +188,18 @@ module RSpec
       # @param block [Proc] The block to define the specs.
       def self.context(_description, &block)
         desc = ::Class.new(self)
-        fork! { desc.instance_eval(&block) }
+        desc.instance_eval(&block)
       end
+
+      # :nocov:
+      #
+      # Runs a context example group in a subprocess to isolate side effects.
+      #
+      # @param (see #context)
+      def self.context!(description, &block)
+        fork! { context(description, &block) }
+      end
+      # :nocov:
 
       # Defines a concrete test case.
       #
@@ -221,12 +241,24 @@ module RSpec
       # @return (see ExpectationTarget::Base#result)
       def self.it(_name = nil, &block)
         example = ::Class.new(self) { include ExpectationHelper::It }.new
-        fork! { run(example, &block) }
+        run(example, &block)
       end
 
-      # Use the {.its} method to define a single spec that specifies the actual
-      # value of an attribute of the subject using
-      # {ExpectationHelper::Its#is_expected}.
+      # :nocov:
+      #
+      # Runs a concrete test case in a subprocess to isolate side effects.
+      #
+      # @param (see #it)
+      #
+      # @raise (see ExpectationTarget::Base#result)
+      # @return (see ExpectationTarget::Base#result)
+      def self.it!(name = nil, &block)
+        fork! { it(name, &block) }
+      end
+      # :nocov:
+
+      # Defines a single concrete test case that specifies the actual value of
+      # an attribute of the subject using {ExpectationHelper::Its#is_expected}.
       #
       # @example The integer after 41
       #   require "r_spec/clone"
@@ -256,7 +288,7 @@ module RSpec
       #   require "r_spec/clone"
       #
       #   RSpec.describe Integer do
-      #     its(:boom) { is_expected.to raise_exception RSpec::Error::UndefinedSubject }
+      #     its(:boom) { is_expected.to raise_exception RSpec::Clone::Error::UndefinedSubject }
       #   end
       #
       #   # Output to the console
@@ -278,8 +310,22 @@ module RSpec
           end
         end.new
 
-        fork! { run(example, &block) }
+        run(example, &block)
       end
+
+      # :nocov:
+      #
+      # Runs a single concrete test case in a subprocess to isolate side
+      # effects.
+      #
+      # @param (see #it)
+      #
+      # @raise (see ExpectationTarget::Base#result)
+      # @return (see ExpectationTarget::Base#result)
+      def self.its!(attribute, *args, **kwargs, &block)
+        fork! { its(attribute, *args, **kwargs, &block) }
+      end
+      # :nocov:
 
       # Defines a pending test case.
       #

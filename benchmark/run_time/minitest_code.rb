@@ -2,9 +2,9 @@
 
 require "minitest/autorun"
 
-# A minitest spec with 10 000 expectations.
+# A minitest spec with 1,000,000 expectations.
 class Test < Minitest::Test
-  10_000.times do |i|
+  1_000_000.times do |i|
     define_method("test_n#{i}") do
       refute_equal(false, true)
     end

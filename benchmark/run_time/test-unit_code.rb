@@ -2,9 +2,9 @@
 
 require "test/unit"
 
-# A test-unit spec with 10 000 expectations.
+# A test-unit spec with 1,000,000 expectations.
 class TestMethod < Test::Unit::TestCase
-  10_000.times do |i|
+  1_000_000.times do |i|
     define_method("test_n#{i}") do
       refute_equal(false, true)
     end

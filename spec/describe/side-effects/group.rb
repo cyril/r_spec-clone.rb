@@ -2,19 +2,28 @@
 
 require_relative File.join("..", "..", "spec_helper")
 
-$app2 = "foo"
+$app = "foo"
 
-RSpec.describe "Side effects per group" do
-  context "different" do
+RSpec.describe "Scoped side effects" do
+  describe! "#gsub!" do
     before do
-      $app2.gsub!("f", "F")
+      $app.gsub!("o", "0")
     end
 
-    it { expect($app2).to eq "Foo" }
+    context! "when limited to the context" do
+      before do
+        $app.gsub!("f", "F")
+      end
+
+      it { expect($app).to eq "F00" }
+    end
+
+    it { expect($app).to eq "f00" }
   end
 
-  it { expect($app2).to eq "foo" }
+  it { expect($app).to eq "foo" }
 end
 
-# Success: expected to eq "Foo".
+# Success: expected to eq "F00".
+# Success: expected to eq "f00".
 # Success: expected to eq "foo".
