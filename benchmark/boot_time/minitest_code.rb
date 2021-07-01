@@ -5,6 +5,6 @@ require "minitest/autorun"
 # A minitest spec with 1 expectation.
 class Test < Minitest::Test
   def test_method
-    refute_equal(false, true)
+    refute_equal(true, false)
   end
 end

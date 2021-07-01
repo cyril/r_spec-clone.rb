@@ -6,7 +6,7 @@ require "minitest/autorun"
 class Test < Minitest::Test
   1_000_000.times do |i|
     define_method("test_n#{i}") do
-      refute_equal(false, true)
+      refute_equal(true, false)
     end
   end
 end
