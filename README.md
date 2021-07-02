@@ -238,6 +238,7 @@ __RSpec clone__'s specifications are self-described here: [spec/](https://github
 
 * Home page: [https://r-spec.dev/](https://r-spec.dev/)
 * Cheatsheet: [https://r-spec.dev/cheatsheet.html](https://r-spec.dev/cheatsheet.html)
+* Blog post: [https://batman.buzz/introducing-a-new-rspec-850d48c0f901](https://batman.buzz/introducing-a-new-rspec-850d48c0f901)
 * Source code: [https://github.com/cyril/r_spec-clone.rb](https://github.com/cyril/r_spec-clone.rb)
 * API Doc: [https://rubydoc.info/gems/r_spec-clone](https://rubydoc.info/gems/r_spec-clone)
 * Twitter: [https://twitter.com/cyri\_](https://twitter.com/cyri\_)
