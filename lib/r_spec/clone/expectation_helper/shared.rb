@@ -9,8 +9,8 @@ module RSpec
     module ExpectationHelper
       # Abstract expectation helper base module.
       #
-      # This module defines a number of methods to create expectations, which are
-      # automatically included into examples.
+      # This module defines a number of methods to create expectations, which
+      # are automatically included into examples.
       #
       # It also includes a collection of expectation matchers 🤹
       #

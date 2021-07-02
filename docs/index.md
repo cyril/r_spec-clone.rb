@@ -24,7 +24,7 @@ A minimalist __RSpec clone__ with all the essentials.
 
 * There is no option to activate monkey-patching.
 * It does not rely on [hacks such as `at_exit` hook](https://blog.arkency.com/2013/06/are-we-abusing-at-exit/) to trigger the tests.
-* Built-in matchers [do not trust _actual_](https://asciinema.org/a/29172?autoplay=1&speed=2) and do not send it messages.
+* Malicious _actual values_ cannot [hack results](https://asciinema.org/a/423547?autoplay=1&speed=2).
 * If no `subject` has been explicitly determined, none is defined.
 * If no described class is set, `described_class` is undefined instead of `nil`.
 * Expectations cannot be added inside a `before` block.
