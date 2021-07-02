@@ -23,3 +23,6 @@ RSpec.describe Integer do
     end
   end
 end
+
+# Success: divided by 0.
+# Success: expected 42 not to raise exception ZeroDivisionError.

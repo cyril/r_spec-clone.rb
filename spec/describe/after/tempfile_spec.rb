@@ -30,3 +30,7 @@ RSpec.describe Tempfile do
 
   its(:read) { is_expected.to eq "" }
 end
+
+# Success: expected to eq "".
+# Success: expected to eq "hello world".
+# Success: expected to eq "".

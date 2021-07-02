@@ -41,3 +41,13 @@ RSpec.describe RSpec do
     it { is_expected.to be_false }
   end
 end
+
+# Failure: expected 4 to be 42.
+# spec/describe/example/raise_unless_passed_spec.rb:9
+# Success: expected false to be false.
+# Failure: expected 4 to be 42.
+# spec/describe/example/raise_unless_passed_spec.rb:21
+# Success: expected false to be false.
+# Failure: expected 4 to be 42.
+# spec/describe/example/raise_unless_passed_spec.rb:35
+# Success: expected false to be false.

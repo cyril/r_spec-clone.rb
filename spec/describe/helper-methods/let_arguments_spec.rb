@@ -25,3 +25,6 @@ RSpec.describe Integer do
     end
   end
 end
+
+# Success: expected to be 8.
+# Success: expected to be 42.

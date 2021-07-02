@@ -21,3 +21,5 @@ RSpec.describe String do
 
   it { is_expected.not_to be "🌈" }
 end
+
+# Success: expected "💩" not to be "🌈".

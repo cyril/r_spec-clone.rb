@@ -31,3 +31,12 @@ RSpec.describe RSpec::Clone::Dsl do
     end
   end
 end
+
+# Success: subject not explicitly defined.
+# Success: subject not explicitly defined.
+# Success: expected to be 42.
+# Success: undefined method `length' for 41:Integer.
+# Success: no implicit conversion of Integer into String.
+# Success: expected to be 3.
+# Success: no implicit conversion of Integer into String.
+# Success: expected to be 3.

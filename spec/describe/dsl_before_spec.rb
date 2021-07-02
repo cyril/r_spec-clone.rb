@@ -21,3 +21,6 @@ RSpec.describe RSpec::Clone::Dsl do
   end
 end
 # rubocop:enable RSpec/InstanceVariable
+
+# Success: expected to be 1.
+# Success: expected to be 0.

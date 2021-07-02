@@ -18,3 +18,7 @@ RSpec.describe Integer do
     expect(count).to be(1)
   end
 end
+
+# Success: expected to be 1.
+# Success: expected to be 2.
+# Success: expected to be 1.

@@ -9,3 +9,5 @@ RSpec.describe Array do
     expect(subject).to eq([1, 2, 3])
   end
 end
+
+# Success: expected to eq [1, 2, 3].

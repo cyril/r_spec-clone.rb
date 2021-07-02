@@ -11,3 +11,6 @@ RSpec.describe RSpec::Clone::Dsl do
     pending "is not yet implemented and waiting"
   end
 end
+
+# Warning: is implemented but waiting.
+# Warning: is not yet implemented and waiting.

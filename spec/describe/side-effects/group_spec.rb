@@ -5,12 +5,13 @@ require_relative File.join("..", "..", "spec_helper")
 $app = "foo"
 
 RSpec.describe "Scoped side effects" do
+  # :nocov:
   describe! "#gsub!" do
     before do
       $app.gsub!("o", "0")
     end
 
-    context! "when limited to the context" do
+    context! "when isolated in the context" do
       before do
         $app.gsub!("f", "F")
       end
@@ -20,6 +21,7 @@ RSpec.describe "Scoped side effects" do
 
     it { expect($app).to eq "f00" }
   end
+  # :nocov:
 
   it { expect($app).to eq "foo" }
 end

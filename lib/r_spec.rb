@@ -88,13 +88,35 @@ module RSpec
   end
 
   # :nocov:
-  #
+
   # Runs a context example group in a subprocess to isolate side effects.
+  #
+  # @example
+  #   str = "Hello, world!"
+  #
+  #   require "r_spec"
+  #
+  #   RSpec.context! "when a string becomes uppercase" do
+  #     before do
+  #       str.upcase!
+  #     end
+  #
+  #     it { expect(str).to eq "HELLO, WORLD!" }
+  #   end
+  #
+  #   # Output to the console
+  #   #   Success: expected to eq "HELLO, WORLD!".
+  #
+  #   RSpec.it { expect(str).to eq "Hello, world!" }
+  #
+  #   # Output to the console
+  #   #   Success: expected to eq "Hello, world!".
   #
   # @param (see #context)
   def self.context!(description, &block)
     Clone::Dsl.context!(description, &block)
   end
+
   # :nocov:
 
   # Defines an example group that describes a unit to be tested.
@@ -103,8 +125,20 @@ module RSpec
   #   require "r_spec"
   #
   #   RSpec.describe String do
+  #     it { expect(described_class).to be String }
+  #   end
+  #
+  #   # Output to the console
+  #   #   Success: expected to be String.
+  #
+  # @example
+  #   require "r_spec"
+  #
+  #   RSpec.describe String do
+  #     let(:foo) { "foo" }
+  #
   #     describe "+" do
-  #       it("concats") { expect("foo" + "bar").to eq "foobar" }
+  #       it("concats") { expect(foo + "bar").to eq "foobar" }
   #     end
   #   end
   #
@@ -118,13 +152,35 @@ module RSpec
   end
 
   # :nocov:
-  #
+
   # Runs a describe example group in a subprocess to isolate side effects.
+  #
+  # @example
+  #   $app = "foo"
+  #
+  #   require "r_spec"
+  #
+  #   RSpec.describe! "#gsub!" do
+  #     before do
+  #       $app.gsub!("o", "0")
+  #     end
+  #
+  #     it { expect($app).to eq "f00" }
+  #   end
+  #
+  #   # Output to the console
+  #   #   Success: expected to eq "f00".
+  #
+  #   RSpec.it { expect($app).to eq "foo" }
+  #
+  #   # Output to the console
+  #   #   Success: expected to eq "foo".
   #
   # @param (see #describe)
   def self.describe!(const, &block)
     Clone::Dsl.describe!(const, &block)
   end
+
   # :nocov:
 
   # Defines a concrete test case.
@@ -152,11 +208,13 @@ module RSpec
   end
 
   # :nocov:
-  #
+
   # Runs a concrete test case in a subprocess to isolate side effects.
   #
   # @example
   #   app = "Hello, world!"
+  #
+  #   require "r_spec"
   #
   #   RSpec.it! { expect(app.gsub!("world", "Alice")).to eq "Hello, Alice!" }
   #
@@ -175,6 +233,7 @@ module RSpec
   def self.it!(name = nil, &block)
     Clone::Dsl.it!(name, &block)
   end
+
   # :nocov:
 
   # Defines a pending test case.

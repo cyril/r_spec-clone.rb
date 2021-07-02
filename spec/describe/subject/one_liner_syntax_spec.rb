@@ -13,3 +13,6 @@ RSpec.describe Array do
     it { is_expected.to eq([1, 2, 3]) }
   end
 end
+
+# Success: subject not explicitly defined.
+# Success: expected to eq [1, 2, 3].

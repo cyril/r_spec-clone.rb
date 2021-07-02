@@ -19,3 +19,7 @@ RSpec.describe "RSpec clone" do
   end
 end
 # rubocop:enable RSpec/DescribedClass:
+
+# Success: expected to be RSpec::Clone::Dsl.
+# Success: expected to be Integer.
+# Success: the first argument to at least one example group must be a module.

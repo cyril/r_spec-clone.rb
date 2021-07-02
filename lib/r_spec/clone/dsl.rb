@@ -126,10 +126,18 @@ module RSpec
       #     it "has the prescribed elements" do
       #       expect(subject).to eq([1, 2, 3])
       #     end
+      #
+      #     it { is_expected.to be_an_instance_of described_class }
+      #
+      #     its(:size) { is_expected.to be 3 }
+      #     its(:downcase) { is_expected.to raise_exception NoMethodError }
       #   end
       #
       #   # Output to the console
       #   #   Success: expected to eq [1, 2, 3].
+      #   #   Success: expected [1, 2, 3] to be an instance of Array.
+      #   #   Success: expected to be 3.
+      #   #   Success: undefined method `downcase' for [1, 2, 3]:Array.
       #
       # @param block [Proc] The subject to set.
       # @return [Symbol] A {#subject} method that define the block content.
@@ -164,8 +172,38 @@ module RSpec
       end
 
       # :nocov:
-      #
+
       # Runs a describe example group in a subprocess to isolate side effects.
+      #
+      # @example
+      #   $app = "foo"
+      #
+      #   require "r_spec"
+      #
+      #   RSpec.describe "Scoped side effects" do
+      #     describe! "#gsub!" do
+      #       before do
+      #         $app.gsub!("o", "0")
+      #       end
+      #
+      #       context! "when isolated in the context" do
+      #         before do
+      #           $app.gsub!("f", "F")
+      #         end
+      #
+      #         it { expect($app).to eq "F00" }
+      #       end
+      #
+      #       it { expect($app).to eq "f00" }
+      #     end
+      #
+      #     it { expect($app).to eq "foo" }
+      #   end
+      #
+      #   # Output to the console
+      #   #   Success: expected to eq "F00".
+      #   #   Success: expected to eq "f00".
+      #   #   Success: expected to eq "foo".
       #
       # @param (see #describe)
       #
@@ -173,6 +211,7 @@ module RSpec
       def self.describe!(const, &block)
         fork! { describe(const, &block) }
       end
+
       # :nocov:
 
       # Defines an example group that establishes a specific context, like
@@ -206,8 +245,39 @@ module RSpec
       end
 
       # :nocov:
-      #
+
       # Runs a context example group in a subprocess to isolate side effects.
+      #
+      # @example
+      #   app = "Hello, world!"
+      #
+      #   require "r_spec"
+      #
+      #   RSpec.describe String do
+      #     subject do
+      #       app
+      #     end
+      #
+      #     before do
+      #       subject.gsub!("world", person)
+      #     end
+      #
+      #     context! "when Alice is greeted" do
+      #       let(:person) { "Alice" }
+      #
+      #       it { is_expected.to eq "Hello, Alice!" }
+      #     end
+      #
+      #     context! "when Bob is greeted" do
+      #       let(:person) { "Bob" }
+      #
+      #       it { is_expected.to eq "Hello, Bob!" }
+      #     end
+      #   end
+      #
+      #   # Output to the console
+      #   #   Success: expected to eq "Hello, Alice!".
+      #   #   Success: expected to eq "Hello, Bob!".
       #
       # @param (see #context)
       #
@@ -215,6 +285,7 @@ module RSpec
       def self.context!(description, &block)
         fork! { context(description, &block) }
       end
+
       # :nocov:
 
       # Defines a concrete test case.
@@ -263,8 +334,29 @@ module RSpec
       end
 
       # :nocov:
-      #
+
       # Runs a concrete test case in a subprocess to isolate side effects.
+      #
+      # @example
+      #   app = "foo"
+      #
+      #   require "r_spec"
+      #
+      #   RSpec.describe "Side effects per example" do
+      #     it! "runs the example in isolation" do
+      #       expect { app.gsub!("foo", "bar") }.to eq "bar"
+      #       expect(app).to eq "bar"
+      #     end
+      #
+      #     it "runs the example" do
+      #       expect(app).to eq "foo"
+      #     end
+      #   end
+      #
+      #   # Output to the console
+      #   #   Success: expected to eq "bar".
+      #   #   Success: expected to eq "bar".
+      #   #   Success: expected to eq "foo".
       #
       # @param (see #it)
       #
@@ -275,6 +367,7 @@ module RSpec
       def self.it!(name = nil, &block)
         fork! { it(name, &block) }
       end
+
       # :nocov:
 
       # Defines a single concrete test case that specifies the actual value of
@@ -308,7 +401,7 @@ module RSpec
       #   require "r_spec"
       #
       #   RSpec.describe Integer do
-      #     its(:boom) { is_expected.to raise_exception RSpec::Clone::Error::UndefinedSubject }
+      #     its(:abs) { is_expected.to raise_exception RSpec::Clone::Error::UndefinedSubject }
       #   end
       #
       #   # Output to the console
@@ -336,9 +429,30 @@ module RSpec
       end
 
       # :nocov:
-      #
+
       # Runs a single concrete test case in a subprocess to isolate side
       # effects.
+      #
+      # @example
+      #   app = "foo"
+      #
+      #   require "r_spec"
+      #
+      #   RSpec.describe "Isolated side effect" do
+      #     subject do
+      #       app
+      #     end
+      #
+      #     its!(:upcase) { is_expected.to eq "FOO" }
+      #
+      #     it "tests the original value" do
+      #       expect(app).to eq "foo"
+      #     end
+      #   end
+      #
+      #   # Output to the console
+      #   #   Success: expected to eq "FOO".
+      #   #   Success: expected to eq "foo".
       #
       # @param (see #it)
       #
@@ -349,6 +463,7 @@ module RSpec
       def self.its!(attribute, *args, **kwargs, &block)
         fork! { its(attribute, *args, **kwargs, &block) }
       end
+
       # :nocov:
 
       # Defines a pending test case.
@@ -403,11 +518,14 @@ module RSpec
 
       private
 
+      # If the first argument to a {.describe} definition is a class (or a
+      # module), this method will be overridden to return it.
       def described_class
         raise Error::UndefinedDescribedClass,
               "the first argument to at least one example group must be a module"
       end
 
+      # If a subject is defined, this method will be overridden to return it.
       def subject
         raise Error::UndefinedSubject, "subject not explicitly defined"
       end
