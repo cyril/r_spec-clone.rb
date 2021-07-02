@@ -329,8 +329,7 @@ module RSpec
       #
       # @api public
       def self.it(_name = nil, &block)
-        example = ::Class.new(self) { include ExpectationHelper::It }.new
-        run(example, &block)
+        run(example_without_attribute.new, &block)
       end
 
       # :nocov:
@@ -417,15 +416,7 @@ module RSpec
       #
       # @api public
       def self.its(attribute, *args, **kwargs, &block)
-        example = ::Class.new(self) do
-          include ExpectationHelper::Its
-
-          define_method(:actual) do
-            subject.public_send(attribute, *args, **kwargs)
-          end
-        end.new
-
-        run(example, &block)
+        run(example_with_attribute(attribute, *args, **kwargs).new, &block)
       end
 
       # :nocov:
@@ -495,6 +486,25 @@ module RSpec
         Console.passed_spec Error::PendingExpectation.result(message)
       end
 
+      # Example class for concrete test case.
+      def self.example_without_attribute
+        ::Class.new(self) do
+          prepend ExpectationHelper::It
+        end
+      end
+
+      # Example class for concrete test case that specifies the actual value of
+      # an attribute of the subject.
+      def self.example_with_attribute(attribute, *args, **kwargs)
+        ::Class.new(self) do
+          prepend ExpectationHelper::Its
+
+          define_method(:actual) do
+            subject.public_send(attribute, *args, **kwargs)
+          end
+        end
+      end
+
       # Creates a subprocess and runs the block inside.
       def self.fork!(&block)
         pid = fork(&block)
@@ -514,7 +524,7 @@ module RSpec
         example&.send(AFTER_METHOD)
       end
 
-      private_class_method :fork!, :run
+      private_class_method :example_without_attribute, :example_with_attribute, :fork!, :run
 
       private
 
