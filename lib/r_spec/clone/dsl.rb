@@ -16,7 +16,7 @@ module RSpec
       # Executes the given block before each spec in the current context runs.
       #
       # @example
-      #   require "r_spec/clone"
+      #   require "r_spec"
       #
       #   RSpec.describe Integer do
       #     before do
@@ -54,7 +54,7 @@ module RSpec
       # Executes the given block after each spec in the current context runs.
       #
       # @example
-      #   require "r_spec/clone"
+      #   require "r_spec"
       #
       #   RSpec.describe Integer do
       #     after do
@@ -81,7 +81,7 @@ module RSpec
       # Sets a user-defined property.
       #
       # @example
-      #   require "r_spec/clone"
+      #   require "r_spec"
       #
       #   RSpec.describe "Name stories" do
       #     let(:name) { "Bob" }
@@ -112,7 +112,7 @@ module RSpec
       # Sets a user-defined property named {#subject}.
       #
       # @example
-      #   require "r_spec/clone"
+      #   require "r_spec"
       #
       #   RSpec.describe Array do
       #     subject { [1, 2, 3] }
@@ -134,7 +134,7 @@ module RSpec
       # Defines an example group that describes a unit to be tested.
       #
       # @example
-      #   require "r_spec/clone"
+      #   require "r_spec"
       #
       #   RSpec.describe String do
       #     describe "+" do
@@ -167,7 +167,7 @@ module RSpec
       # _empty array_ versus _array with elements_.
       #
       # @example
-      #   require "r_spec/clone"
+      #   require "r_spec"
       #
       #   RSpec.describe "web resource" do
       #     context "when resource is not found" do
@@ -206,7 +206,7 @@ module RSpec
       # The test is performed by the block supplied to `&block`.
       #
       # @example The integer after 41
-      #   require "r_spec/clone"
+      #   require "r_spec"
       #
       #   RSpec.describe Integer do
       #     it { expect(41.next).to be 42 }
@@ -216,7 +216,7 @@ module RSpec
       #   #   Success: expected to be 42.
       #
       # @example A division by zero
-      #   require "r_spec/clone"
+      #   require "r_spec"
       #
       #   RSpec.describe Integer do
       #     subject { 41 }
@@ -261,7 +261,7 @@ module RSpec
       # an attribute of the subject using {ExpectationHelper::Its#is_expected}.
       #
       # @example The integer after 41
-      #   require "r_spec/clone"
+      #   require "r_spec"
       #
       #   RSpec.describe Integer do
       #     subject { 41 }
@@ -273,7 +273,7 @@ module RSpec
       #   #   Success: expected to be 42.
       #
       # @example A division by zero
-      #   require "r_spec/clone"
+      #   require "r_spec"
       #
       #   RSpec.describe Integer do
       #     subject { 41 }
@@ -285,7 +285,7 @@ module RSpec
       #   #   Success: divided by 0.
       #
       # @example A spec without subject
-      #   require "r_spec/clone"
+      #   require "r_spec"
       #
       #   RSpec.describe Integer do
       #     its(:boom) { is_expected.to raise_exception RSpec::Clone::Error::UndefinedSubject }
@@ -333,7 +333,7 @@ module RSpec
       # is not yet implemented.
       #
       # @example
-      #   require "r_spec/clone"
+      #   require "r_spec"
       #
       #   RSpec.describe "an example" do
       #     pending "is implemented but waiting" do

@@ -67,7 +67,7 @@ A basic spec looks something like this:
 
 ### Anatomy of a spec file
 
-To use the `RSpec` module and its DSL, you need to add `require "r_spec/clone"` to your spec files.
+To use the `RSpec` module and its DSL, you need to add `require "r_spec"` to your spec files.
 Many projects use a custom spec helper which organizes these includes.
 
 Concrete test cases are defined in `it` blocks.

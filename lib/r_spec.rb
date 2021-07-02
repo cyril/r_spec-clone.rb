@@ -5,7 +5,7 @@ require_relative File.join("r_spec", "clone", "dsl")
 # Top level namespace for the RSpec clone.
 #
 # @example The true from the false
-#   require "r_spec/clone"
+#   require "r_spec"
 #
 #   RSpec.describe "The true from the false" do
 #     it { expect(false).not_to be true }
@@ -15,7 +15,7 @@ require_relative File.join("r_spec", "clone", "dsl")
 #   #   Success: expected false not to be true.
 #
 # @example The basic behavior of arrays
-#   require "r_spec/clone"
+#   require "r_spec"
 #
 #   RSpec.describe Array do
 #     describe "#size" do
@@ -41,7 +41,7 @@ require_relative File.join("r_spec", "clone", "dsl")
 #   #   Success: expected false to be false.
 #
 # @example An inherited definition of let
-#   require "r_spec/clone"
+#   require "r_spec"
 #
 #   RSpec.describe Integer do
 #     let(:answer) { 42 }
@@ -69,7 +69,7 @@ module RSpec
   # array_ versus _array with elements_.
   #
   # @example
-  #   require "r_spec/clone"
+  #   require "r_spec"
   #
   #   RSpec.context "when divided by zero" do
   #     subject { 42 / 0 }
@@ -102,7 +102,7 @@ module RSpec
   # Defines an example group that describes a unit to be tested.
   #
   # @example
-  #   require "r_spec/clone"
+  #   require "r_spec"
   #
   #   RSpec.describe String do
   #     describe "+" do
@@ -136,7 +136,7 @@ module RSpec
   # The test is performed by the block supplied to &block.
   #
   # @example The integer after 41
-  #   require "r_spec/clone"
+  #   require "r_spec"
   #
   #   RSpec.it { expect(41.next).to be 42 }
   #
@@ -189,7 +189,7 @@ module RSpec
   # not yet implemented.
   #
   # @example
-  #   require "r_spec/clone"
+  #   require "r_spec"
   #
   #   RSpec.pending "is implemented but waiting" do
   #     expect something to be finished
