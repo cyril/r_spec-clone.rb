@@ -42,6 +42,8 @@ module RSpec
       #   #   Success: expected to be 123.
       #
       # @param block [Proc] The content to execute at the class initialization.
+      #
+      # @api public
       def self.before(&block)
         define_method(BEFORE_METHOD) do
           super()
@@ -69,6 +71,8 @@ module RSpec
       #   #   That is the answer to everything.
       #
       # @param block [Proc] The content to execute at the class initialization.
+      #
+      # @api public
       def self.after(&block)
         define_method(AFTER_METHOD) do
           instance_exec(&block)
@@ -103,6 +107,8 @@ module RSpec
       # @param block  [Proc] The content of the method to define.
       #
       # @return [Symbol] A private method that define the block content.
+      #
+      # @api public
       def self.let(name, *args, **kwargs, &block)
         raise Error::ReservedMethod if [BEFORE_METHOD, AFTER_METHOD].include?(name.to_sym)
 
@@ -127,6 +133,8 @@ module RSpec
       #
       # @param block [Proc] The subject to set.
       # @return [Symbol] A {#subject} method that define the block content.
+      #
+      # @api public
       def self.subject(&block)
         let(__method__, &block)
       end
@@ -147,6 +155,8 @@ module RSpec
       #
       # @param const [Module, String] A module to include in block context.
       # @param block [Proc] The block to define the specs.
+      #
+      # @api public
       def self.describe(const, &block)
         desc = ::Class.new(self)
         desc.let(:described_class) { const } if const.is_a?(::Module)
@@ -158,6 +168,8 @@ module RSpec
       # Runs a describe example group in a subprocess to isolate side effects.
       #
       # @param (see #describe)
+      #
+      # @api public
       def self.describe!(const, &block)
         fork! { describe(const, &block) }
       end
@@ -186,6 +198,8 @@ module RSpec
       # @param _description [String] A description that usually begins with
       #   "when", "with" or "without".
       # @param block [Proc] The block to define the specs.
+      #
+      # @api public
       def self.context(_description, &block)
         desc = ::Class.new(self)
         desc.instance_eval(&block)
@@ -196,6 +210,8 @@ module RSpec
       # Runs a context example group in a subprocess to isolate side effects.
       #
       # @param (see #context)
+      #
+      # @api public
       def self.context!(description, &block)
         fork! { context(description, &block) }
       end
@@ -239,6 +255,8 @@ module RSpec
       #
       # @raise (see ExpectationTarget::Base#result)
       # @return (see ExpectationTarget::Base#result)
+      #
+      # @api public
       def self.it(_name = nil, &block)
         example = ::Class.new(self) { include ExpectationHelper::It }.new
         run(example, &block)
@@ -252,6 +270,8 @@ module RSpec
       #
       # @raise (see ExpectationTarget::Base#result)
       # @return (see ExpectationTarget::Base#result)
+      #
+      # @api public
       def self.it!(name = nil, &block)
         fork! { it(name, &block) }
       end
@@ -301,6 +321,8 @@ module RSpec
       #
       # @raise (see ExpectationTarget::Base#result)
       # @return (see ExpectationTarget::Base#result)
+      #
+      # @api public
       def self.its(attribute, *args, **kwargs, &block)
         example = ::Class.new(self) do
           include ExpectationHelper::Its
@@ -322,6 +344,8 @@ module RSpec
       #
       # @raise (see ExpectationTarget::Base#result)
       # @return (see ExpectationTarget::Base#result)
+      #
+      # @api public
       def self.its!(attribute, *args, **kwargs, &block)
         fork! { its(attribute, *args, **kwargs, &block) }
       end

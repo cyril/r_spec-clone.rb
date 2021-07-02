@@ -63,8 +63,6 @@ module RSpec
         #
         # @raise [SystemExit] Terminate execution immediately by calling
         #   `Kernel.exit(false)` with a failure message written to STDERR.
-        #
-        # @api private
         def result(passed, actual:, error:, got:, matcher:, negate:)
           Console.passed_spec ::Expresenter.call(passed).with(
             actual:   actual,

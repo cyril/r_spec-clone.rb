@@ -6,8 +6,6 @@ module RSpec
   module Clone
     module Error
       # Exception for pending expectations.
-      #
-      # @api private
       class PendingExpectation < ::RuntimeError
         # @param message [String] The not implemented expectation description.
         #

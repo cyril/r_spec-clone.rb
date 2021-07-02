@@ -6,8 +6,6 @@ require_relative File.join("expectation_target", "value")
 module RSpec
   module Clone
     # Wraps the target of an expectation.
-    #
-    # @api private
     module ExpectationTarget
       # @param undefined_value A sentinel value to be able to tell when the user
       #   did not pass an argument. We can't use `nil` for that because `nil` is a

@@ -8,8 +8,6 @@ require_relative File.join("error", "undefined_subject")
 module RSpec
   module Clone
     # Namespace for exceptions.
-    #
-    # @api private
     module Error
     end
   end

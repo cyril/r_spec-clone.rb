@@ -3,8 +3,6 @@
 module RSpec
   module Clone
     # Send log messages to the console.
-    #
-    # @api private
     module Console
       # @param report [::Expresenter::Pass] Passed expectation result presenter.
       #

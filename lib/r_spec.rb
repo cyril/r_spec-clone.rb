@@ -83,8 +83,6 @@ module RSpec
   # @param description [String] A description that usually begins with "when",
   #   "with" or "without".
   # @param block [Proc] The block to define the specs.
-  #
-  # @api public
   def self.context(description, &block)
     Clone::Dsl.context(description, &block)
   end
@@ -115,8 +113,6 @@ module RSpec
   #
   # @param const [Module, String] A module to include in block context.
   # @param block [Proc] The block to define the specs.
-  #
-  # @api public
   def self.describe(const, &block)
     Clone::Dsl.describe(const, &block)
   end
@@ -151,8 +147,6 @@ module RSpec
   #
   # @raise (see RSpec::ExpectationTarget::Base#result)
   # @return (see RSpec::ExpectationTarget::Base#result)
-  #
-  # @api public
   def self.it(name = nil, &block)
     Clone::Dsl.it(name, &block)
   end
@@ -207,8 +201,6 @@ module RSpec
   # @param message [String] The reason why the example is pending.
   #
   # @return [nil] Write a message to STDOUT.
-  #
-  # @api public
   def self.pending(message)
     Clone::Dsl.pending(message)
   end
