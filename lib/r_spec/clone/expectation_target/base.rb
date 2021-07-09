@@ -10,8 +10,8 @@ module RSpec
     module ExpectationTarget
       # Abstract expectation target base class.
       #
-      # @note `RSpec::ExpectationTarget::Base` is not intended to be instantiated
-      #   directly by users. Use `expect` instead.
+      # @note `RSpec::Clone::ExpectationTarget::Base` is not intended to be
+      #   instantiated directly by users. Use `expect` instead.
       class Base
         # Instantiate a new expectation target.
         #

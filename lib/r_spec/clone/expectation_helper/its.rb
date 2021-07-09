@@ -15,7 +15,7 @@ module RSpec
         # @return [Block] The wrapped target of an expectation.
         #
         # @example
-        #   is_expected # => #<RSpec::ExpectationTarget::Block:0x00007fb6b8263df8 @callable=#<Proc:0x00007fb6b8263e20>>
+        #   is_expected # => #<RSpec::Clone::ExpectationTarget::Block:0x00007f @callable=#<Proc:0x00007f>>
         #
         # @api public
         def is_expected

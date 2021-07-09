@@ -16,8 +16,8 @@ module RSpec
       #   # with `not_to`
       #   expect(actual).not_to be(4)
       #
-      # @note `RSpec::ExpectationTarget::Value` is not intended to be instantiated
-      #   directly by users. Use `expect` instead.
+      # @note `RSpec::Clone::ExpectationTarget::Value` is not intended to be
+      #   instantiated directly by users. Use `expect` instead.
       class Value < Base
         protected
 

@@ -18,8 +18,8 @@ module RSpec
         # @return [Block, Value] The wrapped target of an expectation.
         #
         # @example
-        #   expect("foo") # => #<RSpec::ExpectationTarget::Value:0x00007fb6b823 @actual="foo">
-        #   expect { Boom } # => #<RSpec::ExpectationTarget::Block:0x00007fb6b826 @callable=#<Proc:0x00007fb6b826>>
+        #   expect("foo") # => #<RSpec::Clone::ExpectationTarget::Value:0x00007f @actual="foo">
+        #   expect { Boom } # => #<RSpec::Clone::ExpectationTarget::Block:0x00007f @callable=#<Proc:0x00007f>>
         #
         # @api public
         def expect(value = self.class.superclass, &block)
@@ -31,7 +31,7 @@ module RSpec
         # @return [Block] The wrapped target of an expectation.
         #
         # @example
-        #   is_expected # => #<RSpec::ExpectationTarget::Block:0x00007fb6b8263df8 @callable=#<Proc:0x00007fb6b8263e20>>
+        #   is_expected # => #<RSpec::Clone::ExpectationTarget::Block:0x00007fb6b8 @callable=#<Proc:0x00007fb6b8>>
         #
         # @api public
         def is_expected

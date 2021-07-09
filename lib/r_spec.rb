@@ -201,8 +201,8 @@ module RSpec
   # @param name [String, nil] The name of the spec.
   # @param block [Proc] An expectation to evaluate.
   #
-  # @raise (see RSpec::ExpectationTarget::Base#result)
-  # @return (see RSpec::ExpectationTarget::Base#result)
+  # @raise (see RSpec::Clone::ExpectationTarget::Base#result)
+  # @return (see RSpec::Clone::ExpectationTarget::Base#result)
   def self.it(name = nil, &block)
     Clone::Dsl.it(name, &block)
   end
