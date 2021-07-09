@@ -96,7 +96,7 @@ For unit tests, it is recommended to follow the conventions for method names:
 
 To establish certain contexts — think _empty array_ versus _array with elements_ — the `context` method may be used to communicate this to the reader.
 
-To execute unit tests while isolating side effects in a sub-process, a declined method can be used: `describe!`, `context!`, `it!`, `its!`. Here is an example:
+To execute unit tests while isolating side effects in a sub-process, declined methods can be used: `describe!`, `context!`, `it!`, `its!`. Here is an example:
 
 ```ruby
 app = "foo"
