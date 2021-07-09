@@ -2,8 +2,6 @@
 
 require "matchi/rspec"
 
-require_relative File.join("..", "error", "pending_expectation")
-
 module RSpec
   module Clone
     module ExpectationHelper
