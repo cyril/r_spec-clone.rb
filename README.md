@@ -96,12 +96,26 @@ For unit tests, it is recommended to follow the conventions for method names:
 
 To establish certain contexts — think _empty array_ versus _array with elements_ — the `context` method may be used to communicate this to the reader.
 
-Finally, each block of code can be run in a subprocess to isolate side effects with the equivalent methods:
+To execute unit tests while isolating side effects in a sub-process, a declined method can be used: `describe!`, `context!`, `it!`, `its!`. Here is an example:
 
-* `describe!`
-* `context!`
-* `it!`
-* `its!`
+```ruby
+app = "foo"
+
+RSpec.describe "Side effects per example" do
+  it! "runs the example in isolation" do
+    expect { app.gsub!("foo", "bar") }.to eq "bar"
+    expect(app).to eq "bar"
+  end
+
+  it "runs the example" do
+    expect(app).to eq "foo"
+  end
+end
+
+# Success: expected to eq "bar".
+# Success: expected to eq "bar".
+# Success: expected to eq "foo".
+```
 
 ### Expectations
 
