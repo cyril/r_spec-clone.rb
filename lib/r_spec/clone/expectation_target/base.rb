@@ -15,9 +15,9 @@ module RSpec
       class Base
         # Instantiate a new expectation target.
         #
-        # @param actual [#object_id] The actual value of the code to evaluate.
-        def initialize(actual)
-          @actual = actual
+        # @param input [#object_id, Proc] The code to evaluate.
+        def initialize(input)
+          @input = input
         end
 
         # Runs the given expectation, passing if `matcher` returns true.
@@ -51,6 +51,36 @@ module RSpec
         end
 
         protected
+
+        # @param test     [::TestTube::Base] The state of the experiment.
+        # @param matcher  [#matches?] The matcher.
+        # @param negate   [Boolean]   The assertion is positive or negative.
+        #
+        # @return [nil] Write a message to STDOUT.
+        #
+        # @raise [SystemExit] Terminate execution immediately by calling
+        #   `Kernel.exit(false)` with a failure message written to STDERR.
+        def absolute_requirement(test, matcher:, negate:)
+          result(
+            passed?(test),
+            actual:  test.actual,
+            error:   test.error,
+            got:     test.got,
+            matcher: matcher,
+            negate:  negate
+          )
+        end
+
+        # Code experiment result.
+        #
+        # @param test [::TestTube::Base] The state of the experiment.
+        #
+        # @see https://github.com/fixrb/test_tube
+        #
+        # @return [Boolean] The result of the test (passed or failed).
+        def passed?(test)
+          test.got.equal?(true)
+        end
 
         # @param passed   [Boolean]         The high expectation passed or failed.
         # @param actual   [#object_id]      The actual value.

@@ -24,23 +24,12 @@ module RSpec
         # @param matcher  [#matches?] The matcher.
         # @param negate   [Boolean]   The assertion is positive or negative.
         #
-        # @return [nil] Write a message to STDOUT.
+        # @return (see Base#absolute_requirement)
         #
-        # @raise [SystemExit] Terminate execution immediately by calling
-        #   `Kernel.exit(false)` with a failure message written to STDERR.
+        # @raise (see Base#absolute_requirement)
         def absolute_requirement(matcher:, negate:)
-          experiment = ::TestTube.invoke(
-            @actual,
-            isolation: false,
-            matcher:   matcher,
-            negate:    negate
-          )
-
-          result(
-            experiment.got.equal?(true),
-            actual:  experiment.actual,
-            error:   experiment.error,
-            got:     experiment.got,
+          super(
+            ::TestTube.invoke(isolation: false, matcher: matcher, negate: negate, &@input),
             matcher: matcher,
             negate:  negate
           )
