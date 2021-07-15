@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "matchi/rspec"
+require "matchi/helper"
 
 module RSpec
   module Clone
