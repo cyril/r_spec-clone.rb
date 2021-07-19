@@ -29,7 +29,7 @@ module RSpec
         # @raise (see Base#absolute_requirement)
         def absolute_requirement(matcher:, negate:)
           super(
-            ::TestTube.invoke(isolation: false, matcher: matcher, negate: negate, &@input),
+            ::TestTube.invoke(isolate: false, matcher: matcher, negate: negate, &@input),
             matcher: matcher,
             negate:  negate
           )
