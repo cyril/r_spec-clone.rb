@@ -234,6 +234,12 @@ bundle exec rake
 
 ## Performance
 
+The benchmarks compare the performance of [`r_spec-clone`](https://rubygems.org/gems/r_spec-clone) with the following frameworks (in alphabetical order):
+
+* [`fix`](https://rubygems.org/gems/fix)
+* [`minitest`](https://rubygems.org/gems/minitest)
+* [`rspec`](https://rubygems.org/gems/rspec)
+
 ### Boot time
 
 Benchmark against [100 executions of a file containing 1 expectation](https://github.com/cyril/r_spec-clone.rb/blob/main/benchmark/boot_time/) (lower is better).
