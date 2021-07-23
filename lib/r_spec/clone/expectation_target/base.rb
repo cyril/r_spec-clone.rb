@@ -95,13 +95,13 @@ module RSpec
         #   `Kernel.exit(false)` with a failure message written to STDERR.
         def result(passed, actual:, error:, got:, matcher:, negate:)
           Console.passed_spec ::Expresenter.call(passed).with(
-            actual:   actual,
-            error:    error,
-            expected: matcher.expected,
-            got:      got,
-            negate:   negate,
-            matcher:  matcher.class.to_sym,
-            level:    :MUST
+            actual:     actual,
+            definition: matcher.to_s,
+            error:      error,
+            expected:   matcher.expected,
+            got:        got,
+            negate:     negate,
+            level:      :MUST
           )
         rescue ::Expresenter::Fail => e
           Console.failed_spec(e)

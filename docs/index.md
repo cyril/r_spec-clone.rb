@@ -149,13 +149,13 @@ expect(actual).to match(expected) # passes if expected.match?(actual)
 expect { actual }.to raise_exception(expected) # passes if expected exception is raised
 ```
 
-#### Truth
+#### True
 
 ```ruby
 expect(actual).to be_true # passes if true.equal?(actual)
 ```
 
-#### Untruth
+#### False
 
 ```ruby
 expect(actual).to be_false # passes if false.equal?(actual)
@@ -172,6 +172,21 @@ expect(actual).to be_nil # passes if nil.equal?(actual)
 ```ruby
 expect(actual).to be_instance_of(expected)    # passes if expected.equal?(actual.class)
 expect(actual).to be_an_instance_of(expected) # passes if expected.equal?(actual.class)
+```
+
+#### Change
+
+```ruby
+expect { object.action }.to change(object, :value).from(old).to(new)
+expect { object.action }.to change(object, :value).by(delta)
+expect { object.action }.to change(object, :value).by_at_least(minimum_delta)
+expect { object.action }.to change(object, :value).by_at_most(maximum_delta)
+```
+
+#### Satisfy
+
+```ruby
+expect(actual).to(satisfy { |value| value == expected })
 ```
 
 ### Running specs

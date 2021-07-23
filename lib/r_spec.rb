@@ -37,8 +37,8 @@ require_relative File.join("r_spec", "clone", "dsl")
 #
 #   # Output to the console
 #   #   Success: expected to eq 3.
-#   #   Success: expected true to be true.
-#   #   Success: expected false to be false.
+#   #   Success: expected to be true.
+#   #   Success: expected to be false.
 #
 # @example An inherited definition of let
 #   require "r_spec"

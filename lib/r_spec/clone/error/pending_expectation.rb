@@ -12,13 +12,13 @@ module RSpec
         # @return [nil] Write a pending expectation to STDOUT.
         def self.result(message)
           ::Expresenter.call(true).with(
-            actual:   new(message),
-            error:    nil,
-            expected: self,
-            got:      false,
-            matcher:  :raise_exception,
-            negate:   true,
-            level:    :SHOULD
+            actual:     new(message),
+            definition: "raise exception #{self}",
+            error:      nil,
+            expected:   self,
+            got:        false,
+            negate:     true,
+            level:      :SHOULD
           )
         end
       end
