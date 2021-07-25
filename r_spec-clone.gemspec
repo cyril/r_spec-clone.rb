@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
   }
 
   spec.add_dependency "expresenter", "~> 1.4.0"
-  spec.add_dependency "matchi", "~> 3.1.1"
+  spec.add_dependency "matchi", "~> 3.2.0"
   spec.add_dependency "test_tube", "~> 2.1.0"
 
   spec.add_development_dependency "bundler"

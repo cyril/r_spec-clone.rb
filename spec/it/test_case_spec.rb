@@ -2,6 +2,4 @@
 
 require_relative File.join("..", "spec_helper")
 
-RSpec.it "compares true and false" do
-  expect(false).not_to be_true
-end
+RSpec.it { expect(42).to be_within(2).of(40) }

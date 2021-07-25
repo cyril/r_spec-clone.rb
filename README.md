@@ -137,6 +137,12 @@ expect(actual).to equal(expected) # passes if expected.equal?(actual)
 expect(actual).to be(expected)    # passes if expected.equal?(actual)
 ```
 
+#### Comparisons
+
+```ruby
+expect(actual).to be_within(delta).of(expected) # passes if (expected - actual).abs <= delta
+```
+
 #### Regular expressions
 
 ```ruby
