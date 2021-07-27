@@ -269,7 +269,7 @@ Benchmark against [100 executions of a file containing 1 expectation](https://gi
 
 ### Runtime
 
-Benchmark against [1 execution of a file containing 1,000,000 expectations](https://github.com/cyril/r_spec-clone.rb/blob/main/benchmark/run_time/) (lower is better).
+Benchmark against [1 execution of a file containing 100,000 expectations](https://github.com/cyril/r_spec-clone.rb/blob/main/benchmark/run_time/) (lower is better).
 
 ![Runtime benchmark](https://r-spec.dev/benchmark-run-time.svg)
 

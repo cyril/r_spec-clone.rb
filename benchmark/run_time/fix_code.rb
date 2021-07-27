@@ -2,11 +2,11 @@
 
 require "fix"
 
-# A Fix spec with 1,000,000 expectations.
-specs = Fix do
-  1_000_000.times do
-    it MUST_NOT equal true
+# A Fix spec with 100,000 expectations.
+set = Fix do
+  100_000.times do
+    it MUST be true
   end
 end
 
-specs.test { false }
+set.test { true }

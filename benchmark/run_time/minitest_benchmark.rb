@@ -9,4 +9,4 @@ time = Benchmark.measure do
   `#{command}`
 end
 
-puts time # => 1.773555   3.608184  44.159389 ( 38.840379)
+puts time # => 0.180960   0.402894   4.405005 (  3.842721)

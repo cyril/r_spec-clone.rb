@@ -10,8 +10,8 @@ time = Benchmark.measure do
     `#{command}`
 
     # @example
-    #   Success: expected false not to equal true.
+    #   benchmark/boot_time/fix_code.rb:6 Success: expected to be true.
   end
 end
 
-puts time # => 0.017533   0.090548  13.758190 ( 14.102381)
+puts time # => 0.017118   0.083964  13.793807 ( 14.153668)

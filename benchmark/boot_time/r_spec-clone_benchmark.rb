@@ -10,8 +10,8 @@ time = Benchmark.measure do
     `#{command}`
 
     # @example
-    #   Success: expected false not to be true.
+    #   Success: expected to be true.
   end
 end
 
-puts time # => 0.017537   0.088361  14.010619 ( 14.341576)
+puts time # => 0.017863   0.083490  13.928390 ( 14.235524)
