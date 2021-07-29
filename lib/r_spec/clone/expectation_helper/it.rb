@@ -19,7 +19,7 @@ module RSpec
         #
         # @example
         #   expect("foo") # => #<RSpec::Clone::ExpectationTarget::Value:0x00007f @actual="foo">
-        #   expect { Boom } # => #<RSpec::Clone::ExpectationTarget::Block:0x00007f @callable=#<Proc:0x00007f>>
+        #   expect { RSpec::Clone::Boom! } # => #<RSpec::Clone::ExpectationTarget::Block:0x... @callable=#<Proc:0x...>>
         #
         # @api public
         def expect(value = self.class.superclass, &block)

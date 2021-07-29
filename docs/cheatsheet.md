@@ -20,94 +20,256 @@ RSpec.describe Array do
     end
   end
 end
+
+# Success: expected to eq 3.
+# Success: expected to be true.
+# Success: expected to be false.
+```
+
+### Described class
+
+```ruby
+RSpec.describe String do
+  it { expect(described_class).to be String }
+end
+
+# Success: expected to be String.
 ```
 
 ### Before/after
 
 ```ruby
-before do
-  # before each test
-end
+RSpec.describe "#before, #after" do
+  before do
+    # before each test
+  end
 
-after do
-  # after each test
+  after do
+    # after each test
+  end
 end
 ```
 
 ### Subjects
 
 ```ruby
-subject { CheckingAccount.new }
-it { is_expected.to be_empty }
+RSpec.describe "#subject" do
+  subject { [] }
+  it { is_expected.to be_empty }
+end
+
+# Success: expected [] to be empty.
+```
+
+### Context
+
+```ruby
+RSpec.context "when divided by zero" do
+  subject { 42 / 0 }
+
+  it { is_expected.to raise_exception ZeroDivisionError }
+end
+
+# Success: divided by 0.
 ```
 
 ### Lets
 
 ```ruby
-let(:email) { "contact@bob.email" }
-it { expect(email).to eq "contact@bob.email" }
+RSpec.describe "#let" do
+  let(:email) { "contact@bob.email" }
+  it { expect(email).to eq "contact@bob.email" }
+end
+
+# Success: expected to eq "contact@bob.email".
 ```
 
 ### Pending
 
 ```ruby
-pending { I will implement this later }
+RSpec.pending("not implemented test") { I will add it tonight! }
+
+# Warning: not implemented test.
 ```
 
 ## Expectations
 
+Expectations define if the value being tested (_actual_) matches a certain value or specific criteria.
+
+### Positive expectation
+
 ```ruby
-expect(actual).to eq expected
-expect(actual).not_to eq expected
+RSpec.it { expect("foo").to eq "foo" }
+
+# Success: expected to eq "foo".
 ```
+
+### Negative expectation
+
+```ruby
+RSpec.it { expect("foo").not_to eq "bar" }
+
+# Success: expected "foo" not to eq "bar".
+```
+
+## Matchers
 
 ### Equivalence
 
 ```ruby
-expect(actual).to eql(expected) # passes if expected.eql?(actual)
-expect(actual).to eq(expected)  # passes if expected.eql?(actual)
+RSpec.it "tests two same equivalences" do
+  expect("foo").to eq("foo")
+  expect("foo").to eql("foo")
+end
+
+# Success: expected to eq "foo".
+# Success: expected to eq "foo".
 ```
 
 ### Identity
 
 ```ruby
-expect(actual).to equal(expected) # passes if expected.equal?(actual)
-expect(actual).to be(expected)    # passes if expected.equal?(actual)
+RSpec.it "tests two same identities" do
+  expect(:foo).to be(:foo)
+  expect(:foo).to equal(:foo)
+end
+
+# Success: expected to be :foo.
+# Success: expected to be :foo.
+```
+
+### Comparisons
+
+```ruby
+RSpec.it { expect(40).to be_within(2).of(42) }
+
+# Success: expected 40 to be within 2 of 42.
 ```
 
 ### Regular expressions
 
 ```ruby
-expect(actual).to match(expected) # passes if expected.match?(actual)
+RSpec.it { expect("bob@example.email").to match(/^[^@]+@[^@]+$/) }
+
+# Success: expected "bob@example.email" to match /^[^@]+@[^@]+$/.
 ```
 
 ### Expecting errors
 
 ```ruby
-expect { actual }.to raise_exception(expected) # passes if expected exception is raised
+RSpec.it "raises a name error" do
+  expect { RSpec::Clone::Boom! }.to raise_exception(NameError)
+end
+
+# Success: undefined method `Boom!' for RSpec::Clone:Module.
 ```
 
-### Truth
+### True
 
 ```ruby
-expect(actual).to be_true # passes if true.equal?(actual)
+RSpec.it { expect(true).to be_true }
+
+# Success: expected to be true.
 ```
 
-### Untruth
+### False
 
 ```ruby
-expect(actual).to be_false # passes if false.equal?(actual)
+RSpec.it { expect(false).to be_false }
+
+# Success: expected to be false.
 ```
 
 ### Nil
 
 ```ruby
-expect(actual).to be_nil # passes if nil.equal?(actual)
+RSpec.it { expect(nil).to be_nil }
+
+# Success: expected to be nil.
 ```
 
 ### Type/class
 
 ```ruby
-expect(actual).to be_instance_of(expected)    # passes if expected.equal?(actual.class)
-expect(actual).to be_an_instance_of(expected) # passes if expected.equal?(actual.class)
+RSpec.it "tests two instances" do
+  expect(42).to be_an_instance_of(Integer)
+  expect(:foo).to be_instance_of(Symbol)
+end
+
+# Success: expected 42 to be an instance of Integer.
+# Success: expected :foo to be instance of Symbol.
+```
+
+### Predicate
+
+```ruby
+RSpec.it "tests two dynamic predicate matchers" do
+  expect([]).to be_empty           # passes because `[].empty?` returns `true`
+  expect(foo: 1).to have_key(:foo) # passes because `{ foo: 1 }.has_key?(:foo)` returns `true`
+end
+
+# Success: expected [] to be empty.
+# Success: expected {:foo=>1} to have key :foo.
+```
+
+### Change
+
+```ruby
+object = "foo"
+
+RSpec.it do
+  expect { object.upcase! }.to change(object, :to_s).from("foo").to("FOO")
+end
+
+# Success: expected to change from "foo" to "FOO".
+```
+
+```ruby
+object = "foo"
+
+RSpec.it do
+  expect { object.upcase! }.to change(object, :to_s).to("FOO")
+end
+
+# Success: expected to change to "FOO".
+```
+
+```ruby
+object = []
+
+RSpec.it do
+  expect { object << 1 }.to change(object, :length).by(1)
+end
+
+# Success: expected [1] to change by 1.
+```
+
+```ruby
+object = []
+
+RSpec.it do
+  expect { object << 1 }.to change(object, :length).by_at_least(1)
+end
+
+# Success: expected [1] to change by at least 1.
+```
+
+```ruby
+object = []
+
+RSpec.it do
+  expect { object << 1 }.to change(object, :length).by_at_most(1)
+end
+
+# Success: expected [1] to change by at most 1.
+```
+
+### Satisfy
+
+```ruby
+RSpec.it "tests that 42 is equal to itself" do
+  expect { 42 }.to(satisfy { |value| value == 42 })
+end
+
+# Success: expected 42 to satisfy &block.
 ```

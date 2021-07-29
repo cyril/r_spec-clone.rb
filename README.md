@@ -180,9 +180,24 @@ expect(actual).to be_instance_of(expected)    # passes if expected.equal?(actual
 expect(actual).to be_an_instance_of(expected) # passes if expected.equal?(actual.class)
 ```
 
+#### Predicate
+
+```ruby
+expect(actual).to be_xxx            # passes if actual.xxx?
+expect(actual).to be_have_xxx(:yyy) # passes if actual.has_xxx?(:yyy)
+```
+
+##### Examples
+
+```ruby
+expect([]).to be_empty
+expect(foo: 1).to have_key(:foo)
+```
+
 #### Change
 
 ```ruby
+expect { object.action }.to change(object, :value).to(new)
 expect { object.action }.to change(object, :value).from(old).to(new)
 expect { object.action }.to change(object, :value).by(delta)
 expect { object.action }.to change(object, :value).by_at_least(minimum_delta)
