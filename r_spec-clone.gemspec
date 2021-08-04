@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.summary      = "A minimalist RSpec clone"
   spec.description  = "#{spec.summary} with all the essentials."
   spec.homepage     = "https://r-spec.dev/"
-  spec.required_ruby_version = Gem::Requirement.new(">= 2.7.0")
+  spec.required_ruby_version = ::Gem::Requirement.new(">= 2.7.0")
   spec.license      = "MIT"
   spec.files        = Dir["LICENSE.md", "README.md", "lib/**/*"]
 
@@ -21,7 +21,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "expresenter", "~> 1.4.0"
   spec.add_dependency "matchi", "~> 3.3.0"
-  spec.add_dependency "test_tube", "~> 2.1.0"
+  spec.add_dependency "test_tube", "~> 2.1.3"
 
   spec.add_development_dependency "bundler"
   spec.add_development_dependency "rake"
