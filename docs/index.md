@@ -296,7 +296,7 @@ __RSpec clone__'s specifications are self-described here: [spec/](https://github
 
 * Home page: [https://r-spec.dev/](https://r-spec.dev/)
 * Cheatsheet: [https://r-spec.dev/cheatsheet.html](https://r-spec.dev/cheatsheet.html)
-* Blog post: [https://batman.buzz/introducing-a-new-rspec-850d48c0f901](https://batman.buzz/introducing-a-new-rspec-850d48c0f901)
+* Blog post: [https://cyrilllllll.medium.com/introducing-a-new-rspec-850d48c0f901](https://cyrilllllll.medium.com/introducing-a-new-rspec-850d48c0f901)
 * Source code: [https://github.com/cyril/r_spec-clone.rb](https://github.com/cyril/r_spec-clone.rb)
 * API Doc: [https://rubydoc.info/gems/r_spec-clone](https://rubydoc.info/gems/r_spec-clone)
 * Twitter: [https://twitter.com/cyri\_](https://twitter.com/cyri\_)
@@ -310,9 +310,9 @@ Without RSpec, this clone would not have been possible.
 
 ## Buy me a coffee ☕
 
-If you like this project, please consider making a small donation to Batman.
+If you like this project, please consider making a small donation.
 
-[![Donate](https://img.shields.io/badge/Donate-batman.eth-purple.svg)](https://etherscan.io/address/batman.eth)
+[![Donate](https://img.shields.io/badge/Donate-cyr.eth-purple.svg)](https://etherscan.io/address/cyr.eth)
 
 ## Versioning
 
