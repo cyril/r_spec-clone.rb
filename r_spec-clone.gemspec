@@ -8,15 +8,16 @@ Gem::Specification.new do |spec|
   spec.summary      = "A minimalist RSpec clone"
   spec.description  = "#{spec.summary} with all the essentials."
   spec.homepage     = "https://r-spec.dev/"
-  spec.required_ruby_version = ::Gem::Requirement.new(">= 2.7.0")
+  spec.required_ruby_version = ">= 2.7.5"
   spec.license      = "MIT"
   spec.files        = Dir["LICENSE.md", "README.md", "lib/**/*"]
 
   spec.metadata = {
-    "bug_tracker_uri"   => "https://github.com/cyril/r_spec-clone.rb/issues",
-    "documentation_uri" => "https://rubydoc.info/gems/r_spec-clone",
-    "source_code_uri"   => "https://github.com/cyril/r_spec-clone.rb",
-    "wiki_uri"          => "https://github.com/cyril/r_spec-clone.rb/wiki"
+    "bug_tracker_uri"       => "https://github.com/cyril/r_spec-clone.rb/issues",
+    "documentation_uri"     => "https://rubydoc.info/gems/r_spec-clone",
+    "source_code_uri"       => "https://github.com/cyril/r_spec-clone.rb",
+    "wiki_uri"              => "https://github.com/cyril/r_spec-clone.rb/wiki",
+    "rubygems_mfa_required" => "true"
   }
 
   spec.add_dependency "expresenter", "~> 1.4.0"
