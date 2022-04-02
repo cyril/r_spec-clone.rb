@@ -89,36 +89,6 @@ module RSpec
 
   # :nocov:
 
-  # Runs a context example group in a subprocess to isolate side effects.
-  #
-  # @example
-  #   str = "Hello, world!"
-  #
-  #   require "r_spec"
-  #
-  #   RSpec.context! "when a string becomes uppercase" do
-  #     before do
-  #       str.upcase!
-  #     end
-  #
-  #     it { expect(str).to eq "HELLO, WORLD!" }
-  #   end
-  #
-  #   # Output to the console
-  #   #   Success: expected to eq "HELLO, WORLD!".
-  #
-  #   RSpec.it { expect(str).to eq "Hello, world!" }
-  #
-  #   # Output to the console
-  #   #   Success: expected to eq "Hello, world!".
-  #
-  # @param (see #context)
-  def self.context!(description, &block)
-    Clone::Dsl.context!(description, &block)
-  end
-
-  # :nocov:
-
   # Defines an example group that describes a unit to be tested.
   #
   # @example
@@ -153,36 +123,6 @@ module RSpec
 
   # :nocov:
 
-  # Runs a describe example group in a subprocess to isolate side effects.
-  #
-  # @example
-  #   $app = "foo"
-  #
-  #   require "r_spec"
-  #
-  #   RSpec.describe! "#gsub!" do
-  #     before do
-  #       $app.gsub!("o", "0")
-  #     end
-  #
-  #     it { expect($app).to eq "f00" }
-  #   end
-  #
-  #   # Output to the console
-  #   #   Success: expected to eq "f00".
-  #
-  #   RSpec.it { expect($app).to eq "foo" }
-  #
-  #   # Output to the console
-  #   #   Success: expected to eq "foo".
-  #
-  # @param (see #describe)
-  def self.describe!(const, &block)
-    Clone::Dsl.describe!(const, &block)
-  end
-
-  # :nocov:
-
   # Defines a concrete test case.
   #
   # The test is performed by the block supplied to &block.
@@ -205,33 +145,6 @@ module RSpec
   # @return (see RSpec::Clone::ExpectationTarget::Base#result)
   def self.it(name = nil, &block)
     Clone::Dsl.it(name, &block)
-  end
-
-  # :nocov:
-
-  # Runs a concrete test case in a subprocess to isolate side effects.
-  #
-  # @example
-  #   app = "Hello, world!"
-  #
-  #   require "r_spec"
-  #
-  #   RSpec.it! { expect(app.gsub!("world", "Alice")).to eq "Hello, Alice!" }
-  #
-  #   # Output to the console
-  #   #   Success: expected to eq "Hello, Alice!".
-  #
-  #   RSpec.it { expect(app).to eq "Hello, world!" }
-  #
-  #   # Output to the console
-  #   #   Success: expected to eq "Hello, world!".
-  #
-  # @param (see #it)
-  #
-  # @raise (see ExpectationTarget::Base#result)
-  # @return (see ExpectationTarget::Base#result)
-  def self.it!(name = nil, &block)
-    Clone::Dsl.it!(name, &block)
   end
 
   # :nocov:

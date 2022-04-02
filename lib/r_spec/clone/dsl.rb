@@ -173,47 +173,6 @@ module RSpec
 
       # :nocov:
 
-      # Runs a describe example group in a subprocess to isolate side effects.
-      #
-      # @example
-      #   $app = "foo"
-      #
-      #   require "r_spec"
-      #
-      #   RSpec.describe "Scoped side effects" do
-      #     describe! "#gsub!" do
-      #       before do
-      #         $app.gsub!("o", "0")
-      #       end
-      #
-      #       context! "when isolated in the context" do
-      #         before do
-      #           $app.gsub!("f", "F")
-      #         end
-      #
-      #         it { expect($app).to eq "F00" }
-      #       end
-      #
-      #       it { expect($app).to eq "f00" }
-      #     end
-      #
-      #     it { expect($app).to eq "foo" }
-      #   end
-      #
-      #   # Output to the console
-      #   #   Success: expected to eq "F00".
-      #   #   Success: expected to eq "f00".
-      #   #   Success: expected to eq "foo".
-      #
-      # @param (see #describe)
-      #
-      # @api public
-      def self.describe!(const, &block)
-        fork! { describe(const, &block) }
-      end
-
-      # :nocov:
-
       # Defines an example group that establishes a specific context, like
       # _empty array_ versus _array with elements_.
       #
@@ -242,48 +201,6 @@ module RSpec
       def self.context(_description, &block)
         desc = ::Class.new(self)
         desc.instance_eval(&block)
-      end
-
-      # :nocov:
-
-      # Runs a context example group in a subprocess to isolate side effects.
-      #
-      # @example
-      #   app = "Hello, world!"
-      #
-      #   require "r_spec"
-      #
-      #   RSpec.describe String do
-      #     subject do
-      #       app
-      #     end
-      #
-      #     before do
-      #       subject.gsub!("world", person)
-      #     end
-      #
-      #     context! "when Alice is greeted" do
-      #       let(:person) { "Alice" }
-      #
-      #       it { is_expected.to eq "Hello, Alice!" }
-      #     end
-      #
-      #     context! "when Bob is greeted" do
-      #       let(:person) { "Bob" }
-      #
-      #       it { is_expected.to eq "Hello, Bob!" }
-      #     end
-      #   end
-      #
-      #   # Output to the console
-      #   #   Success: expected to eq "Hello, Alice!".
-      #   #   Success: expected to eq "Hello, Bob!".
-      #
-      # @param (see #context)
-      #
-      # @api public
-      def self.context!(description, &block)
-        fork! { context(description, &block) }
       end
 
       # :nocov:
@@ -329,42 +246,7 @@ module RSpec
       #
       # @api public
       def self.it(_name = nil, &block)
-        run(example_without_attribute.new, &block)
-      end
-
-      # :nocov:
-
-      # Runs a concrete test case in a subprocess to isolate side effects.
-      #
-      # @example
-      #   app = "foo"
-      #
-      #   require "r_spec"
-      #
-      #   RSpec.describe "Side effects per example" do
-      #     it! "runs the example in isolation" do
-      #       expect { app.gsub!("foo", "bar") }.to eq "bar"
-      #       expect(app).to eq "bar"
-      #     end
-      #
-      #     it "runs the example" do
-      #       expect(app).to eq "foo"
-      #     end
-      #   end
-      #
-      #   # Output to the console
-      #   #   Success: expected to eq "bar".
-      #   #   Success: expected to eq "bar".
-      #   #   Success: expected to eq "foo".
-      #
-      # @param (see #it)
-      #
-      # @raise (see ExpectationTarget::Base#result)
-      # @return (see ExpectationTarget::Base#result)
-      #
-      # @api public
-      def self.it!(name = nil, &block)
-        fork! { it(name, &block) }
+        exit false unless ::Aw.fork? { run(example_without_attribute.new, &block) }
       end
 
       # :nocov:
@@ -416,43 +298,7 @@ module RSpec
       #
       # @api public
       def self.its(attribute, *args, **kwargs, &block)
-        run(example_with_attribute(attribute, *args, **kwargs).new, &block)
-      end
-
-      # :nocov:
-
-      # Runs a single concrete test case in a subprocess to isolate side
-      # effects.
-      #
-      # @example
-      #   app = "foo"
-      #
-      #   require "r_spec"
-      #
-      #   RSpec.describe "Isolated side effect" do
-      #     subject do
-      #       app
-      #     end
-      #
-      #     its!(:upcase) { is_expected.to eq "FOO" }
-      #
-      #     it "tests the original value" do
-      #       expect(app).to eq "foo"
-      #     end
-      #   end
-      #
-      #   # Output to the console
-      #   #   Success: expected to eq "FOO".
-      #   #   Success: expected to eq "foo".
-      #
-      # @param (see #it)
-      #
-      # @raise (see ExpectationTarget::Base#result)
-      # @return (see ExpectationTarget::Base#result)
-      #
-      # @api public
-      def self.its!(attribute, *args, **kwargs, &block)
-        fork! { its(attribute, *args, **kwargs, &block) }
+        exit false unless ::Aw.fork? { run(example_with_attribute(attribute, *args, **kwargs).new, &block) }
       end
 
       # :nocov:
@@ -505,26 +351,15 @@ module RSpec
         end
       end
 
-      # Creates a subprocess and runs the block inside.
-      def self.fork!(&block)
-        pid = fork(&block)
-        thread = ::Process.detach(pid)
-        exitstatus = thread.join.value.exitstatus
-        exit false unless exitstatus.zero?
-      end
-
       # Execution of specifications.
       def self.run(example, &block)
-        example.instance_eval(&block)
-      rescue ::SystemExit
         Console.source(*block.source_location)
-
-        exit false
+        exit false unless ::Aw.fork? { example.instance_eval(&block) }
       ensure
         example&.send(AFTER_METHOD)
       end
 
-      private_class_method :example_without_attribute, :example_with_attribute, :fork!, :run
+      private_class_method :example_without_attribute, :example_with_attribute, :run
 
       private
 

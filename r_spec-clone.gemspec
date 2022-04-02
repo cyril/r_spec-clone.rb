@@ -8,9 +8,10 @@ Gem::Specification.new do |spec|
   spec.summary      = "A minimalist RSpec clone"
   spec.description  = "#{spec.summary} with all the essentials."
   spec.homepage     = "https://r-spec.dev/"
-  spec.required_ruby_version = ">= 2.7.5"
   spec.license      = "MIT"
   spec.files        = Dir["LICENSE.md", "README.md", "lib/**/*"]
+
+  spec.required_ruby_version = ">= 2.7.5"
 
   spec.metadata = {
     "bug_tracker_uri"       => "https://github.com/cyril/r_spec-clone.rb/issues",
@@ -20,6 +21,7 @@ Gem::Specification.new do |spec|
     "rubygems_mfa_required" => "true"
   }
 
+  spec.add_dependency "aw", "~> 0.2.0"
   spec.add_dependency "expresenter", "~> 1.4.0"
   spec.add_dependency "matchi", "~> 3.3.0"
   spec.add_dependency "test_tube", "~> 2.1.3"
