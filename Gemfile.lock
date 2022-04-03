@@ -61,7 +61,7 @@ GEM
       webrick (~> 1.7.0)
 
 PLATFORMS
-  ruby
+  x86_64-linux
 
 DEPENDENCIES
   bundler
@@ -76,4 +76,4 @@ DEPENDENCIES
   yard
 
 BUNDLED WITH
-   2.3.10
+   2.2.32
