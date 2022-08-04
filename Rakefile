@@ -17,7 +17,7 @@ YARD::Rake::YardocTask.new
 Dir["tasks/**/*.rake"].each { |t| load t }
 
 task default: %i[
-  rubocop:auto_correct
+  rubocop:autocorrect
   test
   yard
 ]

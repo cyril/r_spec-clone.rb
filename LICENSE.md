@@ -1,4 +1,4 @@
-The MIT License (MIT)
+# The MIT License
 
 Copyright (c) 2015-2022 Cyril Kato
 
