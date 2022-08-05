@@ -18,4 +18,7 @@ time = Benchmark.measure do
   end
 end
 
-puts time # => 0.031057   0.018383  11.727866 ( 11.700246)
+puts time
+
+# ruby benchmark/boot_time/rspec_benchmark.rb
+#   0.034034   0.018531  13.305408 ( 13.275438)

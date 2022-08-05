@@ -9,4 +9,7 @@ time = Benchmark.measure do
   `#{command}`
 end
 
-puts time # => 0.000198   0.000198   0.342616 (  0.344151)
+puts time
+
+# ruby benchmark/run_time/minitest_benchmark.rb
+#   0.000409   0.000045   0.313974 (  0.316281)

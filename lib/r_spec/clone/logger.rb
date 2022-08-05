@@ -3,7 +3,7 @@
 module RSpec
   module Clone
     # Send log messages to the console.
-    module Console
+    module Logger
       # @param report [::Expresenter::Pass] Passed expectation result presenter.
       #
       # @see https://github.com/fixrb/expresenter
@@ -13,17 +13,21 @@ module RSpec
         puts report.colored_string
       end
 
+      # :nocov:
+
       # @param report [::Expresenter::Fail] Failed expectation result presenter.
       #
       # @see https://github.com/fixrb/expresenter
       #
-      # @raise [SystemExit] Terminate execution immediately with colored message.
+      # @raise [SystemExit] Terminate execution immediately with message.
       def self.failed_spec(report)
         abort report.colored_string
       end
 
-      # The Ruby source filename and line number containing this method or nil if
-      # this method was not defined in Ruby (i.e. native).
+      # :nocov:
+
+      # The Ruby source filename and line number containing this method or nil
+      # if this method was not defined in Ruby (i.e. native).
       #
       # @param filename [String, nil] The Ruby source filename.
       # @param line     [Integer, nil] The Ruby source line number.

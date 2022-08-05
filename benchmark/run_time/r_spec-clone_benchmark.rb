@@ -9,4 +9,7 @@ time = Benchmark.measure do
   `#{command}`
 end
 
-puts time # => 0.026579   0.018462   1.213693 (  1.168842)
+puts time
+
+# ruby benchmark/run_time/r_spec-clone_benchmark.rb
+#   0.045563   0.038508   1.799406 (  1.715572)

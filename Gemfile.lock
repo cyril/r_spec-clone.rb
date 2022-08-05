@@ -1,8 +1,7 @@
 PATH
   remote: .
   specs:
-    r_spec-clone (1.6.0)
-      aw (~> 0.2.0)
+    r_spec-clone (1.7.0)
       expresenter (~> 1.4.0)
       matchi (~> 3.3.1)
       test_tube (~> 2.1.3)

@@ -3,7 +3,7 @@
 require "expresenter"
 require "test_tube"
 
-require_relative File.join("..", "console")
+require_relative File.join("..", "logger")
 
 module RSpec
   module Clone
@@ -82,6 +82,8 @@ module RSpec
           test.got.equal?(true)
         end
 
+        # :nocov:
+
         # @param passed   [Boolean]         The high expectation passed or failed.
         # @param actual   [#object_id]      The actual value.
         # @param error    [Exception, nil]  Any raised exception.
@@ -94,7 +96,7 @@ module RSpec
         # @raise [SystemExit] Terminate execution immediately by calling
         #   `Kernel.exit(false)` with a failure message written to STDERR.
         def result(passed, actual:, error:, got:, matcher:, negate:)
-          Console.passed_spec ::Expresenter.call(passed).with(
+          Logger.passed_spec ::Expresenter.call(passed).with(
             actual:     actual,
             definition: matcher.to_s,
             error:      error,
@@ -104,8 +106,10 @@ module RSpec
             level:      :MUST
           )
         rescue ::Expresenter::Fail => e
-          Console.failed_spec(e)
+          Logger.failed_spec(e)
         end
+
+        # :nocov:
       end
     end
   end

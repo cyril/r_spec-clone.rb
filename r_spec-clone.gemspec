@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.license      = "MIT"
   spec.files        = Dir["LICENSE.md", "README.md", "lib/**/*"]
 
-  spec.required_ruby_version = ">= 2.7.6"
+  spec.required_ruby_version = ">= 3.0.4"
 
   spec.metadata = {
     "bug_tracker_uri"       => "https://github.com/cyril/r_spec-clone.rb/issues",
@@ -21,7 +21,6 @@ Gem::Specification.new do |spec|
     "rubygems_mfa_required" => "true"
   }
 
-  spec.add_dependency "aw", "~> 0.2.0"
   spec.add_dependency "expresenter", "~> 1.4.0"
   spec.add_dependency "matchi", "~> 3.3.1"
   spec.add_dependency "test_tube", "~> 2.1.3"

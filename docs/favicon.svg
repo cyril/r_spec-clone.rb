@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg enable-background="new 0 0 24 24" version="1.1" viewBox="0 0 18.9 18.9" xmlns="http://www.w3.org/2000/svg">
+  <title>RSpec clone</title>
   <ellipse cx="9.47" cy="9.47" rx="8.47" ry="8.47" fill="#fff" stroke="#00af8b" stroke-width="2"/>
   <path d="m8.18 13.7-0.0522-0.0559-3.62-3.89 1.6-1.49 2.16 2.32 5.84-5.44 1.51 1.62z" fill="#e0115f" stroke-width=".333"/>
 </svg>

@@ -1,8 +1,12 @@
-inherit_from: .rubocop_todo.yml
-
 AllCops:
   NewCops: enable
-  TargetRubyVersion: 2.7
+  TargetRubyVersion: 3.0
+
+  Exclude:
+    - '**/*.md'
+    - '**/*.markdown'
+    - 'benchmark/**/*'
+    - 'spec/**/*'
 
 require:
   - rubocop-md
@@ -25,3 +29,14 @@ Style/SymbolArray:
 Layout/HashAlignment:
   EnforcedHashRocketStyle: table
   EnforcedColonStyle: table
+
+Naming/PredicateName:
+  Exclude:
+    - 'lib/r_spec/clone/expectation_helper/it.rb'
+    - 'lib/r_spec/clone/expectation_helper/its.rb'
+
+Metrics/MethodLength:
+  Max: 11
+
+Metrics/ParameterLists:
+  Max: 6

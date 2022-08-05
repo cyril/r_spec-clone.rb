@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative "console"
+require_relative "logger"
 require_relative "error"
 require_relative "expectation_helper"
 
@@ -9,9 +9,8 @@ module RSpec
     # Abstract class for handling the domain-specific language.
     class Dsl
       BEFORE_METHOD = :initialize
-      AFTER_METHOD  = :terminate
 
-      private_constant :BEFORE_METHOD, :AFTER_METHOD
+      private_constant :BEFORE_METHOD
 
       # Executes the given block before each spec in the current context runs.
       #
@@ -53,35 +52,6 @@ module RSpec
         private BEFORE_METHOD
       end
 
-      # Executes the given block after each spec in the current context runs.
-      #
-      # @example
-      #   require "r_spec"
-      #
-      #   RSpec.describe Integer do
-      #     after do
-      #       puts "That is the answer to everything."
-      #     end
-      #
-      #     it { expect(42).to be 42 }
-      #   end
-      #
-      #   # Output to the console
-      #   #   Success: expected to be 42.
-      #   #   That is the answer to everything.
-      #
-      # @param block [Proc] The content to execute at the class initialization.
-      #
-      # @api public
-      def self.after(&block)
-        define_method(AFTER_METHOD) do
-          instance_exec(&block)
-          super()
-        end
-
-        private AFTER_METHOD
-      end
-
       # Sets a user-defined property.
       #
       # @example
@@ -110,7 +80,7 @@ module RSpec
       #
       # @api public
       def self.let(name, *args, **kwargs, &block)
-        raise Error::ReservedMethod if [BEFORE_METHOD, AFTER_METHOD].include?(name.to_sym)
+        raise Error::ReservedMethod if BEFORE_METHOD.equal?(name.to_sym)
 
         private define_method(name, *args, **kwargs, &block)
       end
@@ -176,6 +146,11 @@ module RSpec
       # Defines an example group that establishes a specific context, like
       # _empty array_ versus _array with elements_.
       #
+      # Unlike a `describe` block, all specifications executed within a
+      # `context` are isolated in a subprocess. This prevents possible side
+      # effects on the Ruby object environment from being propagated outside
+      # their context, which could alter the result of the unit test suite.
+      #
       # @example
       #   require "r_spec"
       #
@@ -199,8 +174,8 @@ module RSpec
       #
       # @api public
       def self.context(_description, &block)
-        desc = ::Class.new(self)
-        desc.instance_eval(&block)
+        pid = ::Process.fork { ::Class.new(self).instance_eval(&block) }
+        exit false unless ::Process::Status.wait(pid).exitstatus.zero?
       end
 
       # :nocov:
@@ -246,7 +221,8 @@ module RSpec
       #
       # @api public
       def self.it(_name = nil, &block)
-        exit false unless ::Aw.fork? { run(example_without_attribute.new, &block) }
+        Logger.source(*block.source_location)
+        example_without_attribute.new.instance_eval(&block)
       end
 
       # :nocov:
@@ -298,7 +274,9 @@ module RSpec
       #
       # @api public
       def self.its(attribute, *args, **kwargs, &block)
-        exit false unless ::Aw.fork? { run(example_with_attribute(attribute, *args, **kwargs).new, &block) }
+        Logger.source(*block.source_location)
+        example_with_attribute(attribute, *args, **kwargs).new
+                                                          .instance_eval(&block)
       end
 
       # :nocov:
@@ -329,7 +307,7 @@ module RSpec
       #
       # @api public
       def self.pending(message)
-        Console.passed_spec Error::PendingExpectation.result(message)
+        Logger.passed_spec Error::PendingExpectation.result(message)
       end
 
       # Example class for concrete test case.
@@ -351,15 +329,7 @@ module RSpec
         end
       end
 
-      # Execution of specifications.
-      def self.run(example, &block)
-        Console.source(*block.source_location)
-        exit false unless ::Aw.fork? { example.instance_eval(&block) }
-      ensure
-        example&.send(AFTER_METHOD)
-      end
-
-      private_class_method :example_without_attribute, :example_with_attribute, :run
+      private_class_method :example_without_attribute, :example_with_attribute
 
       private
 
@@ -373,10 +343,6 @@ module RSpec
       # If a subject is defined, this method will be overridden to return it.
       def subject
         raise Error::UndefinedSubject, "subject not explicitly defined"
-      end
-
-      define_method(AFTER_METHOD) do
-        # do nothing by default
       end
     end
   end
