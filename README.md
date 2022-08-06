@@ -7,9 +7,9 @@ A minimalist __RSpec clone__ with all the essentials.
 ## Status
 
 [![Home](https://img.shields.io/badge/Home-r--spec.dev-00af8b)](https://r-spec.dev/)
-[![Version](https://img.shields.io/github/v/tag/cyril/r_spec-clone.rb?label=Version&logo=github)](https://github.com/cyril/r_spec-clone.rb/releases)
+[![Version](https://img.shields.io/github/v/tag/cyril/r_spec-clone.rb?label=Version&logo=github)](https://github.com/cyril/r_spec-clone.rb/tags)
 [![Yard documentation](https://img.shields.io/badge/Yard-documentation-blue.svg?logo=github)](https://rubydoc.info/github/cyril/r_spec-clone.rb/main)
-[![CI](https://github.com/cyril/r_spec-clone.rb/workflows/CI/badge.svg?branch=main)](https://github.com/cyril/r_spec-clone.rb/actions?query=workflow%3Aci+branch%3Amain)
+[![Ruby](https://github.com/cyril/r_spec-clone.rb/workflows/Ruby/badge.svg?branch=main)](https://github.com/cyril/r_spec-clone.rb/actions?query=workflow%3Aruby+branch%3Amain)
 [![RuboCop](https://github.com/cyril/r_spec-clone.rb/workflows/RuboCop/badge.svg?branch=main)](https://github.com/cyril/r_spec-clone.rb/actions?query=workflow%3Arubocop+branch%3Amain)
 [![License](https://img.shields.io/github/license/cyril/r_spec-clone.rb?label=License&logo=github)](https://github.com/cyril/r_spec-clone.rb/raw/main/LICENSE.md)
 
