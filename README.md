@@ -32,8 +32,10 @@ A minimalist __RSpec clone__ with all the essentials.
 * The `let` method defines a helper method rather than a memoized helper method.
 * The one-liner `is_expected` syntax also works with block expectations.
 * `subject`, `before` and `let` definitions must come before examples.
+* The `after` hook is not supported.
 * The execution of the test suite stops as soon as an error is detected.
 * Each `context` block isolates its tests and possible side effects.
+* The `its` method is available without external dependency.
 
 ## Installation
 
