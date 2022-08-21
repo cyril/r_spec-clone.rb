@@ -1,4 +1,4 @@
-# RSpec clone
+# RSpec clone <img src="https://github.com/cyril/r_spec-clone.rb/raw/main/img/logo.svg" style="height: 1em; width: 1em" />
 
 A minimalist __RSpec clone__ with all the essentials.
 
