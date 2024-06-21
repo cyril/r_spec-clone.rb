@@ -32,7 +32,7 @@ module RSpec
         #
         # @api public
         def to(matcher)
-          absolute_requirement(matcher: matcher, negate: false)
+          absolute_requirement(matcher:, negate: false)
         end
 
         # Runs the given expectation, passing if `matcher` returns false.
@@ -47,7 +47,7 @@ module RSpec
         #
         # @api public
         def not_to(matcher)
-          absolute_requirement(matcher: matcher, negate: true)
+          absolute_requirement(matcher:, negate: true)
         end
 
         protected
@@ -66,8 +66,8 @@ module RSpec
             actual:  test.actual,
             error:   test.error,
             got:     test.got,
-            matcher: matcher,
-            negate:  negate
+            matcher:,
+            negate:
           )
         end
 
@@ -97,12 +97,12 @@ module RSpec
         #   `Kernel.exit(false)` with a failure message written to STDERR.
         def result(passed, actual:, error:, got:, matcher:, negate:)
           Logger.passed_spec ::Expresenter.call(passed).with(
-            actual:     actual,
+            actual:,
             definition: matcher.to_s,
-            error:      error,
+            error:,
             expected:   matcher.expected,
-            got:        got,
-            negate:     negate,
+            got:,
+            negate:,
             level:      :MUST
           )
         rescue ::Expresenter::Fail => e

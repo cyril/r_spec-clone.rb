@@ -79,10 +79,10 @@ module RSpec
       # @return [Symbol] A private method that define the block content.
       #
       # @api public
-      def self.let(name, *args, **kwargs, &block)
+      def self.let(name, ...)
         raise Error::ReservedMethod if BEFORE_METHOD.equal?(name.to_sym)
 
-        private define_method(name, *args, **kwargs, &block)
+        private define_method(name, ...)
       end
 
       # Sets a user-defined property named {#subject}.
@@ -113,8 +113,8 @@ module RSpec
       # @return [Symbol] A {#subject} method that define the block content.
       #
       # @api public
-      def self.subject(&block)
-        let(__method__, &block)
+      def self.subject(&)
+        let(__method__, &)
       end
 
       # Defines an example group that describes a unit to be tested.
@@ -135,10 +135,10 @@ module RSpec
       # @param block [Proc] The block to define the specs.
       #
       # @api public
-      def self.describe(const, &block)
+      def self.describe(const, &)
         desc = ::Class.new(self)
         desc.let(:described_class) { const } if const.is_a?(::Module)
-        desc.instance_eval(&block)
+        desc.instance_eval(&)
       end
 
       # :nocov:
@@ -273,10 +273,10 @@ module RSpec
       # @return (see ExpectationTarget::Base#result)
       #
       # @api public
-      def self.its(attribute, *args, **kwargs, &block)
+      def self.its(attribute, *, **, &block)
         Logger.source(*block.source_location)
-        example_with_attribute(attribute, *args, **kwargs).new
-                                                          .instance_eval(&block)
+        example_with_attribute(attribute, *, **).new
+                                                .instance_eval(&block)
       end
 
       # :nocov:

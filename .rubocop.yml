@@ -27,7 +27,7 @@ AllCops:
     - 'vendor/**/*'
 
   NewCops: enable
-  TargetRubyVersion: 3.0
+  TargetRubyVersion: 3.2
 
 inherit_from:
   - https://raw.githubusercontent.com/sashite/sashite-rubocop.rb/v1.0.3/config/rubocop.yml

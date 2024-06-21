@@ -13,29 +13,29 @@ A minimalist __RSpec clone__ with all the essentials.
 [![RuboCop](https://github.com/cyril/r_spec-clone.rb/workflows/RuboCop/badge.svg?branch=main)](https://github.com/cyril/r_spec-clone.rb/actions?query=workflow%3Arubocop+branch%3Amain)
 [![License](https://img.shields.io/github/license/cyril/r_spec-clone.rb?label=License&logo=github)](https://github.com/cyril/r_spec-clone.rb/raw/main/LICENSE.md)
 
-## Project goals
+## Project Goals
 
-1. Keep code complexity low, avoid false negatives and false positives.
-2. Load specifications in simple, atomic and thread safe Ruby primitives.
-3. Avoid overloading the interface with additional alternative syntaxes.
-4. Provide the basics of DSL RSpec to write tests.
+1. Maintain low code complexity to avoid false negatives and false positives.
+2. Implement the loading of specifications using simple, atomic, and thread-safe Ruby primitives.
+3. Avoid cluttering the interface with unnecessary alternative syntaxes.
+4. Provide the basics of the RSpec DSL for writing tests.
 
-## Some differences
+## Some Differences
 
-* There is no option to enable monkey-patching.
-* It does not rely on [hacks such as `at_exit` hook](https://blog.arkency.com/2013/06/are-we-abusing-at-exit/) to trigger the tests.
-* Malicious _actual values_ cannot [hack results](https://asciinema.org/a/423547?autoplay=1&speed=2).
-* If no `subject` has been explicitly determined, none is defined.
-* If no described class is set, `described_class` is undefined instead of `nil`.
+* Monkey-patching is not an available option.
+* The framework does not use [hacks such as the `at_exit` hook](https://blog.arkency.com/2013/06/are-we-abusing-at-exit/) to trigger tests.
+* Malicious _actual values_ cannot [compromise results](https://asciinema.org/a/423547?autoplay=1&speed=2).
+* If no `subject` is explicitly determined, it remains undefined.
+* If no described class is set, `described_class` is undefined rather than `nil`.
 * Expectations cannot be added inside a `before` block.
-* [Arbitrary helper methods](https://relishapp.com/rspec/rspec-core/v/3-10/docs/helper-methods/arbitrary-helper-methods) are not exposed to examples.
+* [Arbitrary helper methods](https://relishapp.com/rspec/rspec-core/v/3-10/docs/helper-methods/arbitrary-helper-methods) are not accessible within examples.
 * The `let` method defines a helper method rather than a memoized helper method.
-* The one-liner `is_expected` syntax also works with block expectations.
-* `subject`, `before` and `let` definitions must come before examples.
-* The `after` hook is not supported.
-* The execution of the test suite stops as soon as an error is detected.
-* Each `context` block isolates its tests and possible side effects.
-* The `its` method is available without external dependency.
+* The one-liner `is_expected` syntax is compatible with block expectations.
+* Definitions of `subject`, `before`, and `let` must precede examples.
+* The `after` hook is unsupported.
+* The execution of the test suite halts immediately when an error is detected.
+* Each `context` block isolates its tests and any potential side effects.
+* The `its` method is available without the need for external dependencies.
 
 ## Installation
 
@@ -48,7 +48,7 @@ gem "r_spec-clone"
 And then execute:
 
 ```sh
-bundle
+bundle install
 ```
 
 Or install it yourself as:
@@ -61,7 +61,7 @@ gem install r_spec-clone
 
 __RSpec clone__ provides a structure for writing executable examples of how your code should behave.
 
-Inspired by RSpec, it includes a domain specific language (DSL) that allows you to write examples in a way similar to plain english.
+Inspired by RSpec, it includes a domain-specific language (DSL) that allows you to write examples in a way similar to plain english.
 
 A basic spec looks something like this:
 
@@ -69,10 +69,10 @@ A basic spec looks something like this:
 
 ## Usage
 
-### Anatomy of a spec file
+### Anatomy of a Spec File
 
-To use the `RSpec` module and its DSL, you need to add `require "r_spec"` to your spec files.
-Many projects use a custom spec helper which organizes these includes.
+To utilize the `RSpec` module and its DSL, include `require "r_spec"` in your spec files.
+Many projects organize these includes through a custom spec helper.
 
 Concrete test cases are defined in `it` blocks.
 An optional (but recommended) descriptive string or module indicates the purpose of the test and a block contains the main logic of the test.

@@ -29,9 +29,9 @@ module RSpec
         # @raise (see Base#absolute_requirement)
         def absolute_requirement(matcher:, negate:)
           super(
-            ::TestTube.pass(@input, matcher: matcher, negate: negate),
-            matcher: matcher,
-            negate:  negate
+            ::TestTube.pass(@input, matcher:, negate:),
+            matcher:,
+            negate:
           )
         end
       end

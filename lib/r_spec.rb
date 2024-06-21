@@ -83,8 +83,8 @@ module RSpec
   # @param description [String] A description that usually begins with "when",
   #   "with" or "without".
   # @param block [Proc] The block to define the specs.
-  def self.context(description, &block)
-    Clone::Dsl.context(description, &block)
+  def self.context(description, &)
+    Clone::Dsl.context(description, &)
   end
 
   # :nocov:
@@ -117,8 +117,8 @@ module RSpec
   #
   # @param const [Module, String] A module to include in block context.
   # @param block [Proc] The block to define the specs.
-  def self.describe(const, &block)
-    Clone::Dsl.describe(const, &block)
+  def self.describe(const, &)
+    Clone::Dsl.describe(const, &)
   end
 
   # :nocov:
@@ -143,8 +143,8 @@ module RSpec
   #
   # @raise (see RSpec::Clone::ExpectationTarget::Base#result)
   # @return (see RSpec::Clone::ExpectationTarget::Base#result)
-  def self.it(name = nil, &block)
-    Clone::Dsl.it(name, &block)
+  def self.it(name = nil, &)
+    Clone::Dsl.it(name, &)
   end
 
   # :nocov:
