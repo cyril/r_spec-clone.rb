@@ -21,7 +21,7 @@ Gem::Specification.new do |spec|
     "rubygems_mfa_required" => "true"
   }
 
-  spec.add_dependency "expresenter", "~> 1.4.1"
-  spec.add_dependency "matchi", "~> 3.3.2"
-  spec.add_dependency "test_tube", "~> 3.0.0"
+  spec.add_dependency "expresenter", "~> 1.5.0"
+  spec.add_dependency "matchi", "~> 4.0.0"
+  spec.add_dependency "test_tube", "~> 4.0.0"
 end

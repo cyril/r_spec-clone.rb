@@ -25,7 +25,7 @@ module RSpec
         # @example _Absolute requirement_ definition
         #   expect { "foo".upcase }.to eq("foo")
         #
-        # @param matcher [#matches?] The matcher.
+        # @param matcher [#match?] The matcher.
         #
         # @raise (see #result)
         # @return (see #result)
@@ -53,7 +53,7 @@ module RSpec
         protected
 
         # @param test     [::TestTube::Base] The state of the experiment.
-        # @param matcher  [#matches?] The matcher.
+        # @param matcher  [#match?]   The matcher.
         # @param negate   [Boolean]   The assertion is positive or negative.
         #
         # @return [nil] Write a message to STDOUT.
@@ -88,7 +88,7 @@ module RSpec
         # @param actual   [#object_id]      The actual value.
         # @param error    [Exception, nil]  Any raised exception.
         # @param got      [Boolean, nil]    Any returned value.
-        # @param matcher  [#matches?]       The matcher.
+        # @param matcher  [#match?]         The matcher.
         # @param negate   [Boolean]         The assertion is positive or negative.
         #
         # @return [nil] Write a message to STDOUT.
@@ -100,7 +100,6 @@ module RSpec
             actual:,
             definition: matcher.to_s,
             error:,
-            expected:   matcher.expected,
             got:,
             negate:,
             level:      :MUST

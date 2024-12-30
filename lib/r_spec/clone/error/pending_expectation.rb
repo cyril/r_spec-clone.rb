@@ -15,7 +15,6 @@ module RSpec
             actual:     new(message),
             definition: "raise exception #{self}",
             error:      nil,
-            expected:   self,
             got:        false,
             negate:     true,
             level:      :SHOULD

@@ -12,13 +12,7 @@ AllCops:
   
     - .rubocop-https---raw-githubusercontent-com-sashite-sashite-rubocop-rb-v1-0-3-config-rubocop-yml
   
-    - .yardoc/
-  
     - coverage/
-  
-    - doc/
-  
-    - pkg/
   
     - '**/*.md'
     - '**/*.markdown'

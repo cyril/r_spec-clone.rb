@@ -21,7 +21,7 @@ module RSpec
       class Block < Base
         protected
 
-        # @param matcher  [#matches?] The matcher.
+        # @param matcher  [#match?]   The matcher.
         # @param negate   [Boolean]   The assertion is positive or negative.
         #
         # @return (see Base#absolute_requirement)
