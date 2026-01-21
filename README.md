@@ -294,12 +294,6 @@ It's a great framework and it's a pleasure to work with every day.
 
 Without RSpec, this clone would not have been possible.
 
-## Buy me a coffee ☕
-
-If you like this project, please consider making a small donation.
-
-[![Donate](https://img.shields.io/badge/Donate-cyr.eth-purple.svg)](https://etherscan.io/address/cyr.eth)
-
 ## Versioning
 
 __RSpec clone__ follows [Semantic Versioning 2.0](https://semver.org/).

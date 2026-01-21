@@ -2,10 +2,12 @@ name: Ruby
 
 on:
   push:
-    branches:
-      - main
-
+    branches: [main]
   pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
 
 jobs:
   build:
@@ -14,9 +16,10 @@ jobs:
     strategy:
       matrix:
         ruby:
-          - 3.2
-          - 3.3
-          - 3.4
+          - '3.2'
+          - '3.3'
+          - '3.4'
+          - '4.0'
 
     steps:
     - uses: actions/checkout@v3
