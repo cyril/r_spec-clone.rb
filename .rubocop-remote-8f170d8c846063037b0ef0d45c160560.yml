@@ -1,0 +1,13 @@
+require: rubocop-rspec
+
+RSpec/ExampleLength:
+  Enabled: false
+
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false
+
+RSpec/NestedGroups:
+  Enabled: false
+
+RSpec/NamedSubject:
+  Enabled: false

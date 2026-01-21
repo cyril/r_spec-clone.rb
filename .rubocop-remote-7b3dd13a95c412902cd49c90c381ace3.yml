@@ -1,0 +1,22 @@
+Layout/HashAlignment:
+  EnforcedHashRocketStyle: table
+  EnforcedColonStyle: table
+
+Metrics/ClassLength:
+  Enabled: false
+
+Naming/MemoizedInstanceVariableName:
+  EnforcedStyleForLeadingUnderscores: required
+
+Style/ClassAndModuleChildren:
+  EnforcedStyle: nested
+
+Style/EmptyMethod:
+  EnforcedStyle: expanded
+
+# As long as we don't need to use a version lower or equal to 1.9, we can use the new syntax.
+Style/SymbolArray:
+  Enabled: true
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
