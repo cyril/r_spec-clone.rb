@@ -2,7 +2,6 @@
 
 require_relative File.join("..", "spec_helper")
 
-# rubocop:disable RSpec/InstanceVariable
 RSpec.describe RSpec::Clone::Dsl do
   describe ".before" do
     before do
@@ -20,7 +19,6 @@ RSpec.describe RSpec::Clone::Dsl do
     it { expect(@number).to be(0) }
   end
 end
-# rubocop:enable RSpec/InstanceVariable
 
 # Success: expected to be 1.
 # Success: expected to be 0.

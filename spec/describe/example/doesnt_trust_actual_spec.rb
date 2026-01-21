@@ -2,9 +2,7 @@
 
 require_relative File.join("..", "..", "spec_helper")
 
-# rubocop:disable Style/MutableConstant
 APP = "💩"
-# rubocop:enable Style/MutableConstant
 
 def APP.equal?(*)
   # :nocov:
