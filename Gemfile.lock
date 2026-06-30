@@ -22,7 +22,7 @@ GEM
     simplecov_json_formatter (0.1.4)
     test_tube (4.0.1)
       defi (~> 3.0.1)
-    yard (0.9.38)
+    yard (0.9.44)
 
 PLATFORMS
   arm64-darwin-24
