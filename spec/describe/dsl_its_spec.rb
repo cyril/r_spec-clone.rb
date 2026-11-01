@@ -32,11 +32,11 @@ RSpec.describe RSpec::Clone::Dsl do
   end
 end
 
-# Success: subject not explicitly defined.
-# Success: subject not explicitly defined.
-# Success: expected to be 42.
-# Success: undefined method `length' for 41:Integer.
-# Success: no implicit conversion of Integer into String.
-# Success: expected to be 3.
-# Success: no implicit conversion of Integer into String.
-# Success: expected to be 3.
+# spec/describe/dsl_its_spec.rb:7: Success: expected #<RSpec::Clone::Error::UndefinedSubject: subject not explicitly defined> to raise exception RSpec::Clone::Error::UndefinedSubject
+# spec/describe/dsl_its_spec.rb:8: Success: expected #<RSpec::Clone::Error::UndefinedSubject: subject not explicitly defined> to raise exception RSpec::Clone::Error::UndefinedSubject
+# spec/describe/dsl_its_spec.rb:15: Success: expected 42 to be 42
+# spec/describe/dsl_its_spec.rb:16: Success: expected #<NoMethodError: undefined method 'length' for an instance of Integer> to raise exception NoMethodError
+# spec/describe/dsl_its_spec.rb:23: Success: expected #<TypeError: no implicit conversion of Integer into String> to raise exception TypeError
+# spec/describe/dsl_its_spec.rb:24: Success: expected 3 to be 3
+# spec/describe/dsl_its_spec.rb:27: Success: expected #<TypeError: no implicit conversion of Integer into String> to raise exception TypeError
+# spec/describe/dsl_its_spec.rb:28: Success: expected 3 to be 3

@@ -8,4 +8,4 @@ RSpec.context "when divided by zero" do
   it { is_expected.to raise_exception ZeroDivisionError }
 end
 
-# Success: divided by 0.
+# spec/context/when_divided_by_zero_spec.rb:8: Success: expected #<ZeroDivisionError: divided by 0> to raise exception ZeroDivisionError

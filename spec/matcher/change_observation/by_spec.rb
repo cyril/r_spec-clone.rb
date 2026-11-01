@@ -22,6 +22,6 @@ RSpec.describe "#change" do
   end
 end
 
-# Success: expected [1] to change by 1.
-# Success: expected [1, 2] not to change by 1.
-# Success: expected [] not to change by 1.
+# spec/matcher/change_observation/by_spec.rb:12: Success: expected [1] to change by 1
+# spec/matcher/change_observation/by_spec.rb:16: Success: expected [1, 2] not to change by 1
+# spec/matcher/change_observation/by_spec.rb:20: Success: expected [] not to change by 1

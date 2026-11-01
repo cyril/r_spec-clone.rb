@@ -7,5 +7,5 @@ RSpec.describe "#equal" do
   it { expect(:bar).not_to equal(:foo) }
 end
 
-# Success: expected to be :foo.
-# Success: expected :bar not to be :foo.
+# spec/matcher/identity/equal_spec.rb:6: Success: expected :foo to be :foo
+# spec/matcher/identity/equal_spec.rb:7: Success: expected :bar not to be :foo

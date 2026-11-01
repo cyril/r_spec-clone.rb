@@ -14,4 +14,4 @@ RSpec.describe Array do
   end
 end
 
-# Success: expected to eq [1, 2, 3, 4, 5, 6].
+# spec/describe/subject/inherited_subject_spec.rb:12: Success: expected [1, 2, 3, 4, 5, 6] to eq [1, 2, 3, 4, 5, 6]

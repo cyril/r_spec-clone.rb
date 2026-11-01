@@ -28,5 +28,5 @@ RSpec.describe Array do
   end
 end
 
-# Success: expected to eq [1, 2, 3].
-# Success: expected to eq [].
+# spec/describe/subject/before_hook_subject_spec.rb:14: Success: expected [1, 2, 3] to eq [1, 2, 3]
+# spec/describe/subject/before_hook_subject_spec.rb:26: Success: expected [] to eq []

@@ -1,9 +1,7 @@
 # frozen_string_literal: true
 
 module RSpec
-  # Clone namespace.
-  #
-  # @api private
+  # The clone itself: the language, the examples and the report.
   module Clone
   end
 end

@@ -26,5 +26,5 @@ RSpec.describe Integer do
   end
 end
 
-# Success: expected to be 8.
-# Success: expected to be 42.
+# spec/describe/helper-methods/let_arguments_spec.rb:16: Success: expected 8 to be 8
+# spec/describe/helper-methods/let_arguments_spec.rb:24: Success: expected 42 to be 42

@@ -9,5 +9,5 @@ RSpec.describe Array do
   its(:downcase) { is_expected.to raise_exception NoMethodError }
 end
 
-# Success: expected to be 3.
-# Success: undefined method `downcase' for [1, 2, 3]:Array.
+# spec/describe/subject/single_concrete_test_case_spec.rb:8: Success: expected 3 to be 3
+# spec/describe/subject/single_concrete_test_case_spec.rb:9: Success: expected #<NoMethodError: undefined method 'downcase' for an instance of Array> to raise exception NoMethodError

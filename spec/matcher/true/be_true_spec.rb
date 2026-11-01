@@ -7,5 +7,5 @@ RSpec.describe "#be_true" do
   it { expect(false).not_to be_true }
 end
 
-# Success: expected to be true.
-# Success: expected false not to be true.
+# spec/matcher/true/be_true_spec.rb:6: Success: expected true to be true
+# spec/matcher/true/be_true_spec.rb:7: Success: expected false not to be true

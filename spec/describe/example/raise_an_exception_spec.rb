@@ -28,6 +28,6 @@ RSpec.describe Integer do
   end
 end
 
-# Success: undefined method `new' for Integer:Class.
-# Success: divided by 0.
-# Success: expected 42 not to raise exception ZeroDivisionError.
+# spec/describe/example/raise_an_exception_spec.rb:7: Success: expected #<NoMethodError: undefined method 'new' for class Integer> to raise exception NoMethodError
+# spec/describe/example/raise_an_exception_spec.rb:17: Success: expected #<ZeroDivisionError: divided by 0> to raise exception ZeroDivisionError
+# spec/describe/example/raise_an_exception_spec.rb:25: Success: expected 42 not to raise exception ZeroDivisionError

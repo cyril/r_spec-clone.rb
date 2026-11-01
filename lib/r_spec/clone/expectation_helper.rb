@@ -1,11 +1,12 @@
 # frozen_string_literal: true
 
 require_relative File.join("expectation_helper", "it")
-require_relative File.join("expectation_helper", "its")
+require_relative File.join("expectation_helper", "matcher")
 
 module RSpec
   module Clone
-    # Namespace for {Dsl.it} and {Dsl.its}'s helper modules.
+    # The words an example can use, prepended to its class: {It} by
+    # {Dsl.it}, {Matcher} by {Dsl.its}, which adds `is_expected` itself.
     module ExpectationHelper
     end
   end

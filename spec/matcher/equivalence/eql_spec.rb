@@ -7,5 +7,5 @@ RSpec.describe "#eql" do
   it { expect("bar").not_to eql("foo") }
 end
 
-# Success: expected to eq "foo".
-# Success: expected "bar" not to eq "foo".
+# spec/matcher/equivalence/eql_spec.rb:6: Success: expected "foo" to eq "foo"
+# spec/matcher/equivalence/eql_spec.rb:7: Success: expected "bar" not to eq "foo"

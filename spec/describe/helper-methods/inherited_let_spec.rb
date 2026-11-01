@@ -18,5 +18,5 @@ RSpec.describe Integer do
   end
 end
 
-# Success: expected to be 42.
-# Success: expected to be 43.
+# spec/describe/helper-methods/inherited_let_spec.rb:9: Success: expected 42 to be 42
+# spec/describe/helper-methods/inherited_let_spec.rb:16: Success: expected 43 to be 43

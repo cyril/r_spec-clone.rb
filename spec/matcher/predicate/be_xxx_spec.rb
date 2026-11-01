@@ -7,5 +7,5 @@ RSpec.describe "#be_xxx" do
   it { expect([44]).not_to be_empty }
 end
 
-# Success: expected [] to be empty.
-# Success: expected [44] not to be empty.
+# spec/matcher/predicate/be_xxx_spec.rb:6: Success: expected [] to be empty
+# spec/matcher/predicate/be_xxx_spec.rb:7: Success: expected [44] not to be empty

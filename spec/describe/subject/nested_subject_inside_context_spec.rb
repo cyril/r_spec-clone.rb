@@ -12,4 +12,4 @@ RSpec.describe Array do
   end
 end
 
-# Success: expected to eq [1, 2, 3].
+# spec/describe/subject/nested_subject_inside_context_spec.rb:10: Success: expected [1, 2, 3] to eq [1, 2, 3]

@@ -7,5 +7,5 @@ RSpec.describe "#be_nil" do
   it { expect(:foo).not_to be_nil }
 end
 
-# Success: expected to be nil.
-# Success: expected :foo not to be nil.
+# spec/matcher/nil/be_nil_spec.rb:6: Success: expected nil to be nil
+# spec/matcher/nil/be_nil_spec.rb:7: Success: expected :foo not to be nil

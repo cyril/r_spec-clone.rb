@@ -14,5 +14,5 @@ RSpec.describe Array do
   end
 end
 
-# Success: subject not explicitly defined.
-# Success: expected to eq [1, 2, 3].
+# spec/describe/subject/one_liner_syntax_spec.rb:7: Success: expected #<RSpec::Clone::Error::UndefinedSubject: subject not explicitly defined> to raise exception RSpec::Clone::Error::UndefinedSubject
+# spec/describe/subject/one_liner_syntax_spec.rb:13: Success: expected [1, 2, 3] to eq [1, 2, 3]

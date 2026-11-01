@@ -42,12 +42,9 @@ RSpec.describe RSpec do
   end
 end
 
-# Failure: expected 4 to be 42.
-# spec/describe/example/raise_unless_passed_spec.rb:9
-# Success: expected to be false.
-# Failure: expected 4 to be 42.
-# spec/describe/example/raise_unless_passed_spec.rb:21
-# Success: expected to be false.
-# Failure: expected 4 to be 42.
-# spec/describe/example/raise_unless_passed_spec.rb:35
-# Success: expected to be false.
+# spec/describe/example/raise_unless_passed_spec.rb:9: Failure: expected 4 to be 42
+# spec/describe/example/raise_unless_passed_spec.rb:15: Success: expected false to be false
+# spec/describe/example/raise_unless_passed_spec.rb:21: Failure: expected 4 to be 42
+# spec/describe/example/raise_unless_passed_spec.rb:27: Success: expected false to be false
+# spec/describe/example/raise_unless_passed_spec.rb:35: Failure: expected 4 to be 42
+# spec/describe/example/raise_unless_passed_spec.rb:41: Success: expected false to be false

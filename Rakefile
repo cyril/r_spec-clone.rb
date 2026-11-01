@@ -5,14 +5,14 @@ require "rake/testtask"
 require "yard"
 
 Rake::TestTask.new do |t|
-  t.pattern = "spec/**/*_spec.rb"
+  t.pattern = File.join("spec", "**", "*_spec.rb")
   t.verbose = true
   t.warning = true
 end
 
 YARD::Rake::YardocTask.new
 
-Dir["tasks/**/*.rake"].each { |t| load t }
+task spec: :test
 
 task default: %i[
   test

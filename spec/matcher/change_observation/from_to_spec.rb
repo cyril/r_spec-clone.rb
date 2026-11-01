@@ -20,5 +20,5 @@ RSpec.describe "#change" do
   end
 end
 
-# Success: expected to change from "foo" to "FOO".
-# Success: expected not to change from "foo" to "FOO".
+# spec/matcher/change_observation/from_to_spec.rb:13: Success: expected "FOO" to change from "foo" to "FOO"
+# spec/matcher/change_observation/from_to_spec.rb:17: Success: expected "FOO" not to change from "foo" to "FOO"

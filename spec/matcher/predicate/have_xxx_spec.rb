@@ -7,5 +7,5 @@ RSpec.describe "#have_xxx" do
   it { expect(bar: 42).not_to have_key(:foo) }
 end
 
-# Success: expected {:foo=>42} to have key :foo.
-# Success: expected {:bar=>42} not to have key :foo.
+# spec/matcher/predicate/have_xxx_spec.rb:6: Success: expected {foo: 42} to have key :foo
+# spec/matcher/predicate/have_xxx_spec.rb:7: Success: expected {bar: 42} not to have key :foo

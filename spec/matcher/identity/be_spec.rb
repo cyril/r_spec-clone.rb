@@ -7,5 +7,5 @@ RSpec.describe "#be" do
   it { expect(:bar).not_to be(:foo) }
 end
 
-# Success: expected to be :foo.
-# Success: expected :bar not to be :foo.
+# spec/matcher/identity/be_spec.rb:6: Success: expected :foo to be :foo
+# spec/matcher/identity/be_spec.rb:7: Success: expected :bar not to be :foo

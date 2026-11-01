@@ -18,5 +18,5 @@ RSpec.describe "#change" do
   end
 end
 
-# Success: expected [1] to change by at least 1.
-# Success: expected [] not to change by at least 1.
+# spec/matcher/change_observation/by_at_least_spec.rb:12: Success: expected [1] to change by at least 1
+# spec/matcher/change_observation/by_at_least_spec.rb:16: Success: expected [] not to change by at least 1

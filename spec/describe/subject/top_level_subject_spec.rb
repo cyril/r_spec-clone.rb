@@ -10,4 +10,4 @@ RSpec.describe Array do
   end
 end
 
-# Success: expected to eq [1, 2, 3].
+# spec/describe/subject/top_level_subject_spec.rb:9: Success: expected [1, 2, 3] to eq [1, 2, 3]

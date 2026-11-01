@@ -1,39 +1,37 @@
 # frozen_string_literal: true
 
-require_relative "shared"
+require_relative "matcher"
 require_relative File.join("..", "expectation_target")
 
 module RSpec
   module Clone
     module ExpectationHelper
-      # {RSpec::Clone::Dsl.it}'s expectation helper module.
+      # The words of an `it` example: `expect`, `is_expected` and the
+      # matchers.
       module It
-        include Shared
+        include Matcher
 
-        # Create an expectation for a spec.
-        #
-        # @param value [#object_id, nil]  An actual value.
-        # @param block [#call, nil]       A code to evaluate.
-        #
-        # @return [Block, Value] The wrapped target of an expectation.
+        # Wraps the target of an expectation: a value, or a block whose
+        # value or exception the matcher judges.
         #
         # @example
-        #   expect("foo") # => #<RSpec::Clone::ExpectationTarget::Value:0x00007f @actual="foo">
-        #   expect { RSpec::Clone::Boom! } # => #<RSpec::Clone::ExpectationTarget::Block:0x... @callable=#<Proc:0x...>>
+        #   expect("foo")
+        #   expect { 1 / 0 }
         #
-        # @api public
-        def expect(value = self.class.superclass, &block)
-          ExpectationTarget.call(self.class.superclass, value, block)
+        # @param values [Array] the actual value, when no block is given
+        # @yieldreturn [Object] the actual value
+        # @return [ExpectationTarget]
+        # @raise [ArgumentError] with both a value and a block, or neither
+        def expect(*values, &block)
+          raise ::ArgumentError, "expect takes one value or a block" unless values.size + (block ? 1 : 0) == 1
+
+          ExpectationTarget.new(block || -> { values.fetch(0) })
         end
 
-        # Wraps the target of an expectation with the subject as actual value.
+        # Wraps the subject as a block: `is_expected.to raise_exception X`
+        # judges what `subject` raises.
         #
-        # @return [Block] The wrapped target of an expectation.
-        #
-        # @example
-        #   is_expected # => #<RSpec::Clone::ExpectationTarget::Block:0x00007fb6b8 @callable=#<Proc:0x00007fb6b8>>
-        #
-        # @api public
+        # @return [ExpectationTarget]
         def is_expected
           expect { subject }
         end

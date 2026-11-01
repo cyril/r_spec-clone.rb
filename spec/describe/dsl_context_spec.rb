@@ -5,7 +5,6 @@ require_relative File.join("..", "spec_helper")
 app = "Hello, world!"
 
 RSpec.describe String do
-  # :nocov:
   subject do
     app
   end
@@ -25,8 +24,7 @@ RSpec.describe String do
 
     it { is_expected.to eq "Hello, Bob!" }
   end
-  # :nocov:
 end
 
-# Success: expected to eq "Hello, Alice!".
-# Success: expected to eq "Hello, Bob!".
+# spec/describe/dsl_context_spec.rb:19: Success: expected "Hello, Alice!" to eq "Hello, Alice!"
+# spec/describe/dsl_context_spec.rb:25: Success: expected "Hello, Bob!" to eq "Hello, Bob!"

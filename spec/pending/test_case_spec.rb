@@ -3,9 +3,10 @@
 require_relative File.join("..", "spec_helper")
 
 RSpec.pending "is implemented but waiting" do
-  # :nocov:
   expect something to be finished
-  # :nocov:
 end
 
 RSpec.pending "is not yet implemented and waiting"
+
+# spec/pending/test_case_spec.rb:5: Pending: is implemented but waiting
+# spec/pending/test_case_spec.rb:9: Pending: is not yet implemented and waiting

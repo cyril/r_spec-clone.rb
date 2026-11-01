@@ -18,5 +18,5 @@ RSpec.describe "#change" do
   end
 end
 
-# Success: expected to change to "FOO".
-# Success: expected not to change to "FOO".
+# spec/matcher/change_observation/to_spec.rb:12: Success: expected "FOO" to change to "FOO"
+# spec/matcher/change_observation/to_spec.rb:16: Success: expected "FOO" not to change to "FOO"

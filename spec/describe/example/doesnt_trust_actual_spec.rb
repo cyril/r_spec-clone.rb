@@ -5,9 +5,7 @@ require_relative File.join("..", "..", "spec_helper")
 APP = "💩"
 
 def APP.equal?(*)
-  # :nocov:
   true
-  # :nocov:
 end
 
 RSpec.describe String do
@@ -18,4 +16,4 @@ RSpec.describe String do
   it { is_expected.not_to be "🌈" }
 end
 
-# Success: expected "💩" not to be "🌈".
+# spec/describe/example/doesnt_trust_actual_spec.rb:16: Success: expected "💩" not to be "🌈"

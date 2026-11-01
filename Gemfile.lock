@@ -1,39 +1,41 @@
 PATH
   remote: .
   specs:
-    r_spec-clone (1.7.2)
-      expresenter (~> 1.5.0)
-      matchi (~> 4.0.0)
-      test_tube (~> 4.0.0)
+    r_spec-clone (2.0.0)
+      defi (~> 4.0)
+      matchi (~> 6.0)
+      spectus (~> 6.0)
 
 GEM
   remote: https://rubygems.org/
   specs:
-    defi (3.0.1)
-    docile (1.4.1)
-    expresenter (1.5.1)
-    matchi (4.0.0)
-    rake (13.3.1)
-    simplecov (0.22.0)
-      docile (~> 1.1)
-      simplecov-html (~> 0.11)
-      simplecov_json_formatter (~> 0.1)
-    simplecov-html (0.13.2)
-    simplecov_json_formatter (0.1.4)
-    test_tube (4.0.1)
-      defi (~> 3.0.1)
-    yard (0.9.38)
+    defi (4.0.1)
+    matchi (6.0.0)
+    rake (13.4.2)
+    simplecov (1.3.2)
+    spectus (6.0.1)
+      defi (~> 4.0)
+    yard (0.9.45)
 
 PLATFORMS
-  arm64-darwin-24
+  ruby
   x86_64-linux
 
 DEPENDENCIES
-  bundler
   r_spec-clone!
   rake
   simplecov
   yard
 
+CHECKSUMS
+  bundler (4.0.23) sha256=407ba8a1d928f412847f819aa5f8b6aef7c59fb51feb517112af8a165487287b
+  defi (4.0.1) sha256=7802713291e5ebdf88de607a860caf49422c9e153b682ed1fe02889f1811be05
+  matchi (6.0.0) sha256=8cb660b0286939edda33f4d5f46f0ae35b39dd3ccc984eb0c9bd5836a9e44434
+  r_spec-clone (2.0.0)
+  rake (13.4.2) sha256=cb825b2bd5f1f8e91ca37bddb4b9aaf345551b4731da62949be002fa89283701
+  simplecov (1.3.2) sha256=2a22ec1759f1b8db60881a2e038758956fc69ef93ed669be0bde0678de6d0e85
+  spectus (6.0.1) sha256=c66a4917f1c6a6b6b64e8f6e467d823681c0d91dc3d4e37abc8ba01659ed7deb
+  yard (0.9.45) sha256=52e211493f7cb8a3ebf7e104a25a1e73937a3103092545d34cb88fafebb3dc51
+
 BUNDLED WITH
-  4.0.4
+  4.0.23
