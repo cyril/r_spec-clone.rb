@@ -60,6 +60,8 @@ spec/duck_spec.rb:21: Success: expected "Swoosh..." not to raise exception Stand
 spec/duck_spec.rb:24: Pending: flies
 ```
 
+The [wiki](https://github.com/cyril/r_spec-clone.rb/wiki) has more examples, each one a file to run, a cheat sheet, and what to write instead of what RSpec has.
+
 ### Example groups
 
 `RSpec.describe` opens an example group; `describe` and `context` nest groups inside it. A group is a class, a nested group a subclass of it: what `let`, `subject` and `before` define in a group, the groups inside it inherit, and may redefine with `super` at hand. The first argument of `describe` is a description, or the module under test, which `described_class` then returns; where no enclosing `describe` names a module, `described_class` raises `RSpec::Clone::Error::UndefinedDescribedClass`.

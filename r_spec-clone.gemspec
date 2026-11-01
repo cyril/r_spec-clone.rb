@@ -19,6 +19,7 @@ Gem::Specification.new do |spec|
   spec.metadata["documentation_uri"]     = "https://rubydoc.info/gems/r_spec-clone"
   spec.metadata["rubygems_mfa_required"] = "true"
   spec.metadata["source_code_uri"]       = "https://github.com/cyril/r_spec-clone.rb"
+  spec.metadata["wiki_uri"]              = "https://github.com/cyril/r_spec-clone.rb/wiki"
 
   spec.add_dependency "defi",    "~> 4.0"
   spec.add_dependency "matchi",  "~> 6.0"
